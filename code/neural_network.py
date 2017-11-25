@@ -41,10 +41,6 @@ class Network():
                             zip(sizes[:-1], sizes[1:])]  # A semi-random numpy
         # array of the weight of each synapse
 
-        # self.weights = [np.random.randn(y, x)
-        #                 for x, y in zip(sizes[:-1], sizes[1:])]  # A numpy
-        # # array of the weight of each synapse
-
     @staticmethod
     def calc_cost(a, y):
         """
@@ -66,9 +62,9 @@ class Network():
         :param prev_layer: The previous layer
         :return: The next layer
         """
-        current_layer = np.array([])
+        current_layer = prev_layer
         for b, w in zip(self.biases, self.weights):
-            current_layer = sigmoid(np.dot(w, prev_layer) + b)
+            current_layer = sigmoid(np.dot(w, current_layer) + b)
         return current_layer
 
     def stochastic_gradient_descent(self, training_data, epochs,
@@ -125,13 +121,10 @@ class Network():
 
         self.weights = [(1 - learning_rate * (lmbda / n)) * w -
                         (learning_rate / len(mini_batch)) * nw for w, nw in
-                        zip(self.weights, nabla_w)]  # Update weights
+                        zip(self.weights, nabla_w)]  # Update weights with
+        # regularization
         self.biases = [b - (learning_rate / len(mini_batch)) * nb for b, nb in
                        zip(self.biases, nabla_b)]  # Update biases
-
-        # self.weights = [w - (learning_rate / len(mini_batch)) * nw
-        #                 for w, nw in zip(self.weights, nabla_w)]  # Update
-        # # weights
 
     def backprop(self, x, y):
         """
@@ -153,10 +146,6 @@ class Network():
             zs.append(z)
             activation = sigmoid(z)
             activations.append(activation)
-
-        # backward pass
-        # delta = self.cost_derivative(activations[-1], y) * \
-        #         sigmoid_prime(zs[-1])
 
         delta = activations[-1] - y
         nabla_b[-1] = delta
@@ -192,14 +181,6 @@ class Network():
         f = open(filename, 'w')
         json.dump(data, f)
         f.close()
-
-        # @staticmethod
-        # def cost_derivative(output_activations, y):
-        #     """
-        #     Return the vector of partial derivatives \partial C_x /
-        #     \partial a for the output activations.
-        #     """
-        #     return output_activations - y
 
 
 def load(filename):
