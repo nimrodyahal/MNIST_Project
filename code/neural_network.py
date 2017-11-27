@@ -67,7 +67,7 @@ class Network():
             current_layer = sigmoid(np.dot(w, current_layer) + b)
         return current_layer
 
-    def stochastic_gradient_descent(self, training_data, epochs,
+    def stochastic_gradient_descent(self, training_data, #epochs,
                                     mini_batch_size, learning_rate, lmbda=0.0,
                                     test_data=None):
         """
@@ -84,7 +84,12 @@ class Network():
         out. useful for tracking progress, but slows things down substantially.
         :return: None.
         """
-        for epoch in xrange(epochs):
+        record_accuracy = 0
+        oscillation_counter = 0
+        original_learning_rate = learning_rate
+        epoch = 0
+        # for epoch in xrange(epochs):
+        while True:
             random.shuffle(training_data)  # Shuffles the training data
             mini_batches = [training_data[k:k + mini_batch_size] for k in
                             xrange(0, len(training_data), mini_batch_size)]
@@ -95,11 +100,26 @@ class Network():
                                        len(training_data))  # Train network
 
             if test_data:
-                print 'Epoch {0}: {1} / {2}'.format(epoch,
-                                                    self.evaluate(test_data),
+                accuracy = self.evaluate(test_data)
+                if accuracy > record_accuracy:
+                    record_accuracy = accuracy
+                    oscillation_counter = 0
+                else:
+                    oscillation_counter += 1
+
+                if oscillation_counter > 5:
+                    learning_rate /= 2
+                    oscillation_counter = 0
+
+                print 'Epoch {0}: {1} / {2}'.format(epoch, accuracy,
                                                     len(test_data))
+                if learning_rate / original_learning_rate < 1.0 / 128:
+                    print 'Terminating.Maximum accuracy: ' + \
+                          str(record_accuracy)
+                    return
             else:
                 print 'Epoch {0} complete'.format(epoch)
+            epoch += 1
 
     def update_mini_batch(self, mini_batch, learning_rate, lmbda, n):
         """
