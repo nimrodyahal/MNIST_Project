@@ -29,17 +29,19 @@ class Network():
         """
         self.num_layers = len(sizes)
         self.sizes = sizes
-        if weights != None:
-            self.weights = weights
+
+        if biases != None:
+            self.biases = biases
         else:
             self.biases = [np.random.randn(y, 1) for y in sizes[1:]]  # A
         # random numpy array of the bias of each neuron
-        if biases != None:
-            self.biases = biases
+        if weights != None:
+            self.weights = weights
         else:
             self.weights = [np.random.randn(y, x) / np.sqrt(x) for x, y in
                             zip(sizes[:-1], sizes[1:])]  # A semi-random numpy
         # array of the weight of each synapse
+        self.best_net = ()
 
     @staticmethod
     def calc_cost(a, y):
@@ -104,6 +106,7 @@ class Network():
                 if accuracy > record_accuracy:
                     record_accuracy = accuracy
                     oscillation_counter = 0
+                    self.best_net = (self.weights, self.biases)
                 else:
                     oscillation_counter += 1
 
@@ -198,6 +201,18 @@ class Network():
         data = {'sizes': self.sizes,
                 'weights': [w.tolist() for w in self.weights],
                 'biases': [b.tolist() for b in self.biases]}
+        f = open(filename, 'w')
+        json.dump(data, f)
+        f.close()
+
+    def save_best(self, filename):
+        """
+        Save the best neural network to date to a file.
+        :param filename: The name of the save file.
+        """
+        data = {'sizes': self.sizes,
+                'weights': [w.tolist() for w in self.best_net[0]],
+                'biases': [b.tolist() for b in self.best_net[1]]}
         f = open(filename, 'w')
         json.dump(data, f)
         f.close()
