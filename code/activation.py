@@ -44,7 +44,9 @@ def test_by_hand(net):
     a = np.zeros((784, 1))
     for index, val in zip(a, bits):
         index[0] = val
-    print np.argmax(net.feedforward(a))
+    b = net.feedforward(a)
+    print b
+    print np.argmax(b)
 
 
 def main():
@@ -55,10 +57,8 @@ def main():
     #     mnist_loader.load_data_wrapper()
     # sizes = [784, 100, 100, 10]
     # time1 = time.time()
-    # print test_data[0][0]
-    # print test_data[0][1]
     # time2 = time.time()
-    # print time2 - time1 * 1000.0
+    # print (time2 - time1) * 1000.0
 
 
 if __name__ == '__main__':
