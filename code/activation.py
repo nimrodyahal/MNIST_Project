@@ -21,8 +21,11 @@ def img_to_bytes():
 
 def get_file_name():
     save_dir = 'Saved'
-    file_name = 'test_net.txt'
-    return save_dir + '\\' + file_name
+    i = 0
+    while True:
+        file_name = 'test_net{}.txt'.format(i)
+        yield save_dir + '\\' + file_name
+        i += 1
 
 
 def activate():
@@ -49,9 +52,42 @@ def test_by_hand(net):
     print np.argmax(b)
 
 
+def testeste(filename):
+    from neu_net_test import Network, ConvPoolLayer, FullyConnectedLayer, \
+        SoftmaxLayer, relu, load_data_shared
+    training_data, validation_data, test_data = load_data_shared()
+    mini_batch_size = 10
+    expanded_training_data, _, _ = load_data_shared(
+        "../data/mnist_expanded.pkl.gz")
+    net = Network([
+        ConvPoolLayer(image_shape=(mini_batch_size, 1, 28, 28),
+                      filter_shape=(20, 1, 5, 5),
+                      poolsize=(2, 2),
+                      activation_fn=relu),
+        ConvPoolLayer(image_shape=(mini_batch_size, 20, 12, 12),
+                      filter_shape=(40, 20, 5, 5),
+                      poolsize=(2, 2),
+                      activation_fn=relu),
+        FullyConnectedLayer(
+            n_in=40 * 4 * 4, n_out=1000, activation_fn=relu, p_dropout=0.5),
+        FullyConnectedLayer(
+            n_in=1000, n_out=1000, activation_fn=relu, p_dropout=0.5),
+        SoftmaxLayer(n_in=1000, n_out=10, p_dropout=0.5)],
+        mini_batch_size)
+    net.sgd(expanded_training_data, 40, mini_batch_size, 0.03,
+            validation_data, test_data)
+    net.save(filename)
+
+
 def main():
-    net = neural_network.load(get_file_name())
-    test_by_hand(net)
+    file_names = get_file_name()
+    testeste(file_names.next())
+    testeste(file_names.next())
+    testeste(file_names.next())
+    testeste(file_names.next())
+    testeste(file_names.next())
+    # net = neural_network.load(get_file_name())
+    # test_by_hand(net)
     # activate()
     # training_data, validation_data, test_data = \
     #     mnist_loader.load_data_wrapper()
