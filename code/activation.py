@@ -5,6 +5,8 @@ import neural_network
 import time
 import numpy as np
 from PIL import Image
+from neu_net_test import Network, ConvPoolLayer, FullyConnectedLayer, \
+    SoftmaxLayer, relu, load_data_shared, MultiNet, load_net
 
 
 def img_to_bytes():
@@ -40,25 +42,22 @@ def activate():
     net.save_best(get_file_name())
 
 
-def test_by_hand(net):
+def test_by_hand():
     img_to_bytes()
     with open('test_byte_stuff', 'r') as f:
         bits = map(int, list(str(f.read())))
     a = np.zeros((784, 1))
     for index, val in zip(a, bits):
         index[0] = val
-    b = net.feedforward(a)
-    print b
-    print np.argmax(b)
+    return a
+    # b = net.feedforward(a)
+    # print b
+    # print np.argmax(b)
 
 
-def testeste(filename):
-    from neu_net_test import Network, ConvPoolLayer, FullyConnectedLayer, \
-        SoftmaxLayer, relu, load_data_shared
+def train_net(expanded_training_data):
     training_data, validation_data, test_data = load_data_shared()
     mini_batch_size = 10
-    expanded_training_data, _, _ = load_data_shared(
-        "../data/mnist_expanded.pkl.gz")
     net = Network([
         ConvPoolLayer(image_shape=(mini_batch_size, 1, 28, 28),
                       filter_shape=(20, 1, 5, 5),
@@ -76,16 +75,27 @@ def testeste(filename):
         mini_batch_size)
     net.sgd(expanded_training_data, 40, mini_batch_size, 0.03,
             validation_data, test_data)
-    net.save(filename)
+    return net
+
+
+def train_multi_net():
+    expanded_training_data, _, _ = load_data_shared(
+        "../data/mnist_expanded.pkl.gz")
+    file_names = get_file_name()
+    train_net(expanded_training_data).save(file_names.next())
+    train_net(expanded_training_data).save(file_names.next())
+    train_net(expanded_training_data).save(file_names.next())
+    train_net(expanded_training_data).save(file_names.next())
+    train_net(expanded_training_data).save(file_names.next())
 
 
 def main():
-    file_names = get_file_name()
-    testeste(file_names.next())
-    testeste(file_names.next())
-    testeste(file_names.next())
-    testeste(file_names.next())
-    testeste(file_names.next())
+    train_multi_net()
+
+    # net = MultiNet([load_net('Saved\\test_net.txt'),
+    #                 load_net('Saved\\test_net.txt')])
+    # net.feedforward(test_by_hand())
+
     # net = neural_network.load(get_file_name())
     # test_by_hand(net)
     # activate()

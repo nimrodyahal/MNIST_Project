@@ -94,10 +94,24 @@ class Network(object):
                 self.mini_batch_size)
         self.output = self.layers[-1].output
         self.output_dropout = self.layers[-1].output_dropout
+        # self.test_mb_predictions = theano.function(
+        #     [i], self.layers[-1].y_out,
+        #     givens={
+        #         self.x: test_x[
+        #             i * self.mini_batch_size: (i + 1) * self.mini_batch_size]
+        #     })
 
-    def save(self, filename):
-        with open(filename, 'wb') as f:
-            cPickle.dump(self, f, -1)
+    def feedforward(self, inpt):
+        x = tt.matrix('x')
+        init_layer = self.layers[0]
+        init_layer.set_inpt(x, x, 1)
+        for j in xrange(1, len(self.layers)):
+            prev_layer, layer = self.layers[j - 1], self.layers[j]
+            layer.set_inpt(
+                prev_layer.output, prev_layer.output_dropout, 1)
+        self.output = self.layers[-1].output
+        feedforward = theano.function([x], self.layers[-1].output)
+        return feedforward(inpt)
 
     def sgd(self, training_data, epochs, mini_batch_size, eta,
             validation_data, test_data, lmbda=0.0):
@@ -147,12 +161,6 @@ class Network(object):
                 self.y: test_y[
                     i * self.mini_batch_size: (i + 1) * self.mini_batch_size]
             })
-        self.test_mb_predictions = theano.function(
-            [i], self.layers[-1].y_out,
-            givens={
-                self.x: test_x[
-                    i * self.mini_batch_size: (i + 1) * self.mini_batch_size]
-            })
         # Do the actual training
         best_validation_accuracy = 0.0
         best_iteration = 0
@@ -184,10 +192,9 @@ class Network(object):
             .format(best_validation_accuracy, best_iteration)
         print "Corresponding test accuracy of {0:.2%}".format(test_accuracy)
 
-
-def load(filename):
-    with open(filename, 'rb') as f:
-        return cPickle.load(f)
+    def save(self, filename):
+        with open(filename, 'wb') as f:
+            cPickle.dump(self, f, -1)
 
 
 #### Define layer types
@@ -315,6 +322,24 @@ class SoftmaxLayer(object):
         return tt.mean(tt.eq(y, self.y_out))
 
 
+class MultiNet():
+    def __init__(self, nets):
+        self.nets = nets
+
+    def feedforward(self, inpt):
+        answer = np.zeros((1, 10))
+        for net in self.nets:
+            answer += net.feedforward(inpt)
+        print answer
+        print np.argmax(answer)
+
+    def test_accuracy(self, test_data):
+        test_x, test_y = test_data
+        for net in self.nets:
+            net.feedforward(test_x)
+        pass
+
+
 #### Miscellanea
 def size(data):
     """Return the size of the dataset `data`."""
@@ -326,3 +351,8 @@ def dropout_layer(layer, p_dropout):
         np.random.RandomState(0).randint(999999))
     mask = srng.binomial(n=1, p=1 - p_dropout, size=layer.shape)
     return layer * tt.cast(mask, theano.config.floatX)
+
+
+def load_net(filename):
+    with open(filename, 'rb') as f:
+        return cPickle.load(f)
