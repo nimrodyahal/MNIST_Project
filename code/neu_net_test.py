@@ -237,11 +237,19 @@ class ConvPoolLayer(object):
         self.params = [self.w, self.b]
         self.inpt = self.output = self.output_dropout = None
 
-    def set_inpt(self, inpt, inpt_dropout, mini_batch_size):
-        self.inpt = inpt.reshape(self.image_shape)
-        conv_out = conv.conv2d(
-            input=self.inpt, filters=self.w, filter_shape=self.filter_shape,
-            image_shape=self.image_shape)
+    def set_inpt(self, inpt, inpt_dropout, mini_batch_size=None):
+        if not mini_batch_size:
+            self.inpt = inpt.reshape(self.image_shape)
+            conv_out = conv.conv2d(
+                input=self.inpt, filters=self.w,
+                filter_shape=self.filter_shape, image_shape=self.image_shape)
+        else:
+            new_shape = list(self.image_shape)
+            new_shape[0] = mini_batch_size
+            self.inpt = inpt.reshape(new_shape)
+            conv_out = conv.conv2d(
+                input=self.inpt, filters=self.w,
+                filter_shape=self.filter_shape, image_shape=new_shape)
         pooled_out = pool.pool_2d(
             input=conv_out, ds=self.poolsize, ignore_border=True)
         self.output = self.activation_fn(
@@ -330,14 +338,13 @@ class MultiNet():
         answer = np.zeros((1, 10))
         for net in self.nets:
             answer += net.feedforward(inpt)
-        print answer
-        print np.argmax(answer)
+        # return answer
+        return np.argmax(answer)
 
     def test_accuracy(self, test_data):
         test_x, test_y = test_data
         for net in self.nets:
             net.feedforward(test_x)
-        pass
 
 
 #### Miscellanea
