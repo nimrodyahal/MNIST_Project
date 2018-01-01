@@ -339,7 +339,8 @@ class MultiNet():
         for net in self.nets:
             answer += net.feedforward(inpt)
         # return answer
-        return np.argmax(answer)
+        chosen = np.argmax(answer)
+        return chosen, answer[0][chosen]*20
 
     def test_accuracy(self, test_data):
         test_x, test_y = test_data

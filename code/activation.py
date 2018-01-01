@@ -74,20 +74,22 @@ def test_by_hand():
     for index, val in zip(canvas, bits):
         index[0] = val
     canvas = canvas.reshape((28, 28))
+    # Get bounding box of char
     min_x, min_y, max_x, max_y = get_bounding_box(canvas)
     boundbox_x = max_x - min_x + 1
     boundbox_y = max_y - min_y + 1
     scaling = 20. / max(boundbox_x, boundbox_y)
-    print scaling
-    print canvas[min_y:max_y, min_x:max_x].shape
     zoomed_char = ndimage.interpolation.zoom(canvas[min_y:max_y, min_x:max_x],
                                              scaling)  # Rescale the char to
                                              #  be 20 * 20 pixels
-    print zoomed_char
-    
+    #
+    canvas = np.zeros((28, 28))
+    zm_chr_shape = zoomed_char.shape
+    canvas[0:zm_chr_shape[0], 0:zm_chr_shape[1]] = zoomed_char
     center = ndimage.measurements.center_of_mass(canvas)
     shift = (28 / 2. - center[0], 28 / 2. - center[1])
     canvas = ndimage.interpolation.shift(canvas, shift).reshape((784, 1))
+    print canvas
     return canvas
     # b = net.feedforward(a)
     # print b
@@ -145,7 +147,8 @@ def main():
                           load_net('Saved\\test_net3.txt'),
                           load_net('Saved\\test_net4.txt')])
     # print load_net('Saved\\test_net0.txt').feedforward(test_by_hand())
-    print multi_net.feedforward(test_by_hand())
+    char = test_by_hand()
+    print multi_net.feedforward(char)
 
     # net = neural_network.load(get_file_name())
     # test_by_hand(net)
