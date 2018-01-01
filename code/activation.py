@@ -10,22 +10,25 @@ from neu_net_test import Network, ConvPoolLayer, FullyConnectedLayer, \
     SoftmaxLayer, relu, load_data_shared, MultiNet, load_net
 
 
-def img_to_bytes():
-    with open('test_byte_stuff', 'w') as f:
-        im = Image.open("test_draw.png").convert('LA')
-        pix = im.load()
-        for y in xrange(28):
-            for x in xrange(28):
-                intensity = 1 - (pix[x, y][0] / 255.0)
-                f.write(str(intensity) + ' ')
-                # if pix[x, y] == (0, 255):
-                #     f.write('1')
-                # else:
-                #     f.write('0')
+def img_to_bytes(filename):
+    # with open('test_byte_stuff', 'w') as f:
+    im = Image.open(filename).convert('LA')
+    pixels = im.load()
+    array = []
+    for y in xrange(28):
+        for x in xrange(28):
+            intensity = 1 - (pixels[x, y][0] / 255.0)
+            # f.write(str(intensity) + ' ')
+            array.append(intensity)
+            # if pix[x, y] == (0, 255):
+            #     f.write('1')
+            # else:
+            #     f.write('0')
+    return array
 
 
 def get_file_name():
-    save_dir = 'Saved'
+    save_dir = 'Saved Nets'
     i = 0
     while True:
         file_name = 'test_net{}.txt'.format(i)
@@ -66,34 +69,52 @@ def get_bounding_box(img):
     return min_x, min_y, max_x, max_y
 
 
-def test_by_hand():
-    img_to_bytes()
-    with open('test_byte_stuff', 'r') as f:
-        bits = map(float, str(f.read()).split(' ')[:-1])
-    canvas = np.zeros((784, 1))
-    for index, val in zip(canvas, bits):
-        index[0] = val
-    canvas = canvas.reshape((28, 28))
+def get_arr_from_img(filename):
+    bytes = img_to_bytes(filename)
+    # with open('test_byte_stuff', 'r') as f:
+    #     bits = map(float, str(f.read()).split(' ')[:-1])
+    # canvas = np.zeros((784, 1))
+    canvas = np.array(bytes).reshape((28, 28))
+    # for index, val in zip(canvas, bits):
+    #     index[0] = val
     # Get bounding box of char
     min_x, min_y, max_x, max_y = get_bounding_box(canvas)
     boundbox_x = max_x - min_x + 1
     boundbox_y = max_y - min_y + 1
-    scaling = 20. / max(boundbox_x, boundbox_y)
-    zoomed_char = ndimage.interpolation.zoom(canvas[min_y:max_y, min_x:max_x],
-                                             scaling)  # Rescale the char to
-                                             #  be 20 * 20 pixels
-    #
+    # Rescale
+    scaling = int(round(20. / max(boundbox_x, boundbox_y)))  # Get scaling
+    # needed
+    char = canvas[min_y:max_y + 1, min_x:max_x + 1]
+    zoomed_char = np.kron(char, np.ones((scaling, scaling)))  # Rescale the
+                                                              # char to  be
+                                                              #  20 * 20 pixels
+    # Place scaled char on blank canvas
     canvas = np.zeros((28, 28))
-    zm_chr_shape = zoomed_char.shape
-    canvas[0:zm_chr_shape[0], 0:zm_chr_shape[1]] = zoomed_char
-    center = ndimage.measurements.center_of_mass(canvas)
-    shift = (28 / 2. - center[0], 28 / 2. - center[1])
+    canvas[:zoomed_char.shape[0], :zoomed_char.shape[1]] = zoomed_char
+    # Center scaled char by it's center of mass
+    center = map(round, ndimage.measurements.center_of_mass(canvas))
+    shift = (28 / 2 - center[0], 28 / 2 - center[1])
     canvas = ndimage.interpolation.shift(canvas, shift).reshape((784, 1))
-    print canvas
     return canvas
     # b = net.feedforward(a)
     # print b
     # print np.argmax(b)
+
+
+def illustrate_canvas(filename, canvas):
+    """
+    Saves the canvas as an image. Useful for preprocessing, to determine the
+    effects of each step.
+    :param filename: String - The name to save the image to.
+    :param canvas: np.array - The canvas to illustrate.
+    """
+    a = canvas
+    a = (1 - a) * 225.0
+    img_arr = np.zeros((canvas.shape[0], canvas.shape[1], 2), dtype=np.uint8)
+    img_arr[:] = 255
+    img_arr[:, :, 0] = a
+    img = Image.fromarray(img_arr, 'LA')
+    img.save(filename)
 
 
 def train_net(expanded_training_data):
@@ -141,13 +162,13 @@ def train_multi_net(net_count):
 def main():
     # train_multi_net(5)
 
-    multi_net = MultiNet([load_net('Saved\\test_net0.txt'),
-                          load_net('Saved\\test_net1.txt'),
-                          load_net('Saved\\test_net2.txt'),
-                          load_net('Saved\\test_net3.txt'),
-                          load_net('Saved\\test_net4.txt')])
-    # print load_net('Saved\\test_net0.txt').feedforward(test_by_hand())
-    char = test_by_hand()
+    multi_net = MultiNet([load_net('Saved Nets\\test_net0.txt'),
+                          load_net('Saved Nets\\test_net1.txt'),
+                          load_net('Saved Nets\\test_net2.txt'),
+                          load_net('Saved Nets\\test_net3.txt'),
+                          load_net('Saved Nets\\test_net4.txt')])
+    # print load_net('Saved Nets\\test_net0.txt').feedforward(test_by_hand())
+    char = get_arr_from_img('test_draw.png')
     print multi_net.feedforward(char)
 
     # net = neural_network.load(get_file_name())
