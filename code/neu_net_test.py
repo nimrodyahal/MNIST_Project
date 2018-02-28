@@ -27,6 +27,7 @@ versions of Theano.
 # Standard library
 import cPickle
 import gzip
+import scipy.io as sio
 
 
 # import os
@@ -35,10 +36,19 @@ import gzip
 import numpy as np
 import theano
 import theano.tensor as tt
-from theano.tensor.nnet import conv
+from theano.tensor.nnet import conv2d
+# from theano.tensor.nnet import conv
 from theano.tensor.nnet import softmax
 from theano.tensor import shared_randomstreams
 from theano.tensor.signal import pool
+
+
+PATH = 'D:\\School\\Programming\\Cyber\\Final Exercise - 12th\\MNIST_Project' \
+       '\\dataset\\matlab\\'
+NAMES = {'bal': 'emnist-balanced.mat', 'cls': 'emnist-byclass.mat',
+         'mrg': 'emnist-bymerge.mat', 'dgt': 'emnist-digits.mat',
+         'ltr': 'emnist-letters.mat', 'mnist': 'emnist-mnist'}
+CLASSES = 47
 
 
 # Activation functions for neurons
@@ -54,10 +64,37 @@ from theano.tensor.nnet import sigmoid
 
 
 #### Load the MNIST data
-def load_data_shared(filename="../data/mnist.pkl.gz"):
-    f = gzip.open(filename, 'rb')
-    training_data, validation_data, test_data = cPickle.load(f)
-    f.close()
+# def load_data_shared(filename="../data/mnist.pkl.gz"):
+#     f = gzip.open(filename, 'rb')
+#     training_data, validation_data, test_data = cPickle.load(f)
+#     f.close()
+#
+#     def shared(data):
+#         """Place the data into shared variables.  This allows Theano to copy
+#         the data to the GPU, if one is available.
+#         """
+#         shared_x = theano.shared(
+#             np.asarray(data[0], dtype=theano.config.floatX), borrow=True)
+#         shared_y = theano.shared(
+#             np.asarray(data[1], dtype=theano.config.floatX), borrow=True)
+#         return shared_x, tt.cast(shared_y, "int32")
+#
+#     return [shared(training_data), shared(validation_data), shared(test_data)]
+
+
+def load_data_shared(dataset='mrg'):
+    """
+    Loads data from dataset
+    :param: dataset: The specific dataset to load. Options are:
+        'bal' - Balanced
+        'cls' - By_Class
+        'mrg' - By_Merge
+        'dgt' - Digits
+        'ltr' - Letters
+        'mnist' - MNIST
+    :return: [training_images, training_labels],\
+           [testing_images, testing_labels], mapping
+    """
 
     def shared(data):
         """Place the data into shared variables.  This allows Theano to copy
@@ -69,7 +106,44 @@ def load_data_shared(filename="../data/mnist.pkl.gz"):
             np.asarray(data[1], dtype=theano.config.floatX), borrow=True)
         return shared_x, tt.cast(shared_y, "int32")
 
-    return [shared(training_data), shared(validation_data), shared(test_data)]
+    width = 28
+    height = 28
+    mat = sio.loadmat(PATH + NAMES[dataset])
+
+    mapping = {kv[0]: kv[1:][0] for kv in mat['dataset'][0][0][2]}
+    with open('dataset_mapping.txt', 'w') as f:
+        cPickle.dump(mapping, f)
+
+    training_len = len(mat['dataset'][0][0][0][0][0][0])
+    training_images = mat['dataset'][0][0][0][0][0][0].\
+        reshape(training_len, height, width, 1)
+    training_labels = mat['dataset'][0][0][0][0][0][1]
+    training_labels = [np.int64(label[0]) for label in training_labels]
+
+    testing_len = len(mat['dataset'][0][0][1][0][0][0])
+    testing_images = mat['dataset'][0][0][1][0][0][0].\
+        reshape(testing_len, height, width, 1)
+    testing_labels = mat['dataset'][0][0][1][0][0][1]
+    testing_labels = [np.int64(label[0]) for label in testing_labels]
+
+    for i in range(len(training_images)):
+        training_images[i] = np.rot90(np.fliplr(training_images[i]))
+    for i in range(len(testing_images)):
+        testing_images[i] = np.rot90(np.fliplr(testing_images[i]))
+
+    training_images = training_images.reshape(training_len, width * height)
+    testing_images = testing_images.reshape(testing_len, width * height)
+
+    training_images = training_images.astype('float32')
+    testing_images = testing_images.astype('float32')
+
+    training_images /= 255
+    testing_images /= 255
+
+    training_data = [training_images, training_labels]
+    testing_data = [testing_images, testing_labels]
+
+    return [shared(training_data), shared(testing_data)]
 
 
 #### Main class used to construct and train networks
@@ -94,12 +168,6 @@ class Network(object):
                 self.mini_batch_size)
         self.output = self.layers[-1].output
         self.output_dropout = self.layers[-1].output_dropout
-        # self.test_mb_predictions = theano.function(
-        #     [i], self.layers[-1].y_out,
-        #     givens={
-        #         self.x: test_x[
-        #             i * self.mini_batch_size: (i + 1) * self.mini_batch_size]
-        #     })
 
     def feedforward(self, inpt):
         x = tt.matrix('x')
@@ -107,22 +175,33 @@ class Network(object):
         init_layer.set_inpt(x, x, 1)
         for j in xrange(1, len(self.layers)):
             prev_layer, layer = self.layers[j - 1], self.layers[j]
-            layer.set_inpt(
-                prev_layer.output, prev_layer.output_dropout, 1)
+            layer.set_inpt(prev_layer.output, prev_layer.output_dropout, 1)
         self.output = self.layers[-1].output
-        feedforward = theano.function([x], self.layers[-1].output)
-        return feedforward(inpt)
+        t_feedforward = theano.function([x], self.layers[-1].output,
+                                        allow_input_downcast=True)
+        return t_feedforward(inpt)
 
-    def sgd(self, training_data, epochs, mini_batch_size, eta,
-            validation_data, test_data, lmbda=0.0):
-        """Train the network using mini-batch stochastic gradient descent."""
-        training_x, training_y = training_data
-        validation_x, validation_y = validation_data
-        test_x, test_y = test_data
+    def sgd(self, training_data, epochs, mini_batch_size, learning_rate,
+            test_data, lmbda=0.0):
+            # validation_data, test_data, lmbda=0.0):
+        """
+        Train the network using mini-batch stochastic gradient descent.
+        :param training_data: (theano shared numpy array - input, theano shared
+        numpy array - output) - The training examples.
+        :param epochs: int - The number of epochs to run.
+        :param mini_batch_size: int - The mini batch size.
+        :param learning_rate: int - The learning rate.
+        :param test_data: (theano shared numpy array - input, theano shared
+        numpy array - output) - The testing examples.
+        :param lmbda: int - Used in the normalization of the cost function.
+        """
+        training_input, training_output = training_data
+        # validation_x, validation_y = validation_data
+        test_input, test_output = test_data
 
         # compute number of minibatches for training, validation and testing
         num_training_batches = size(training_data) / mini_batch_size
-        num_validation_batches = size(validation_data) / mini_batch_size
+        # num_validation_batches = size(validation_data) / mini_batch_size
         num_test_batches = size(test_data) / mini_batch_size
 
         # define the (regularized) cost function, symbolic gradients, and
@@ -131,7 +210,7 @@ class Network(object):
         cost = self.layers[-1].cost(self) + \
             0.5 * lmbda * l2_norm_squared / num_training_batches
         grads = tt.grad(cost, self.params)
-        updates = [(param, param - eta * grad)
+        updates = [(param, param - learning_rate * grad)
                    for param, grad in zip(self.params, grads)]
 
         # define functions to train a mini-batch, and to compute the
@@ -140,31 +219,31 @@ class Network(object):
         train_mb = theano.function(
             [i], cost, updates=updates,
             givens={
-                self.x: training_x[
+                self.x: training_input[
                     i * self.mini_batch_size: (i + 1) * self.mini_batch_size],
-                self.y: training_y[
+                self.y: training_output[
                     i * self.mini_batch_size: (i + 1) * self.mini_batch_size]
             })
-        validate_mb_accuracy = theano.function(
-            [i], self.layers[-1].accuracy(self.y),
-            givens={
-                self.x: validation_x[
-                    i * self.mini_batch_size: (i + 1) * self.mini_batch_size],
-                self.y: validation_y[
-                    i * self.mini_batch_size: (i + 1) * self.mini_batch_size]
-            })
+        # validate_mb_accuracy = theano.function(
+        #     [i], self.layers[-1].accuracy(self.y),
+        #     givens={
+        #         self.x: validation_x[
+        #             i * self.mini_batch_size: (i + 1) * self.mini_batch_size],
+        #         self.y: validation_y[
+        #             i * self.mini_batch_size: (i + 1) * self.mini_batch_size]
+        #     })
         test_mb_accuracy = theano.function(
             [i], self.layers[-1].accuracy(self.y),
             givens={
-                self.x: test_x[
+                self.x: test_input[
                     i * self.mini_batch_size: (i + 1) * self.mini_batch_size],
-                self.y: test_y[
+                self.y: test_output[
                     i * self.mini_batch_size: (i + 1) * self.mini_batch_size]
             })
         # Do the actual training
-        best_validation_accuracy = 0.0
+        best_test_accuracy = 0.0
         best_iteration = 0
-        test_accuracy = 0.0
+        # test_accuracy = 0.0
         for epoch in xrange(epochs):
             for minibatch_index in xrange(num_training_batches):
                 iteration = num_training_batches * epoch + minibatch_index
@@ -172,25 +251,38 @@ class Network(object):
                     print("Training mini-batch number {0}".format(iteration))
                 train_mb(minibatch_index)
                 if (iteration + 1) % num_training_batches == 0:
-                    validation_accuracy = np.mean(
-                        [validate_mb_accuracy(j) for j in
-                         xrange(num_validation_batches)])
-                    print("Epoch {0}: validation accuracy {1:.2%}".format(
-                        epoch, validation_accuracy))
-                    if validation_accuracy >= best_validation_accuracy:
-                        print("This is the best validation accuracy to date.")
-                        best_validation_accuracy = validation_accuracy
+                    # if test_data:
+                    test_accuracy = np.mean(
+                        [test_mb_accuracy(j) for j in
+                         xrange(num_test_batches)])
+                    print 'Epoch {0}: test accuracy {1:.2%}'\
+                        .format(epoch, test_accuracy)
+                    if test_accuracy >= best_test_accuracy:
+                        print "This is the best test accuracy to date."
+                        best_test_accuracy = test_accuracy
                         best_iteration = iteration
-                        if test_data:
-                            test_accuracy = np.mean(
-                                [test_mb_accuracy(j) for j in
-                                 xrange(num_test_batches)])
-                            print 'The corresponding test accuracy is {0:.2%}'\
-                                .format(test_accuracy)
+                    print 'Best test accuracy is {0:.2%} on epoch {1}'\
+                        .format(test_accuracy, epoch)
+
+                    # validation_accuracy = np.mean(
+                    #     [validate_mb_accuracy(j) for j in
+                    #      xrange(num_validation_batches)])
+                    # print("Epoch {0}: validation accuracy {1:.2%}".format(
+                    #     epoch, validation_accuracy))
+                    # if validation_accuracy >= best_validation_accuracy:
+                    #     print("This is the best validation accuracy to date.")
+                    #     best_validation_accuracy = validation_accuracy
+                    #     best_iteration = iteration
+                    #     if test_data:
+                    #         test_accuracy = np.mean(
+                    #             [test_mb_accuracy(j) for j in
+                    #              xrange(num_test_batches)])
+                    #         print 'The corresponding test accuracy is {0:.2%}'\
+                    #             .format(test_accuracy)
         print "Finished training network."
-        print "Best validation accuracy of {0:.2%} obtained at iteration {1}"\
-            .format(best_validation_accuracy, best_iteration)
-        print "Corresponding test accuracy of {0:.2%}".format(test_accuracy)
+        print "Best test accuracy of {0:.2%} obtained at iteration {1}"\
+            .format(best_test_accuracy, best_iteration)
+        # print "Corresponding test accuracy of {0:.2%}".format(test_accuracy)
 
     def save(self, filename):
         with open(filename, 'wb') as f:
@@ -240,14 +332,16 @@ class ConvPoolLayer(object):
     def set_inpt(self, inpt, inpt_dropout, mini_batch_size=None):
         if not mini_batch_size:
             self.inpt = inpt.reshape(self.image_shape)
-            conv_out = conv.conv2d(
+            # conv_out = conv.conv2d(
+            conv_out = conv2d(
                 input=self.inpt, filters=self.w,
                 filter_shape=self.filter_shape, image_shape=self.image_shape)
         else:
             new_shape = list(self.image_shape)
             new_shape[0] = mini_batch_size
             self.inpt = inpt.reshape(new_shape)
-            conv_out = conv.conv2d(
+            # conv_out = conv.conv2d(
+            conv_out = conv2d(
                 input=self.inpt, filters=self.w,
                 filter_shape=self.filter_shape, image_shape=new_shape)
         pooled_out = pool.pool_2d(
@@ -321,7 +415,10 @@ class SoftmaxLayer(object):
             tt.dot(self.inpt_dropout, self.w) + self.b)
 
     def cost(self, net):
-        """Return the log-likelihood cost."""
+        """
+        Return the log-likelihood cost.
+        :param net: The neural network
+        """
         return -tt.mean(
             tt.log(self.output_dropout)[tt.arange(net.y.shape[0]), net.y])
 
@@ -335,12 +432,13 @@ class MultiNet():
         self.nets = nets
 
     def feedforward(self, inpt):
-        answer = np.zeros((1, 10))
+        answer = np.zeros((1, CLASSES))
         for net in self.nets:
             answer += net.feedforward(inpt)
         # return answer
         chosen = np.argmax(answer)
-        return chosen, answer[0][chosen]*20
+        print answer
+        return chosen, answer[0][chosen] * 100.0 / len(self.nets)
 
     def test_accuracy(self, test_data):
         test_x, test_y = test_data

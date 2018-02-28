@@ -1,6 +1,28 @@
+#!/usr/bin/python
+"""
+short test from the Theano website to see if Theano is working with CUDA
+.theanrc contains
+[global]
+floatX = float32
+device = gpu0
+@author: richard lyman
+"""
+
 import os
-os.environ['THEANO_FLAGS'] = 'device=cuda0,floatX=float32'
-from theano import function, config, shared, tensor
+# print (os.get_exec_path())
+p = os.getenv('PATH')
+print("getenv('PATH')={}".format(p))
+p = os.getenv('LD_LIBRARY_PATH')
+print("getenv('LD_LIBRARY_PATH')={}".format(p))
+p = os.getenv('CUDA_HOME')
+print("getenv('CUDA_HOME')={}".format(p))
+p = os.getenv('PYTHONPATH')
+print("getenv('PYTHONPATH')={}".format(p))
+
+#os.environ['PATH'] = p
+# print(os.getenv('PATH'))
+from theano import function, config, shared
+import theano.tensor as t
 import numpy
 import time
 
@@ -9,8 +31,7 @@ iters = 1000
 
 rng = numpy.random.RandomState(22)
 x = shared(numpy.asarray(rng.rand(vlen), config.floatX))
-raw_input()
-f = function([], tensor.exp(x))
+f = function([], t.exp(x))
 print(f.maker.fgraph.toposort())
 t0 = time.time()
 for i in range(iters):
@@ -18,9 +39,8 @@ for i in range(iters):
 t1 = time.time()
 print("Looping %d times took %f seconds" % (iters, t1 - t0))
 print("Result is %s" % (r,))
-if numpy.any([isinstance(x.op, tensor.Elemwise) and
-              ('Gpu' not in type(x.op).__name__)
-              for x in f.maker.fgraph.toposort()]):
+if numpy.any([isinstance(x.op, t.Elemwise) for x in
+              f.maker.fgraph.toposort()]):
     print('Used the cpu')
 else:
     print('Used the gpu')

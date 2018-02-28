@@ -23,8 +23,10 @@ import numpy as np
 
 print("Expanding the MNIST training set")
 
-if os.path.exists("../data/mnist_expanded.pkl.gz"):
-    print("The expanded training set already exists.  Exiting.")
+# if os.path.exists("../data/mnist_expanded.pkl.gz"):
+#     print("The expanded training set already exists.  Exiting.")
+if False:
+    pass
 else:
     f = gzip.open("../data/mnist.pkl.gz", 'rb')
     training_data, validation_data, test_data = cPickle.load(f)
