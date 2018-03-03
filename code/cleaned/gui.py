@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import wx
-from neural_network import load_data_shared
-from pre_processing import load_img_arr
+from pre_processing import preprocess_img, illustrate_canvas
 from handle_nn import load_net, load_multi_net, train_multi_net
 
 
@@ -16,8 +15,6 @@ CLASSIFY_BUTTON_POS = (450, 150)
 BITMAP_HEIGHT = 250
 MAX_BITMAP_WIDTH = 390
 BITMAP_POS = (30, 30)
-
-mapping = load_data_shared()[2]
 
 
 class ModdedFrame(wx.Frame):
@@ -76,9 +73,8 @@ class ModdedFrame(wx.Frame):
         # Clear status bar
         self.status_bar.SetStatusText('')
         # Classify
-        char = load_img_arr(self.image_path)
-        # classification = self.multi_net.feedforward(char)[0].argsort()[::-1][:3]
-        # print [chr(mapping[c]) for c in classification]
+        char = preprocess_img(self.image_path)
+        illustrate_canvas('ters.png', char.reshape((28, 28)))
         classifications = self.multi_net.feedforward(char)
         print classifications
 
@@ -92,8 +88,8 @@ class ModdedFrame(wx.Frame):
 
 
 def main():
-    multi_net = train_multi_net(1)
-    # multi_net = load_multi_net(['..\\Saved Nets\\test_net0.txt'])
+    # multi_net = train_multi_net(1)
+    multi_net = load_multi_net(['..\\Saved Nets\\test_net0.txt'])
 
     app = wx.App(False)
     frame = ModdedFrame(None, 'Process Privileges', multi_net)

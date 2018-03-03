@@ -36,8 +36,9 @@ from theano.tensor.signal import pool
 from theano.tensor.nnet import sigmoid
 
 
-PATH = 'D:\\School\\Programming\\Cyber\\Final Exercise - 12th\\MNIST_Project' \
-       '\\dataset\\matlab\\'
+# PATH = 'D:\\School\\Programming\\Cyber\\FinalExercise-12th\\MNIST_Project' \
+#        '\\dataset\\matlab\\'
+PATH = '..\\..\\dataset\\matlab\\'
 NAMES = {'bal': 'emnist-balanced.mat', 'cls': 'emnist-byclass.mat',
          'mrg': 'emnist-bymerge.mat', 'dgt': 'emnist-digits.mat',
          'ltr': 'emnist-letters.mat', 'mnist': 'emnist-mnist'}
