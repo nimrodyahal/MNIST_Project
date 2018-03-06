@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3c20999e-9e20-4348-95e9-be5509e66b0a" name="Default" comment="">
+    <list default="true" id="3c20999e-9e20-4348-95e9-be5509e66b0a" name="Default" comment="More work on server-client transformation. Finished basic server and client (gui)">
+      <change type="DELETED" beforePath="D:\School\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="D:\School\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\client.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/gui.py" afterPath="$PROJECT_DIR$/code/cleaned/gui.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/neural_network.py" afterPath="$PROJECT_DIR$/code/cleaned/neural_network.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/pre_processing.py" afterPath="$PROJECT_DIR$/code/cleaned/pre_processing.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/server.py" afterPath="$PROJECT_DIR$/code/cleaned/server.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MNIST_Project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,29 +40,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="neural_network.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code/cleaned/neural_network.py">
+      <file leaf-file-name="server.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code/cleaned/server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="0" selection-start="2008" selection-end="2008" vertical-scroll-proportion="0.0" vertical-offset="727" max-vertical-offset="6919">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="preprocessing_test1.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code/preprocessing_test1.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2244">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="preprocessing_test2.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code/preprocessing_test2.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="4" selection-start="1299" selection-end="1405" vertical-scroll-proportion="0.0" vertical-offset="598" max-vertical-offset="1275">
-              <folding />
+            <state line="64" column="62" selection-start="2254" selection-end="2254" vertical-scroll-proportion="0.0" vertical-offset="880" max-vertical-offset="1904">
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -68,10 +54,19 @@
       <file leaf-file-name="gui.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/cleaned/gui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="92" column="0" selection-start="3455" selection-end="3455" vertical-scroll-proportion="0.0" vertical-offset="1227" max-vertical-offset="1802">
+            <state line="76" column="24" selection-start="2902" selection-end="2902" vertical-scroll-proportion="0.0" vertical-offset="1122" max-vertical-offset="1921">
               <folding>
                 <element signature="e#24#33#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="neural_network.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code/cleaned/neural_network.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="51" column="0" selection-start="2008" selection-end="2008" vertical-scroll-proportion="0.0" vertical-offset="727" max-vertical-offset="6919">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -89,9 +84,11 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/code/cleaned/gui.py" />
         <option value="$PROJECT_DIR$/code/cleaned/neural_network.py" />
         <option value="$PROJECT_DIR$/code/cleaned/pre_processing.py" />
+        <option value="$PROJECT_DIR$/code/cleaned/test.py" />
+        <option value="$PROJECT_DIR$/code/cleaned/server.py" />
+        <option value="$PROJECT_DIR$/code/cleaned/gui.py" />
       </list>
     </option>
   </component>
@@ -217,7 +214,7 @@
   <component name="PropertiesComponent">
     <property name="recentsLimit" value="5" />
   </component>
-  <component name="RunManager" selected="Python.pre_processing">
+  <component name="RunManager" selected="Python.gui">
     <configuration default="false" name="pre_processing" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -249,6 +246,42 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="MNIST_Project" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/cleaned/gui.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/code/cleaned" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="MNIST_Project" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/cleaned/test.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="server" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/code/cleaned" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="MNIST_Project" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/cleaned/server.py" />
       <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
@@ -375,14 +408,18 @@
       <option name="USE_PATTERN" value="false" />
       <method />
     </configuration>
-    <list size="2">
+    <list size="4">
       <item index="0" class="java.lang.String" itemvalue="Python.pre_processing" />
       <item index="1" class="java.lang.String" itemvalue="Python.gui" />
+      <item index="2" class="java.lang.String" itemvalue="Python.test" />
+      <item index="3" class="java.lang.String" itemvalue="Python.server" />
     </list>
     <recent_temporary>
-      <list size="2">
+      <list size="4">
         <item index="0" class="java.lang.String" itemvalue="Python.gui" />
-        <item index="1" class="java.lang.String" itemvalue="Python.pre_processing" />
+        <item index="1" class="java.lang.String" itemvalue="Python.server" />
+        <item index="2" class="java.lang.String" itemvalue="Python.test" />
+        <item index="3" class="java.lang.String" itemvalue="Python.pre_processing" />
       </list>
     </recent_temporary>
   </component>
@@ -393,12 +430,18 @@
       <created>1520071656677</created>
       <updated>1520071656677</updated>
     </task>
+    <task id="LOCAL-00001" summary="More work on server-client transformation. Kind of finished server-side.">
+      <created>1520351521151</created>
+      <updated>1520351521151</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -430,9 +473,13 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <MESSAGE value="More work on server-client transformation. Kind of finished server-side." />
+    <option name="LAST_COMMIT_MESSAGE" value="More work on server-client transformation. Kind of finished server-side." />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="3" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/code/preprocessing_test1.py">
@@ -456,15 +503,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/cleaned/gui.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="92" column="0" selection-start="3455" selection-end="3455" vertical-scroll-proportion="0.0" vertical-offset="1227" max-vertical-offset="1802">
-          <folding>
-            <element signature="e#24#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/code/cleaned/neural_network.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="51" column="0" selection-start="2008" selection-end="2008" vertical-scroll-proportion="0.0" vertical-offset="727" max-vertical-offset="6919">
@@ -477,6 +515,31 @@
         <state line="129" column="0" selection-start="4447" selection-end="4447" vertical-scroll-proportion="2.1286957" vertical-offset="969" max-vertical-offset="2295">
           <folding>
             <element signature="e#24#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Heights/PortableApps/PortablePython2.7.6.1/Miniconda/Lib/threading.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="800" column="0" selection-start="28881" selection-end="28881" vertical-scroll-proportion="0.3321739" vertical-offset="13409" max-vertical-offset="22576">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/cleaned/server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="64" column="62" selection-start="2254" selection-end="2254" vertical-scroll-proportion="0.0" vertical-offset="880" max-vertical-offset="1904">
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/cleaned/gui.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="76" column="24" selection-start="2902" selection-end="2902" vertical-scroll-proportion="0.0" vertical-offset="1122" max-vertical-offset="1921">
+          <folding>
+            <element signature="e#24#33#0" expanded="true" />
           </folding>
         </state>
       </provider>

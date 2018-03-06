@@ -3,6 +3,7 @@ import threading
 import os
 from pre_processing import preprocess_img
 from handle_nn import load_multi_net
+import cPickle as pickle
 
 
 SAVE_DIR = 'Cache\\'
@@ -60,11 +61,15 @@ class ClientConnectionThread(threading.Thread):
     def run(self):
         while True:
             img = self.__conn.recv(512)
-            self.__conn.send(self.classify(img))
+            print 'Found request!'
+            self.__conn.send(pickle.dumps(self.classify(img)))
         self.__conn.close()
 
     def classify(self, img):
         file_path = get_file_path()
+        # img_file = open(file_path, 'w')
+        # img_file.write(img)
+        # img_file.close()
         with open(file_path, 'wb') as img_file:
             img_file.write(img)
         char = preprocess_img(file_path)
@@ -82,6 +87,7 @@ def main():
     server = socket.socket()
     server.bind(('0.0.0.0', 500))
     server.listen(10)
+    print 'Listening...'
 
     conn_success = threading.Event()
     new_client = ClientConnectionThread(server, conn_success, multi_net)
@@ -89,6 +95,7 @@ def main():
     while True:
         if conn_success.is_set():  # If all threads are already connected to a
         #  client, create a new one
+            print 'Connected to new client!'
             conn_success.clear()
             client_threads.append(new_client)
             new_client = ClientConnectionThread(server, conn_success,

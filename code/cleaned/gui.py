@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 import wx
-from pre_processing import preprocess_img, illustrate_canvas
-from handle_nn import load_net, load_multi_net, train_multi_net
+import socket
+import cPickle as pickle
+# from pre_processing import preprocess_img, illustrate_canvas
+# from handle_nn import load_net, load_multi_net, train_multi_net
 
 
 SIZE = (600, 350)
@@ -18,10 +20,10 @@ BITMAP_POS = (30, 30)
 
 
 class ModdedFrame(wx.Frame):
-    def __init__(self, parent, _title, multi_net):
+    def __init__(self, parent, _title, client_socket):
         wx.Frame.__init__(self, parent, title=_title, size=SIZE)
         self.panel = wx.Panel(self)
-        self.multi_net = multi_net
+        self.client_socket = client_socket
 
         # Initialise The Refresh Button
         self.load_image_button = wx.Button(self.panel, label='Load Image',
@@ -72,11 +74,14 @@ class ModdedFrame(wx.Frame):
             return
         # Clear status bar
         self.status_bar.SetStatusText('')
-        # Classify
-        char = preprocess_img(self.image_path)
-        illustrate_canvas('ters.png', char.reshape((28, 28)))
-        classifications = self.multi_net.feedforward(char)
-        print classifications
+        # Send for classification
+        with open(self.image_path, 'rb') as img:
+            self.client_socket.send(img.read())
+
+        # classifications = self.multi_net.feedforward(char)
+        # char = preprocess_img(self.image_path)
+        # illustrate_canvas('ters.png', char.reshape((28, 28)))
+        print pickle.loads(self.client_socket.recv(512))
 
     @staticmethod
     def get_resize_scale(bitmap_size):
@@ -89,10 +94,12 @@ class ModdedFrame(wx.Frame):
 
 def main():
     # multi_net = train_multi_net(1)
-    multi_net = load_multi_net(['..\\Saved Nets\\test_net0.txt'])
+    # multi_net = load_multi_net(['..\\Saved Nets\\test_net0.txt'])
+    client_socket = socket.socket()
+    client_socket.connect(('127.0.0.1', 500))
 
     app = wx.App(False)
-    frame = ModdedFrame(None, 'Process Privileges', multi_net)
+    frame = ModdedFrame(None, 'Process Privileges', client_socket)
     frame.Show()
     app.MainLoop()
 
