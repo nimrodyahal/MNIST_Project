@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3c20999e-9e20-4348-95e9-be5509e66b0a" name="Default" comment="More work on server-client transformation. Finished basic server and client (gui)">
-      <change type="DELETED" beforePath="D:\School\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="D:\School\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\client.py" afterPath="" />
+    <list default="true" id="3c20999e-9e20-4348-95e9-be5509e66b0a" name="Default" comment="More work on preprocessing - got word segmentation mostly right">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/gui.py" afterPath="$PROJECT_DIR$/code/cleaned/gui.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/server.py" afterPath="$PROJECT_DIR$/code/cleaned/server.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="D:\School\Programming\Cyber\FinalExercise-12th\MNIST_Project\__init__.py" afterPath="$PROJECT_DIR$/code/cleaned/tests/test_contour_cropping.py" />
+      <change type="MOVED" beforePath="D:\School\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\test_contours.py" afterPath="$PROJECT_DIR$/code/cleaned/tests/test_contours.py" />
     </list>
     <ignored path="MNIST_Project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,10 +29,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="pre_processing.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="pre_processing.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/cleaned/pre_processing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="129" column="0" selection-start="4447" selection-end="4447" vertical-scroll-proportion="2.1286957" vertical-offset="969" max-vertical-offset="2295">
+            <state line="19" column="11" selection-start="406" selection-end="408" vertical-scroll-proportion="-7.0384617" vertical-offset="140" max-vertical-offset="2295">
               <folding>
                 <element signature="e#24#42#0" expanded="true" />
               </folding>
@@ -43,7 +43,7 @@
       <file leaf-file-name="server.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/cleaned/server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="62" selection-start="2254" selection-end="2254" vertical-scroll-proportion="0.0" vertical-offset="880" max-vertical-offset="1904">
+            <state line="7" column="0" selection-start="136" selection-end="136" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1904">
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -51,10 +51,51 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="test_contours.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/code/cleaned/tests/test_contours.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="155" column="20" selection-start="4797" selection-end="4797" vertical-scroll-proportion="2.3333333" vertical-offset="1207" max-vertical-offset="2890">
+              <folding>
+                <element signature="e#24#34#0" expanded="true" />
+                <marker date="1521287303048" expanded="true" signature="2587:2604" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_contour_cropping.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code/cleaned/tests/test_contour_cropping.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="56" selection-start="442" selection-end="487" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="816">
+              <folding>
+                <element signature="e#24#42#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="preprocessing_test1.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code/preprocessing_test1.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="36" column="6" selection-start="922" selection-end="949" vertical-scroll-proportion="0.0" vertical-offset="438" max-vertical-offset="2244">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="preprocessing_test2.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code/preprocessing_test2.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="65" column="12" selection-start="1856" selection-end="1856" vertical-scroll-proportion="0.0" vertical-offset="190" max-vertical-offset="1275">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="gui.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/cleaned/gui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="76" column="24" selection-start="2902" selection-end="2902" vertical-scroll-proportion="0.0" vertical-offset="1122" max-vertical-offset="1921">
+            <state line="65" column="49" selection-start="2406" selection-end="2406" vertical-scroll-proportion="0.0" vertical-offset="902" max-vertical-offset="1938">
               <folding>
                 <element signature="e#24#33#0" expanded="true" />
               </folding>
@@ -87,8 +128,14 @@
         <option value="$PROJECT_DIR$/code/cleaned/neural_network.py" />
         <option value="$PROJECT_DIR$/code/cleaned/pre_processing.py" />
         <option value="$PROJECT_DIR$/code/cleaned/test.py" />
-        <option value="$PROJECT_DIR$/code/cleaned/server.py" />
+        <option value="$PROJECT_DIR$/code/cleaned/testestest.py" />
+        <option value="$PROJECT_DIR$/code/cleaned/test_contours.py" />
         <option value="$PROJECT_DIR$/code/cleaned/gui.py" />
+        <option value="$PROJECT_DIR$/code/cleaned/server.py" />
+        <option value="$PROJECT_DIR$/code/tests.py" />
+        <option value="$PROJECT_DIR$/code/cleaned/tests/test_contour_croping2.py" />
+        <option value="$PROJECT_DIR$/code/cleaned/tests/test_contour_cropping.py" />
+        <option value="$PROJECT_DIR$/code/cleaned/tests/test_contours.py" />
       </list>
     </option>
   </component>
@@ -153,38 +200,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="dataset" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MNIST_Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MNIST_Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dataset" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="matlab" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MNIST_Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MNIST_Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="code" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -207,32 +222,50 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MNIST_Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MNIST_Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cleaned" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="recentsLimit" value="5" />
+    <property name="LayoutCode.rearrangeEntriesPython" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Exercises_2/TEST" />
   </component>
-  <component name="RunManager" selected="Python.gui">
-    <configuration default="false" name="pre_processing" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/code/cleaned" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="MNIST_Project" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/cleaned/pre_processing.py" />
-      <option name="PARAMETERS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings />
+    </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\School\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\tests" />
+      <recent name="D:\School\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned" />
+      <recent name="D:\School\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\testing images" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.test_contours (1)">
     <configuration default="false" name="gui" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -282,6 +315,42 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="MNIST_Project" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/cleaned/server.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="testestest" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/code/cleaned" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="MNIST_Project" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/cleaned/testestest.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="test_contours (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/code/cleaned/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="MNIST_Project" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/cleaned/tests/test_contours.py" />
       <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
@@ -408,18 +477,60 @@
       <option name="USE_PATTERN" value="false" />
       <method />
     </configuration>
-    <list size="4">
-      <item index="0" class="java.lang.String" itemvalue="Python.pre_processing" />
-      <item index="1" class="java.lang.String" itemvalue="Python.gui" />
-      <item index="2" class="java.lang.String" itemvalue="Python.test" />
-      <item index="3" class="java.lang.String" itemvalue="Python.server" />
+    <configuration default="false" name="test_contours" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/code/cleaned" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="MNIST_Project" />
+      <option name="SCRIPT_NAME" value="D:\School\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\tests\test_contours.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="test_contour_cropping" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/code/cleaned/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="MNIST_Project" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/cleaned/tests/test_contour_cropping.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <list size="7">
+      <item index="0" class="java.lang.String" itemvalue="Python.gui" />
+      <item index="1" class="java.lang.String" itemvalue="Python.test" />
+      <item index="2" class="java.lang.String" itemvalue="Python.server" />
+      <item index="3" class="java.lang.String" itemvalue="Python.test_contours" />
+      <item index="4" class="java.lang.String" itemvalue="Python.testestest" />
+      <item index="5" class="java.lang.String" itemvalue="Python.test_contour_cropping" />
+      <item index="6" class="java.lang.String" itemvalue="Python.test_contours (1)" />
     </list>
     <recent_temporary>
-      <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Python.gui" />
-        <item index="1" class="java.lang.String" itemvalue="Python.server" />
-        <item index="2" class="java.lang.String" itemvalue="Python.test" />
-        <item index="3" class="java.lang.String" itemvalue="Python.pre_processing" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Python.test_contours (1)" />
+        <item index="1" class="java.lang.String" itemvalue="Python.testestest" />
+        <item index="2" class="java.lang.String" itemvalue="Python.gui" />
+        <item index="3" class="java.lang.String" itemvalue="Python.server" />
+        <item index="4" class="java.lang.String" itemvalue="Python.test" />
       </list>
     </recent_temporary>
   </component>
@@ -434,24 +545,40 @@
       <created>1520351521151</created>
       <updated>1520351521151</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="More work on server-client transformation. Finished basic server and client (gui). Still configured to '127.0.0.10'">
+      <created>1520352638532</created>
+      <updated>1520352638532</updated>
+    </task>
+    <task id="LOCAL-00003" summary="More work on preprocessing - got word segmentation mostly right">
+      <created>1520917434554</created>
+      <updated>1520917434554</updated>
+    </task>
+    <task id="LOCAL-00004" summary="More work on preprocessing: finished word segmentation. Working on contour detection in individual words - some success; more work to be done.">
+      <created>1520952134307</created>
+      <updated>1520952134307</updated>
+    </task>
+    <task id="LOCAL-00005" summary="More work on preprocessing - contours, SON!">
+      <created>1521177428981</created>
+      <updated>1521177428981</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24954791" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18444847" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39955357" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32924107" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.50030136" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28794643" sideWeight="0.4996986" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -470,11 +597,16 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="false" />
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
     <MESSAGE value="More work on server-client transformation. Kind of finished server-side." />
-    <option name="LAST_COMMIT_MESSAGE" value="More work on server-client transformation. Kind of finished server-side." />
+    <MESSAGE value="More work on server-client transformation. Finished basic server and client (gui). Still configured to '127.0.0.10'" />
+    <MESSAGE value="More work on preprocessing - got word segmentation mostly right" />
+    <MESSAGE value="More work on preprocessing: finished word segmentation. Working on contour detection in individual words - some success; more work to be done." />
+    <MESSAGE value="More work on preprocessing - contours, SON!" />
+    <option name="LAST_COMMIT_MESSAGE" value="More work on preprocessing - contours, SON!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -482,20 +614,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/code/preprocessing_test1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2244">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/preprocessing_test2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="4" selection-start="1299" selection-end="1405" vertical-scroll-proportion="0.0" vertical-offset="598" max-vertical-offset="1275">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/Heights/PortableApps/PortablePython2.7.6.1/Miniconda/Lib/site-packages/scipy/misc/pilutil.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="511" column="4" selection-start="17129" selection-end="17129" vertical-scroll-proportion="-0.6434783" vertical-offset="9057" max-vertical-offset="10642">
@@ -510,15 +628,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/cleaned/pre_processing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="129" column="0" selection-start="4447" selection-end="4447" vertical-scroll-proportion="2.1286957" vertical-offset="969" max-vertical-offset="2295">
-          <folding>
-            <element signature="e#24#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/Heights/PortableApps/PortablePython2.7.6.1/Miniconda/Lib/threading.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="800" column="0" selection-start="28881" selection-end="28881" vertical-scroll-proportion="0.3321739" vertical-offset="13409" max-vertical-offset="22576">
@@ -526,9 +635,64 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/code/cleaned/pre_processing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="11" selection-start="406" selection-end="408" vertical-scroll-proportion="-7.0384617" vertical-offset="140" max-vertical-offset="2295">
+          <folding>
+            <element signature="e#24#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/activation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="76" column="4" selection-start="2021" selection-end="2021" vertical-scroll-proportion="-0.11130435" vertical-offset="1356" max-vertical-offset="4352">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/testing images/milstein-backing.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/testing images/numbers.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/testing images/testzoom.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/cleaned/Cache/img2.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/testing images/testing text.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/preprocessing_test2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="12" selection-start="1856" selection-end="1856" vertical-scroll-proportion="0.0" vertical-offset="700" max-vertical-offset="1275">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/preprocessing_test1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="6" selection-start="922" selection-end="949" vertical-scroll-proportion="0.0" vertical-offset="438" max-vertical-offset="2244">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/code/cleaned/server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="62" selection-start="2254" selection-end="2254" vertical-scroll-proportion="0.0" vertical-offset="880" max-vertical-offset="1904">
+        <state line="7" column="0" selection-start="136" selection-end="136" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1904">
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
@@ -537,9 +701,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/code/cleaned/gui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="24" selection-start="2902" selection-end="2902" vertical-scroll-proportion="0.0" vertical-offset="1122" max-vertical-offset="1921">
+        <state line="65" column="49" selection-start="2406" selection-end="2406" vertical-scroll-proportion="0.0" vertical-offset="902" max-vertical-offset="1938">
           <folding>
             <element signature="e#24#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/cleaned/tests/test_contour_cropping.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="56" selection-start="442" selection-end="487" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="816">
+          <folding>
+            <element signature="e#24#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/cleaned/tests/test_contours.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="155" column="20" selection-start="4797" selection-end="4797" vertical-scroll-proportion="2.3333333" vertical-offset="1207" max-vertical-offset="2890">
+          <folding>
+            <element signature="e#24#34#0" expanded="true" />
+            <marker date="1521287303048" expanded="true" signature="2587:2604" placeholder="..." />
           </folding>
         </state>
       </provider>

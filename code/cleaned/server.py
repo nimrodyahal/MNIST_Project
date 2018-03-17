@@ -3,7 +3,7 @@ import threading
 import os
 from pre_processing import preprocess_img
 from handle_nn import load_multi_net
-import cPickle as pickle
+import cPickle
 
 
 SAVE_DIR = 'Cache\\'
@@ -62,7 +62,7 @@ class ClientConnectionThread(threading.Thread):
         while True:
             img = self.__conn.recv(512)
             print 'Found request!'
-            self.__conn.send(pickle.dumps(self.classify(img)))
+            self.__conn.send(cPickle.dumps(self.classify(img)))
         self.__conn.close()
 
     def classify(self, img):

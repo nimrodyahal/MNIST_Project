@@ -6,6 +6,7 @@ import cPickle as pickle
 # from handle_nn import load_net, load_multi_net, train_multi_net
 
 
+ADDRESS = 'mnistproject.ddns.net'
 SIZE = (600, 350)
 # Load Image Button
 LOAD_BUTTON_SIZE = (80, 35)
@@ -96,7 +97,7 @@ def main():
     # multi_net = train_multi_net(1)
     # multi_net = load_multi_net(['..\\Saved Nets\\test_net0.txt'])
     client_socket = socket.socket()
-    client_socket.connect(('127.0.0.1', 500))
+    client_socket.connect((ADDRESS, 500))
 
     app = wx.App(False)
     frame = ModdedFrame(None, 'Process Privileges', client_socket)
