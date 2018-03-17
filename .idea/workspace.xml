@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c20999e-9e20-4348-95e9-be5509e66b0a" name="Default" comment="More work on preprocessing - got word segmentation mostly right">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/gui.py" afterPath="$PROJECT_DIR$/code/cleaned/gui.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/server.py" afterPath="$PROJECT_DIR$/code/cleaned/server.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="D:\School\Programming\Cyber\FinalExercise-12th\MNIST_Project\__init__.py" afterPath="$PROJECT_DIR$/code/cleaned/tests/test_contour_cropping.py" />
       <change type="MOVED" beforePath="D:\School\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\test_contours.py" afterPath="$PROJECT_DIR$/code/cleaned/tests/test_contours.py" />
     </list>
     <ignored path="MNIST_Project.iws" />
@@ -54,10 +51,9 @@
       <file leaf-file-name="test_contours.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/code/cleaned/tests/test_contours.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="155" column="20" selection-start="4797" selection-end="4797" vertical-scroll-proportion="2.3333333" vertical-offset="1207" max-vertical-offset="2890">
+            <state line="107" column="16" selection-start="3373" selection-end="3373" vertical-scroll-proportion="2.9770868" vertical-offset="0" max-vertical-offset="3111">
               <folding>
                 <element signature="e#24#34#0" expanded="true" />
-                <marker date="1521287303048" expanded="true" signature="2587:2604" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -218,6 +214,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="testing images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MNIST_Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MNIST_Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="cleaned" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -252,6 +266,7 @@
     <property name="recentsLimit" value="5" />
     <property name="LayoutCode.rearrangeEntriesPython" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Exercises_2/TEST" />
+    <property name="SearchEverywhereHistory" value="" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -561,12 +576,16 @@
       <created>1521177428981</created>
       <updated>1521177428981</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="More work on preprocessing - finished contour cropping on testing area, implementing it in code.">
+      <created>1521287400256</created>
+      <updated>1521287400256</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -578,7 +597,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39955357" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.50030136" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28794643" sideWeight="0.4996986" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2890625" sideWeight="0.4996986" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -606,7 +625,8 @@
     <MESSAGE value="More work on preprocessing - got word segmentation mostly right" />
     <MESSAGE value="More work on preprocessing: finished word segmentation. Working on contour detection in individual words - some success; more work to be done." />
     <MESSAGE value="More work on preprocessing - contours, SON!" />
-    <option name="LAST_COMMIT_MESSAGE" value="More work on preprocessing - contours, SON!" />
+    <MESSAGE value="More work on preprocessing - finished contour cropping on testing area, implementing it in code." />
+    <option name="LAST_COMMIT_MESSAGE" value="More work on preprocessing - finished contour cropping on testing area, implementing it in code." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -719,10 +739,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/code/cleaned/tests/test_contours.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="155" column="20" selection-start="4797" selection-end="4797" vertical-scroll-proportion="2.3333333" vertical-offset="1207" max-vertical-offset="2890">
+        <state line="107" column="16" selection-start="3373" selection-end="3373" vertical-scroll-proportion="2.9770868" vertical-offset="0" max-vertical-offset="3111">
           <folding>
             <element signature="e#24#34#0" expanded="true" />
-            <marker date="1521287303048" expanded="true" signature="2587:2604" placeholder="..." />
           </folding>
         </state>
       </provider>
