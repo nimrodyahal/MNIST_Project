@@ -1,7 +1,8 @@
 import socket
 import threading
 import os
-from pre_processing import preprocess_img
+import cv2
+from preprocessing import separate_text
 from handle_nn import load_multi_net
 import cPickle
 
@@ -60,22 +61,41 @@ class ClientConnectionThread(threading.Thread):
 
     def run(self):
         while True:
-            img = self.__conn.recv(512)
+            img = self.__conn.recv(1048576)
+            if not img:
+                self.__conn.close()
+                print 'Disconnected from client'
+                break
             print 'Found request!'
             self.__conn.send(cPickle.dumps(self.classify(img)))
         self.__conn.close()
 
     def classify(self, img):
-        file_path = get_file_path()
-        # img_file = open(file_path, 'w')
-        # img_file.write(img)
-        # img_file.close()
-        with open(file_path, 'wb') as img_file:
+        cached_img_path = get_file_path()
+        with open(cached_img_path, 'wb') as img_file:
             img_file.write(img)
-        char = preprocess_img(file_path)
-        classifications = self.__multi_net.feedforward(char)
-        set_path_free(file_path)
-        return classifications
+
+        cv2_img = cv2.imread(cached_img_path, 1)
+        img_text = separate_text(cv2_img)
+
+        # [[[self.__multi_net.feedforward(char) for char in img_words] for
+        #   img_words in img_lines] for img_lines in img_text]
+        string_text = []
+        # print 'lines: ', len(img_text)
+        for img_line in img_text:
+            # print 'words: ', len(img_line)
+            string_line = []
+            for img_word in img_line:
+                # print 'chars: ', len(img_word)
+                string_word = []
+                for img_char in img_word:
+                    classifications = self.__multi_net.feedforward(img_char)
+                    string_word.append(classifications)
+                string_line.append(string_word)
+            string_text.append(string_line)
+        set_path_free(cached_img_path)
+
+        return string_text
 
 
 def main():

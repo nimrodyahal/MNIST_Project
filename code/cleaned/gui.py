@@ -14,6 +14,10 @@ LOAD_BUTTON_POS = (450, 100)
 # Classify Button
 CLASSIFY_BUTTON_SIZE = (80, 35)
 CLASSIFY_BUTTON_POS = (450, 150)
+# File Dialog
+DIALOG_TITLE = 'Open'
+FILE_EXTENSION_NAME = 'Image files'
+FILE_EXTENSIONS = '*.png;*.jpg;*jpeg;*.gif;*.bmp;*.png'
 # Bitmap
 BITMAP_HEIGHT = 250
 MAX_BITMAP_WIDTH = 390
@@ -40,8 +44,9 @@ class ModdedFrame(wx.Frame):
 
         # Initialize The Image
         self.image = self.image_path = None
-        self.open_bitmap = wx.FileDialog(self, "Open", "", "",
-                                         "Image files (*.png)|*.png",
+        self.open_bitmap = wx.FileDialog(self, DIALOG_TITLE, '', '',
+                                         FILE_EXTENSION_NAME + '|' +
+                                         FILE_EXTENSIONS,
                                          wx.FD_OPEN | wx.FD_FILE_MUST_EXIST)
 
         # Initialize The Status Bar
@@ -56,6 +61,8 @@ class ModdedFrame(wx.Frame):
         # Choose image
         self.open_bitmap.ShowModal()
         self.image_path = self.open_bitmap.GetPath()
+        if not self.image_path:
+            return
         bitmap = wx.Bitmap(self.image_path)
         # Rescale image
         bitmap_size = bitmap.GetWidth(), bitmap.GetHeight()
@@ -82,7 +89,12 @@ class ModdedFrame(wx.Frame):
         # classifications = self.multi_net.feedforward(char)
         # char = preprocess_img(self.image_path)
         # illustrate_canvas('ters.png', char.reshape((28, 28)))
-        print pickle.loads(self.client_socket.recv(512))
+        ans = pickle.loads(self.client_socket.recv(8192))
+        for line in ans:
+            for word in line:
+                # print word,
+                print ''.join([char[0] for char in word]),
+            print
 
     @staticmethod
     def get_resize_scale(bitmap_size):
