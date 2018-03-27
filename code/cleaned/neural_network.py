@@ -1,25 +1,16 @@
 """
 neural_network.py
 ~~~~~~~~~~~~~~
-A Theano-based program for training and running simple neural
-networks.
+Repurposed code - credit goes to Michael Nielsen. Original code can be found at
+https://github.com/mnielsen/neural-networks-and-deep-learning.
+It is HIGHLY recommended to read extensively on the subject before reading the
+code, as even with the documentation, it cannot be understood without the
+considerable theoretical knowledge.
+
+A Theano-based program for training and running simple neural networks.
 Supports several layer types (fully connected, convolutional, max
-pooling, softmax), and activation functions (sigmoid, tanh, and
-rectified linear units, with more easily added).
-When run on a CPU, this program is much faster than network.py and
-network2.py.  However, unlike network.py and network2.py it can also
-be run on a GPU, which makes it faster still.
-Because the code is based on Theano, the code is different in many
-ways from network.py and network2.py.  However, where possible I have
-tried to maintain consistency with the earlier programs.  In
-particular, the API is similar to network2.py.  Note that I have
-focused on making the code simple, easily readable, and easily
-modifiable.  It is not optimized, and omits many desirable features.
-This program incorporates ideas from the Theano documentation on
-convolutional neural nets (notably,
-http://deeplearning.net/tutorial/lenet.html ), from Misha Denil's
-implementation of dropout (https://github.com/mdenil/dropout ), and
-from Chris Olah (http://colah.github.io ).
+pooling, softmax).
+Can run on CPU, or GPU, with GPU being significantly faster.
 Written for Theano 0.6 and 0.7, needs some changes for more recent
 versions of Theano.
 """
@@ -36,20 +27,14 @@ from theano.tensor.signal import pool
 from theano.tensor.nnet import sigmoid
 
 
-# PATH = 'D:\\School\\Programming\\Cyber\\FinalExercise-12th\\MNIST_Project' \
-#        '\\dataset\\matlab\\'
-PATH = '..\\..\\dataset\\matlab\\'
-NAMES = {'bal': 'emnist-balanced.mat', 'cls': 'emnist-byclass.mat',
-         'mrg': 'emnist-bymerge.mat', 'dgt': 'emnist-digits.mat',
-         'ltr': 'emnist-letters.mat', 'mnist': 'emnist-mnist'}
+PATH = '..\\..\\dataset\\matlab\\emnist-bymerge.mat'
+# NAMES = {'bal': 'emnist-balanced.mat', 'cls': 'emnist-byclass.mat',
+#          'mrg': 'emnist-bymerge.mat', 'dgt': 'emnist-digits.mat',
+#          'ltr': 'emnist-letters.mat', 'mnist': 'emnist-mnist'}
 NUM_OF_TRIES = 3  # The amount of 'tries' a net has to classify
 
 
 # Activation functions for neurons
-def linear(z):
-    return z
-
-
 def relu(z):
     return tt.maximum(0.0, z)
 
@@ -66,7 +51,7 @@ def shared(data):
     return shared_x, tt.cast(shared_y, 'int32')
 
 
-def load_data_shared(dataset='mrg'):
+def load_data_shared():  # dataset='mrg'):
     """
     Loads data from dataset
     :param: dataset: The specific dataset to load. Options are:
@@ -81,7 +66,7 @@ def load_data_shared(dataset='mrg'):
     """
     width = 28
     height = 28
-    mat = sio.loadmat(PATH + NAMES[dataset])
+    mat = sio.loadmat(PATH)  # + NAMES[dataset])
 
     training_len = len(mat['dataset'][0][0][0][0][0][0])
     training_images = mat['dataset'][0][0][0][0][0][0]. \
@@ -384,13 +369,16 @@ class MultiNet():
         answer = sum([net.feedforward(inpt) for net in self.nets])
         # chosen = np.argmax(answer)
         classifications = answer[0].argsort()[::-1][:3]
-        return [chr(mapping[c]) for c in classifications]
+        # print 'answer shape', answer.shape
+        # print 'classification shape', classifications.shape
+        # print 'bla: ', answer[0][classifications]
+        return [(chr(mapping[c]), answer[0][c]) for c in classifications]
         # return chr(mapping[chosen]), answer[0][chosen] * 100 / len(self.nets)
 
-    def test_accuracy(self, test_data):
-        test_x, test_y = test_data
-        for net in self.nets:
-            net.feedforward(test_x)
+    # def test_accuracy(self, test_data):
+    #     test_x, test_y = test_data
+    #     for net in self.nets:
+    #         net.feedforward(test_x)
 
 
 #### Miscellanea

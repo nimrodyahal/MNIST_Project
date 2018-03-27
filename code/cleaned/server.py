@@ -1,10 +1,12 @@
+# -*- coding: utf-8 -*-
 import socket
 import threading
 import os
 import cv2
-from preprocessing import separate_text
+from preprocessor import Preprocessor
 from handle_nn import load_multi_net
 import cPickle
+from multiprocessing import Process, Queue
 
 
 SAVE_DIR = 'Cache\\'
@@ -70,32 +72,81 @@ class ClientConnectionThread(threading.Thread):
             self.__conn.send(cPickle.dumps(self.classify(img)))
         self.__conn.close()
 
+    # def process_classify(self, img_char, q, index):
+    #     q.put(self.__multi_net.feedforward(img_char), index)
+
     def classify(self, img):
         cached_img_path = get_file_path()
         with open(cached_img_path, 'wb') as img_file:
             img_file.write(img)
 
-        cv2_img = cv2.imread(cached_img_path, 1)
-        img_text = separate_text(cv2_img)
+        cv2_img = cv2.imread(cached_img_path, 0)
+        set_path_free(cached_img_path)
+        preprocessor = Preprocessor(cv2_img)
+        img_text = preprocessor.separate_text()
+        print 'Separated Chars'
 
-        # [[[self.__multi_net.feedforward(char) for char in img_words] for
-        #   img_words in img_lines] for img_lines in img_text]
+        # q = Queue()
+        # procs = []
         string_text = []
-        # print 'lines: ', len(img_text)
-        for img_line in img_text:
-            # print 'words: ', len(img_line)
+        for l_index, img_line in enumerate(img_text):
             string_line = []
-            for img_word in img_line:
-                # print 'chars: ', len(img_word)
+            for w_index, img_word in enumerate(img_line):
                 string_word = []
-                for img_char in img_word:
+                for c_index, img_char in enumerate(img_word):
+                    # p = Process(target=self.process_classify,
+                    #             args=(img_char, q, (l_index, w_index,
+                    #                                 c_index)))
+                    # p.start()
+                    print 'Classifying...'
+                    # procs.append(p)
+                    cv2.imshow(str(c_index), img_char)
                     classifications = self.__multi_net.feedforward(img_char)
                     string_word.append(classifications)
+                cv2.waitKey(0)
+                cv2.destroyAllWindows()
                 string_line.append(string_word)
             string_text.append(string_line)
-        set_path_free(cached_img_path)
+        # for proc in procs:
+        #     proc.join()
+        # answers = []
+        # while not q.empty():
+        #     answers.append(q.get())
 
+        # answers = sorted(answers, key=lambda x: x[1])
+        # string_text = self.arrange_hierarchical_list(answers)
         return string_text
+
+    # @staticmethod
+    # def arrange_hierarchical_list(disordered_list):
+    #     """
+    #     Arranges a list of 4th-order tuples in hierarchical order.
+    #     Example: Input - [(0, 0, 1, 'a'), (0, 0, 2, 'b'), (0, 1, 0, 'c'),
+    #                       (0, 1, 1, 'd'), (1, 0, 0, 'e'), (1, 0, 1, 'f')]
+    #              Output - [[['a', 'b'], ['c', 'd']], [['e', 'f']]]
+    #     :param disordered_list: The list in question
+    #     :return: A hierarchical list
+    #     """
+    #     hierarchical_dict = {}
+    #     for x in disordered_list:
+    #         if x[0] not in hierarchical_dict:
+    #             hierarchical_dict[x[0]] = {x[1]: {x[2]: x[3]}}
+    #         else:
+    #             if x[1] not in hierarchical_dict[x[0]]:
+    #                 hierarchical_dict[x[0]][x[1]] = {x[2]: x[3]}
+    #             else:
+    #                 hierarchical_dict[x[0]][x[1]][x[2]] = x[3]
+    #
+    #     arranged_list = []
+    #     for line in hierarchical_dict.values():
+    #         l_line = []
+    #         for word in line.values():
+    #             l_word = []
+    #             for char in word.values():
+    #                 l_word.append(char)
+    #             l_line.append(l_word)
+    #         arranged_list.append(l_line)
+    #     return arranged_list
 
 
 def main():

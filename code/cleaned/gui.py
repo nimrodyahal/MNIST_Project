@@ -93,7 +93,7 @@ class ModdedFrame(wx.Frame):
         for line in ans:
             for word in line:
                 # print word,
-                print ''.join([char[0] for char in word]),
+                print ''.join([char[0][0] for char in word]),
             print
 
     @staticmethod

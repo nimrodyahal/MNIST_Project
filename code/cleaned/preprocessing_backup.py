@@ -4,15 +4,17 @@ import numpy as np
 import Image
 
 
-IMG_THRESHOLD = 80
-SPACE_RATIO = 1
+IMG_THRESHOLD = 100
+SPACE_RATIO = 1.2
+LINE_THRESHOLD = 1
+MIN_CNT_HEIGHT_LINE_RATIO = 2
+MIN_CNT_SIZE = 5
+
 NET_INPUT_WIDTH = 28
 NET_INPUT_HEIGHT = 28
 NETWORK_INPUT_SIZE = (NET_INPUT_HEIGHT, NET_INPUT_WIDTH)
 CHARACTER_SIZE = 20.0
 BORDER_SIZE = 1, 1, 1, 1
-LINE_THRESHOLD = 7
-MIN_CNT_HEIGHT_RATIO = 3
 
 
 def _prepare_img(img):
@@ -25,12 +27,20 @@ def _prepare_img(img):
     img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     thresh = cv2.threshold(img_gray, IMG_THRESHOLD, 255, cv2.THRESH_BINARY)[1]
     thresh = cv2.bitwise_not(thresh)
+    _clean_image(thresh)
 
     angle = _find_text_tilt(thresh)
     rotated = _rotate_image(thresh, angle)
-    # cv2.imshow('thresh', rotated)
-    # cv2.waitKey(0)
     return rotated
+
+
+def _clean_image(img):
+    contours = cv2.findContours(img, cv2.RETR_EXTERNAL,
+                                cv2.CHAIN_APPROX_SIMPLE)[1]
+    sizes = [cv2.boundingRect(cnt)[2:] for cnt in contours]
+    for i, (w, h) in enumerate(sizes):
+        if w < MIN_CNT_SIZE and h < MIN_CNT_SIZE:
+            cv2.drawContours(img, contours, i, 0, -1)
 
 
 def _find_text_tilt(img):
@@ -75,6 +85,9 @@ def _get_line_coords(img, threshold):
     :return: [(line_starts, line_ends)] for each line.
     """
     slices = cv2.reduce(img, 1, cv2.REDUCE_AVG).reshape(-1)
+    # slice_threshold = np.mean(slices) / 4
+    # print slice_threshold
+    # print 'yolo'
     count = 0
     is_line = False
     line_coords = []
@@ -187,7 +200,7 @@ def _crop_contour(contours, shape):
     return out[top_x:bottom_x+1, top_y:bottom_y+1]
 
 
-def _separate_word(img_word, line_height):
+def _separate_word(word_coords, contours, hierarchy, line_height, img_shape):
     """
     Separate each word to its characters. (Also turns character to network
     format of 0-1 instead of 0-255.)
@@ -198,37 +211,51 @@ def _separate_word(img_word, line_height):
     :rtype : [OpenCV2 image]
     """
     word_chars = []
-    _, contours, hierarchy = cv2.findContours(img_word,
-                                              cv2.RETR_TREE,
-                                              cv2.CHAIN_APPROX_SIMPLE)
-    contours = np.array(contours)
-    # print np.array(sorted(hierarchy[0], key=lambda x: x[1]))
-    # ordered = sorted(zip(contours, hierarchy[0]), key=lambda x: x[1][1])
     for i, cnt in enumerate(contours):
-        if hierarchy[0, i, 3] == -1:
-            h = cv2.boundingRect(cnt)[3]
-            if h + 2 >= line_height / MIN_CNT_HEIGHT_RATIO:
-                hie = list(np.where(hierarchy[0, :, 3] == i)[0]) + [i]
-                char = _crop_contour(contours[hie], img_word.shape)
-                x = cv2.boundingRect(cnt)[0]
-                word_chars.append((char / 255.0, x))
+        if _filter_contour(contours, i, hierarchy, line_height, word_coords):
+            # upper, lower, left, right = word_coords
+            # word_h = lower - upper
+            # word_w = right - left
+
+            hie = list(np.where(hierarchy[0, :, 3] == i)[0]) + [i]
+            char = _crop_contour(contours[hie], img_shape)
+            x = cv2.boundingRect(cnt)[0]
+            word_chars.append((char / 255.0, x))
+            # pass
+        # if hierarchy[0, i, 3] == -1:
+        #     h = cv2.boundingRect(cnt)[3]
+        #     if h + 2 >= line_height / MIN_CNT_HEIGHT_LINE_RATIO:
     word_chars = [w[0] for w in sorted(word_chars, key=lambda a: a[1])]
     return word_chars
 
 
-def _separate_line(img_line):
+def _filter_contour(contours, i, hierarchy, line_height, word_coords):
+    upper, lower, left, right = word_coords
+    if hierarchy[0, i, 3] != -1:
+        return False
+    x, y, w, h = cv2.boundingRect(contours[i])
+    if y <= upper or y >= lower or x <= left or x >= right:
+        return False
+    if h + 2 < line_height / MIN_CNT_HEIGHT_LINE_RATIO:
+        return False
+    return True
+
+
+def _separate_line(img_line, line_coords, contours, hierarchy, img_shape):
     """
     Separate each line to its characters.
     :param img_line: The line in question (OpenCV2 image).
     :return: List of lists of characters (OpenCV2 image).
     :rtype : [words] = [[(OpenCV2 image)]]
     """
+    upper, lower = line_coords
     line_height = _get_line_height(img_line)
     space_len = line_height / SPACE_RATIO
     words = _get_word_coords(img_line, space_len)
     line = []
     for left, right in words:
-        chars = _separate_word(img_line[:, left:right], line_height)
+        chars = _separate_word((upper, lower, left, right), contours,
+                               hierarchy, line_height, img_shape)
         word = [_rescale_char(char) for char in chars]
         line.append(word)
     return line
@@ -244,23 +271,29 @@ def separate_text(img):
     """
     thresh = _prepare_img(img)
 
+    _, contours, hierarchy = cv2.findContours(thresh,
+                                              cv2.RETR_TREE,
+                                              cv2.CHAIN_APPROX_SIMPLE)
+    contours = np.array(contours)
+
     lines = _get_line_coords(thresh, LINE_THRESHOLD)
     text = []
     for upper, lower in lines:
         img_line = thresh[upper:lower]
-        line = _separate_line(img_line)
-        text.append(line)
+        line_chars = _separate_line(img_line, (upper, lower), contours,
+                                    hierarchy, thresh.shape)
+        text.append(line_chars)
     return text
 
-# _path = '..\\testing images\\text test.jpg'
-# _img = cv2.imread(_path, 1)
-# _text = separate_text(_img)
-# print 'lines: ', len(_text)
-# for _line in _text[:3]:
-#     print 'words: ', len(_line)
-#     for _word in _line:
-#         print 'chars: ', len(_word)
-#         for _i, _char in enumerate(_word):
-#             cv2.imshow(str(_i), _char * 255.0)
-#         cv2.waitKey(0)
-#         cv2.destroyAllWindows()
+_path = '..\\testing images\\text test.jpg'
+_img = cv2.imread(_path, 1)
+_text = separate_text(_img)
+print 'lines: ', len(_text)
+for _line in _text[:3]:
+    print 'words: ', len(_line)
+    for _word in _line:
+        print 'chars: ', len(_word)
+        for _i, _char in enumerate(_word):
+            cv2.imshow(str(_i), _char * 255.0)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
