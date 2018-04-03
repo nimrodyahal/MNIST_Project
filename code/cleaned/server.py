@@ -72,9 +72,6 @@ class ClientConnectionThread(threading.Thread):
             self.__conn.send(cPickle.dumps(self.classify(img)))
         self.__conn.close()
 
-    # def process_classify(self, img_char, q, index):
-    #     q.put(self.__multi_net.feedforward(img_char), index)
-
     def classify(self, img):
         cached_img_path = get_file_path()
         with open(cached_img_path, 'wb') as img_file:
@@ -83,38 +80,21 @@ class ClientConnectionThread(threading.Thread):
         cv2_img = cv2.imread(cached_img_path, 0)
         set_path_free(cached_img_path)
         preprocessor = Preprocessor(cv2_img)
-        img_text = preprocessor.separate_text()
+        separated = preprocessor.separate_text()
         print 'Separated Chars'
 
-        # q = Queue()
-        # procs = []
         string_text = []
-        for l_index, img_line in enumerate(img_text):
+        for img_line in separated:
             string_line = []
-            for w_index, img_word in enumerate(img_line):
+            for img_word in img_line:
                 string_word = []
-                for c_index, img_char in enumerate(img_word):
-                    # p = Process(target=self.process_classify,
-                    #             args=(img_char, q, (l_index, w_index,
-                    #                                 c_index)))
-                    # p.start()
+                for img_char in img_word:
                     print 'Classifying...'
-                    # procs.append(p)
-                    cv2.imshow(str(c_index), img_char)
                     classifications = self.__multi_net.feedforward(img_char)
                     string_word.append(classifications)
-                cv2.waitKey(0)
-                cv2.destroyAllWindows()
                 string_line.append(string_word)
             string_text.append(string_line)
-        # for proc in procs:
-        #     proc.join()
-        # answers = []
-        # while not q.empty():
-        #     answers.append(q.get())
-
-        # answers = sorted(answers, key=lambda x: x[1])
-        # string_text = self.arrange_hierarchical_list(answers)
+        print 'Classification Done!'
         return string_text
 
     # @staticmethod

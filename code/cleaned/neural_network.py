@@ -31,7 +31,7 @@ PATH = '..\\..\\dataset\\matlab\\emnist-bymerge.mat'
 # NAMES = {'bal': 'emnist-balanced.mat', 'cls': 'emnist-byclass.mat',
 #          'mrg': 'emnist-bymerge.mat', 'dgt': 'emnist-digits.mat',
 #          'ltr': 'emnist-letters.mat', 'mnist': 'emnist-mnist'}
-NUM_OF_TRIES = 3  # The amount of 'tries' a net has to classify
+NUM_OF_TRIES = 5  # The amount of 'tries' a net has to classify
 
 
 # Activation functions for neurons
@@ -368,7 +368,7 @@ class MultiNet():
         mapping = self.nets[0].mapping
         answer = sum([net.feedforward(inpt) for net in self.nets])
         # chosen = np.argmax(answer)
-        classifications = answer[0].argsort()[::-1][:3]
+        classifications = answer[0].argsort()[::-1][:NUM_OF_TRIES]
         # print 'answer shape', answer.shape
         # print 'classification shape', classifications.shape
         # print 'bla: ', answer[0][classifications]
