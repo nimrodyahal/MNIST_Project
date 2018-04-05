@@ -27,7 +27,9 @@ from theano.tensor.signal import pool
 from theano.tensor.nnet import sigmoid
 
 
-PATH = '..\\..\\dataset\\matlab\\emnist-bymerge.mat'
+# PATH = '..\\..\\dataset\\matlab\\emnist-bymerge.mat'
+PATH = 'D:\\School\\Programming\\Cyber\\FinalExercise-12th\\MNIST_Project\\' \
+       'dataset\\matlab\\emnist-bymerge.mat'
 # NAMES = {'bal': 'emnist-balanced.mat', 'cls': 'emnist-byclass.mat',
 #          'mrg': 'emnist-bymerge.mat', 'dgt': 'emnist-digits.mat',
 #          'ltr': 'emnist-letters.mat', 'mnist': 'emnist-mnist'}
@@ -123,16 +125,84 @@ class Network(object):
                 prev_layer.output, prev_layer.output_dropout,
                 self.mini_batch_size)
 
-    def feedforward(self, inpt):
-        x = tt.matrix('x')
+    def __classify_word(self, inpt, starting_point, char_count):
         init_layer = self.layers[0]
-        init_layer.set_inpt(x, x, 1)
-        for j in xrange(1, len(self.layers)):
-            prev_layer, layer = self.layers[j - 1], self.layers[j]
-            layer.set_inpt(prev_layer.output, prev_layer.output_dropout, 1)
-        feedforward_function = theano.function([x], self.layers[-1].output,
-                                               allow_input_downcast=True)
-        return feedforward_function(inpt)
+        init_layer.set_inpt(self.x, self.x, char_count)
+        for x in xrange(1, len(self.layers)):
+            prev_layer, layer = self.layers[x - 1], self.layers[x]
+            layer.set_inpt(prev_layer.output, prev_layer.output_dropout,
+                           char_count)
+
+        starting_point_tensor = tt.lscalar()
+        char_count_tensor = tt.lscalar()
+        feedforward_function = theano.function(
+            [starting_point_tensor, char_count_tensor], self.layers[-1].output,
+            givens={self.x: inpt[
+                    starting_point_tensor:
+                    starting_point_tensor + char_count_tensor]})
+        return feedforward_function(starting_point, char_count)
+
+    @staticmethod
+    def __lines_to_chars(lines):
+        chars = np.zeros((1, 28, 28))
+        for line in lines:
+            for word in line:
+                for char in word:
+                    chars = np.append(chars, [char], axis=0)
+        return chars[1:]
+
+    # def classify_text(self, input_lines):
+    #     chars = self.__lines_to_chars(input_lines)
+    #     inpt = np.array(chars)
+    #     inpt = inpt.reshape((-1, 28 * 28))
+    #     print inpt.shape
+    #     inpt = theano.shared(
+    #         np.asarray(inpt, dtype=theano.config.floatX), borrow=True)
+    #
+    #     starting_point = 0
+    #     classified_text = []
+    #     for line in input_lines:
+    #         classified_line = []
+    #         for word in line:
+    #             char_count = len(word)
+    #             print starting_point, char_count
+    #             classified_line.append(self.__classify_word(
+    #                 inpt, starting_point, char_count))
+    #             starting_point += char_count
+    #         classified_text.append(classified_line)
+    #     return classified_text
+
+    def classify_text(self, input_lines):
+        chars = self.__lines_to_chars(input_lines)
+        inpt = np.array(chars).reshape((-1, 28 * 28))
+        inpt = theano.shared(
+            np.asarray(inpt, dtype=theano.config.floatX), borrow=True)
+
+        char_count = len(chars)
+        init_layer = self.layers[0]
+        init_layer.set_inpt(self.x, self.x, char_count)
+        for x in xrange(1, len(self.layers)):
+            prev_layer, layer = self.layers[x - 1], self.layers[x]
+            layer.set_inpt(prev_layer.output, prev_layer.output_dropout,
+                           char_count)
+
+        i = tt.lscalar()
+        feedforward_function = theano.function(
+            [i], self.layers[-1].output,
+            givens={self.x: inpt}, on_unused_input='ignore')
+
+        classified_chars = feedforward_function(0)
+        classified_text = []
+        for l_index in range(len(input_lines)):
+            classified_line = []
+            for w_index in range(len(input_lines[l_index])):
+                classified_word = []
+                for c_index in range((len(input_lines[l_index][w_index]))):
+                    classified_word.append(classified_chars[0])
+                    classified_chars = classified_chars[1:]
+                classified_line.append(classified_word)
+            classified_text.append(classified_line)
+        return classified_text
 
     def sgd(self, training_data, epochs, mini_batch_size, learning_rate,
             test_data, lmbda=0.0):
@@ -151,8 +221,8 @@ class Network(object):
         test_input, test_output = test_data
 
         # compute number of minibatches for training, validation and testing
-        num_training_batches = size(training_data) / mini_batch_size
-        num_test_batches = size(test_data) / mini_batch_size
+        num_training_batches = size(training_data) / self.mini_batch_size
+        num_test_batches = size(test_data) / self.mini_batch_size
 
         # define the (regularized) cost function, symbolic gradients, and
         # updates
@@ -170,7 +240,7 @@ class Network(object):
             [i], cost, updates=updates,
             givens={
                 self.x: training_input[
-                    i * self.mini_batch_size:(i + 1) * self.mini_batch_size],
+                    i * self.mini_batch_size: (i + 1) * self.mini_batch_size],
                 self.y: training_output[
                     i * self.mini_batch_size: (i + 1) * self.mini_batch_size]
             })
@@ -364,21 +434,22 @@ class MultiNet():
     def __init__(self, nets):
         self.nets = nets
 
-    def feedforward(self, inpt):
+    def classify_text(self, lines):
         mapping = self.nets[0].mapping
-        answer = sum([net.feedforward(inpt) for net in self.nets])
-        # chosen = np.argmax(answer)
-        classifications = answer[0].argsort()[::-1][:NUM_OF_TRIES]
-        # print 'answer shape', answer.shape
-        # print 'classification shape', classifications.shape
-        # print 'bla: ', answer[0][classifications]
-        return [(chr(mapping[c]), answer[0][c]) for c in classifications]
-        # return chr(mapping[chosen]), answer[0][chosen] * 100 / len(self.nets)
+        answer = [net.classify_text(lines) for net in self.nets]
 
-    # def test_accuracy(self, test_data):
-    #     test_x, test_y = test_data
-    #     for net in self.nets:
-    #         net.feedforward(test_x)
+        classified_text = []
+        for line in np.array(answer)[0]:
+            classified_line = []
+            for word in line:
+                classified_word = []
+                for char in word:
+                    classifications = char.argsort()[::-1][:NUM_OF_TRIES]
+                    classified_word.append([(chr(mapping[c]), char[c]) for c
+                                            in classifications])
+                classified_line.append(classified_word)
+            classified_text.append(classified_line)
+        return classified_text
 
 
 #### Miscellanea

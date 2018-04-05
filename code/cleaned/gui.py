@@ -89,7 +89,8 @@ class ModdedFrame(wx.Frame):
         # classifications = self.multi_net.feedforward(char)
         # char = preprocess_img(self.image_path)
         # illustrate_canvas('ters.png', char.reshape((28, 28)))
-        ans = pickle.loads(self.client_socket.recv(8192))
+        response = self.client_socket.recv(819200)
+        ans = pickle.loads(response)
         for line in ans:
             for word in line:
                 # print word,

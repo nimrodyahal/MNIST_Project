@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3c20999e-9e20-4348-95e9-be5509e66b0a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/testing images/TEST1.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/testing images/TEST2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/testing images/TEST3.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/testing images/testing contour.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/testing images/testing text.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/testing images/text in book - Copy.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/testing images/text in book.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/testing images/text in book2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/testing images/text in book3.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/testing images/text test.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cleaned/tests/ContourClass.py" />
+    <list default="true" id="3c20999e-9e20-4348-95e9-be5509e66b0a" name="Default" comment="Added the ContourClass necessary for test_line_threshold_auto.&#10;Added useful testing pictures">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/gui.py" afterPath="$PROJECT_DIR$/code/cleaned/gui.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/handle_nn.py" afterPath="$PROJECT_DIR$/code/cleaned/handle_nn.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/neu_net_test.py" afterPath="$PROJECT_DIR$/code/neu_net_test.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/neural_network.py" afterPath="$PROJECT_DIR$/code/cleaned/neural_network.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/preprocessor.py" afterPath="$PROJECT_DIR$/code/cleaned/preprocessor.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/server.py" afterPath="$PROJECT_DIR$/code/cleaned/server.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MNIST_Project.iws" />
@@ -36,19 +31,74 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="server.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code/cleaned/server.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="88" column="0" selection-start="3059" selection-end="3059" vertical-scroll-proportion="0.0" vertical-offset="1202" max-vertical-offset="2873">
+              <folding>
+                <element signature="e#24#37#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="handle_nn.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code/cleaned/handle_nn.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="74" column="33" selection-start="2612" selection-end="2612" vertical-scroll-proportion="0.0" vertical-offset="913" max-vertical-offset="1547">
+              <folding>
+                <element signature="e#24#38#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="neural_network.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code/cleaned/neural_network.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="202" column="55" selection-start="7877" selection-end="7877" vertical-scroll-proportion="0.0" vertical-offset="2732" max-vertical-offset="8075">
+              <folding>
+                <element signature="e#680#694#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="preprocessor.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/cleaned/preprocessor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="19" selection-start="127" selection-end="127" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="6086">
+            <state line="80" column="18" selection-start="2877" selection-end="2877" vertical-scroll-proportion="-2.9230769" vertical-offset="1284" max-vertical-offset="6460">
+              <folding>
+                <element signature="e#24#34#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="new_net.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code/cleaned/tests/new_net.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="52" selection-start="530" selection-end="530" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
+              <folding>
+                <element signature="e#24#60#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gui.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code/cleaned/gui.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="92" column="0" selection-start="3511" selection-end="3511" vertical-scroll-proportion="0.0" vertical-offset="1313" max-vertical-offset="2125">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_line_threshold_auto.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="test_line_threshold_auto.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/code/cleaned/tests/test_line_threshold_auto.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="33" selection-start="762" selection-end="762" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="2992">
+            <state line="38" column="40" selection-start="1146" selection-end="1146" vertical-scroll-proportion="0.595" vertical-offset="289" max-vertical-offset="2992">
               <folding>
                 <element signature="e#24#34#0" expanded="true" />
               </folding>
@@ -60,33 +110,6 @@
         <entry file="file://$PROJECT_DIR$/code/cleaned/tests/ContourClass.py">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_adaptive_thresholding.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/code/cleaned/tests/test_adaptive_thresholding.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="0" selection-start="870" selection-end="1060" vertical-scroll-proportion="0.5114943" vertical-offset="82" max-vertical-offset="952">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="server.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code/cleaned/server.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="85" column="24" selection-start="2881" selection-end="2881" vertical-scroll-proportion="0.0" vertical-offset="1445" max-vertical-offset="2771">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gui.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code/cleaned/gui.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="111" column="41" selection-start="4177" selection-end="4177" vertical-scroll-proportion="0.0" vertical-offset="1887" max-vertical-offset="2142">
               <folding />
             </state>
           </provider>
@@ -117,17 +140,19 @@
         <option value="$PROJECT_DIR$/code/cleaned/tests/test_contours.py" />
         <option value="$PROJECT_DIR$/code/cleaned/tests/preprocesser.py" />
         <option value="$PROJECT_DIR$/code/cleaned/preprocessing.py" />
-        <option value="$PROJECT_DIR$/code/cleaned/neural_network.py" />
-        <option value="$PROJECT_DIR$/code/cleaned/gui.py" />
         <option value="$PROJECT_DIR$/code/cleaned/tests/test_adaptive_thresholding.py" />
         <option value="$PROJECT_DIR$/code/cleaned/tests/test_multiprocessing.py" />
         <option value="$PROJECT_DIR$/code/cleaned/tests/preprocessor.py" />
         <option value="$PROJECT_DIR$/code/cleaned/tests/test_multiprocess_stuff.py" />
         <option value="$PROJECT_DIR$/code/cleaned/tests/neural_network.py" />
         <option value="$PROJECT_DIR$/code/cleaned/tests/im_tryiiing.py" />
-        <option value="$PROJECT_DIR$/code/cleaned/server.py" />
         <option value="$PROJECT_DIR$/code/cleaned/tests/test_line_threshold_auto.py" />
+        <option value="$PROJECT_DIR$/code/cleaned/tests/new_net.py" />
+        <option value="$PROJECT_DIR$/code/cleaned/neural_network.py" />
+        <option value="$PROJECT_DIR$/code/cleaned/handle_nn.py" />
+        <option value="$PROJECT_DIR$/code/cleaned/gui.py" />
         <option value="$PROJECT_DIR$/code/cleaned/preprocessor.py" />
+        <option value="$PROJECT_DIR$/code/cleaned/server.py" />
       </list>
     </option>
   </component>
@@ -179,6 +204,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="MNIST_Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MNIST_Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MNIST_Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dataset" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MNIST_Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MNIST_Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dataset" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="matlab" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -254,6 +311,76 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MNIST_Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MNIST_Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cleaned" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MNIST_Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MNIST_Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cleaned" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="multiprocessing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MNIST_Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MNIST_Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Saved Nets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -261,7 +388,7 @@
   <component name="PropertiesComponent">
     <property name="recentsLimit" value="5" />
     <property name="LayoutCode.rearrangeEntriesPython" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Exercises_2/TEST/RAZ/stuff" />
     <property name="SearchEverywhereHistory" value="" />
     <property name="options.lastSelected" value="reference.idesettings.debugger.python" />
     <property name="options.splitter.main.proportions" value="0.3" />
@@ -289,7 +416,27 @@
     </key>
   </component>
   <component name="RunManager" selected="Python.preprocessor (1)">
-    <configuration default="false" name="im_tryiiing" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="preprocessor (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/code/cleaned" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="MNIST_Project" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/cleaned/preprocessor.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="new_net" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -301,7 +448,25 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="MNIST_Project" />
-      <option name="SCRIPT_NAME" value="D:\School\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\tests\multiprocessing\im_tryiiing.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/cleaned/tests/new_net.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="neural_network" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/code/cleaned" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="MNIST_Project" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/cleaned/neural_network.py" />
       <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
@@ -338,44 +503,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="MNIST_Project" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/cleaned/gui.py" />
-      <option name="PARAMETERS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="preprocessor (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/code/cleaned" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="MNIST_Project" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/cleaned/preprocessor.py" />
-      <option name="PARAMETERS" value="" />
-      <RunnerSettings RunnerId="PyDebugRunner" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PyDebugRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="test_line_threshold_auto" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/code/cleaned/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="MNIST_Project" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/cleaned/tests/test_line_threshold_auto.py" />
       <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
@@ -562,19 +689,19 @@
       <item index="0" class="java.lang.String" itemvalue="Python.test_contours" />
       <item index="1" class="java.lang.String" itemvalue="Python.test_contour_cropping" />
       <item index="2" class="java.lang.String" itemvalue="Python.preprocessor" />
-      <item index="3" class="java.lang.String" itemvalue="Python.im_tryiiing" />
-      <item index="4" class="java.lang.String" itemvalue="Python.server" />
-      <item index="5" class="java.lang.String" itemvalue="Python.gui" />
-      <item index="6" class="java.lang.String" itemvalue="Python.preprocessor (1)" />
-      <item index="7" class="java.lang.String" itemvalue="Python.test_line_threshold_auto" />
+      <item index="3" class="java.lang.String" itemvalue="Python.preprocessor (1)" />
+      <item index="4" class="java.lang.String" itemvalue="Python.new_net" />
+      <item index="5" class="java.lang.String" itemvalue="Python.neural_network" />
+      <item index="6" class="java.lang.String" itemvalue="Python.server" />
+      <item index="7" class="java.lang.String" itemvalue="Python.gui" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.preprocessor (1)" />
-        <item index="1" class="java.lang.String" itemvalue="Python.test_line_threshold_auto" />
-        <item index="2" class="java.lang.String" itemvalue="Python.gui" />
-        <item index="3" class="java.lang.String" itemvalue="Python.server" />
-        <item index="4" class="java.lang.String" itemvalue="Python.im_tryiiing" />
+        <item index="0" class="java.lang.String" itemvalue="Python.gui" />
+        <item index="1" class="java.lang.String" itemvalue="Python.server" />
+        <item index="2" class="java.lang.String" itemvalue="Python.preprocessor (1)" />
+        <item index="3" class="java.lang.String" itemvalue="Python.new_net" />
+        <item index="4" class="java.lang.String" itemvalue="Python.neural_network" />
       </list>
     </recent_temporary>
   </component>
@@ -646,27 +773,51 @@
       <created>1522756437542</created>
       <updated>1522756437542</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Added the ContourClass necessary for test_line_threshold_auto.&#10;Added useful testing pictures">
+      <created>1522756773123</created>
+      <updated>1522756773123</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
+  </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27566963" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24954791" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18444847" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18444847" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39955357" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28794643" sideWeight="0.50030136" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32142857" sideWeight="0.4996986" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3013393" sideWeight="0.4996986" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27566963" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -697,7 +848,8 @@
     <MESSAGE value="IT'S ALLIIIIVVVVVEEEEE!!!&#10;Still needs to learn how to customize the thresholds though. Problematic..." />
     <MESSAGE value="Work done on customized thresholds. Also turned 'preprocessing' into a class called 'preprocessor'." />
     <MESSAGE value="Done tittle_segmentation, done line_segmentation.&#10;Still no idea about word segmentation...&#10;Will start working on speeding up the network by inputting into GPU memory all at once in a moment" />
-    <option name="LAST_COMMIT_MESSAGE" value="Done tittle_segmentation, done line_segmentation.&#10;Still no idea about word segmentation...&#10;Will start working on speeding up the network by inputting into GPU memory all at once in a moment" />
+    <MESSAGE value="Added the ContourClass necessary for test_line_threshold_auto.&#10;Added useful testing pictures" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the ContourClass necessary for test_line_threshold_auto.&#10;Added useful testing pictures" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -705,45 +857,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/code/cleaned/gui.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="111" column="41" selection-start="4177" selection-end="4177" vertical-scroll-proportion="0.0" vertical-offset="1887" max-vertical-offset="2142">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/preprocessing_test1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="6" selection-start="922" selection-end="949" vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="2295" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/cleaned/neural_network.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="374" column="51" selection-start="15711" selection-end="15711" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6868" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/cleaned/preprocessing_backup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="31" selection-start="835" selection-end="835" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5185" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/cleaned/preprocessor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="31" selection-start="635" selection-end="635" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="5933">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/cleaned/tests/test_adaptive_thresholding.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="13" selection-start="347" selection-end="347" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="595" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/activation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="453" selection-end="453" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4352" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/code/cleaned/server.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="85" column="32" selection-start="2954" selection-end="2954" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2278">
@@ -841,11 +954,6 @@
         <state line="511" column="4" selection-start="17129" selection-end="17129" vertical-scroll-proportion="-0.6434783" vertical-offset="9057" max-vertical-offset="10642" />
       </provider>
     </entry>
-    <entry file="file://D:/Heights/PortableApps/PortablePython2.7.6.1/Miniconda/Lib/threading.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="800" column="0" selection-start="28881" selection-end="28881" vertical-scroll-proportion="0.3321739" vertical-offset="13409" max-vertical-offset="22576" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/code/testing images/milstein-backing.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -881,11 +989,6 @@
         <state line="2371" column="0" selection-start="74477" selection-end="74477" vertical-scroll-proportion="0.0" vertical-offset="39927" max-vertical-offset="53397" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/cleaned/neural_network.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="374" column="51" selection-start="15711" selection-end="15711" vertical-scroll-proportion="0.0" vertical-offset="5964" max-vertical-offset="6715" />
-      </provider>
-    </entry>
     <entry file="file://D:/Heights/PortableApps/PortablePython2.7.6.1/Miniconda/Lib/site-packages/cv2/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="0" selection-start="235" selection-end="235" vertical-scroll-proportion="0.09770115" vertical-offset="0" max-vertical-offset="870" />
@@ -911,11 +1014,6 @@
         <state line="100" column="42" selection-start="3541" selection-end="3541" vertical-scroll-proportion="0.0" vertical-offset="1285" max-vertical-offset="6562" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/cleaned/tests/multiprocessing/handle_nn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="0" selection-start="2466" selection-end="2466" vertical-scroll-proportion="0.0" vertical-offset="800" max-vertical-offset="1360" />
-      </provider>
-    </entry>
     <entry file="file://D:/Heights/PortableApps/PortablePython2.7.6.1/Miniconda/Lib/multiprocessing/process.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="126" column="17" selection-start="3944" selection-end="3944" vertical-scroll-proportion="0.0" vertical-offset="1768" max-vertical-offset="5695" />
@@ -931,25 +1029,6 @@
         <state line="85" column="24" selection-start="3031" selection-end="3031" vertical-scroll-proportion="0.0" vertical-offset="969" max-vertical-offset="2584" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/cleaned/tests/multiprocessing/im_tryiiing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="34" selection-start="299" selection-end="299" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/cleaned/gui.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="111" column="41" selection-start="4177" selection-end="4177" vertical-scroll-proportion="0.0" vertical-offset="697" max-vertical-offset="2108">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/cleaned/server.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="24" selection-start="2881" selection-end="2881" vertical-scroll-proportion="0.0" vertical-offset="1445" max-vertical-offset="2771">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/code/activation.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="126" column="10" selection-start="4038" selection-end="4038" vertical-scroll-proportion="0.0" vertical-offset="1935" max-vertical-offset="4352" />
@@ -960,19 +1039,61 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="36210" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/cleaned/preprocessor.py">
+    <entry file="file://$PROJECT_DIR$/code/cleaned/tests/multiprocessing/handle_nn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="19" selection-start="127" selection-end="127" vertical-scroll-proportion="0.0" vertical-offset="21" max-vertical-offset="5831">
+        <state line="68" column="0" selection-start="2474" selection-end="2474" vertical-scroll-proportion="0.0" vertical-offset="490" max-vertical-offset="1360">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/cleaned/tests/test_line_threshold_auto.py">
+    <entry file="file://D:/Heights/PortableApps/PortablePython2.7.6.1/Miniconda/Lib/site-packages/scipy/io/matlab/miobase.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="33" selection-start="762" selection-end="762" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="2992">
+        <state line="90" column="0" selection-start="2867" selection-end="2867" vertical-scroll-proportion="0.42424244" vertical-offset="1173" max-vertical-offset="7038">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Heights/PortableApps/PortablePython2.7.6.1/Miniconda/Lib/site-packages/scipy/io/matlab/mio.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="4" selection-start="455" selection-end="455" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4386">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/cleaned/tests/test_adaptive_thresholding.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="0" selection-start="870" selection-end="1060" vertical-scroll-proportion="0.0" vertical-offset="82" max-vertical-offset="952">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Heights/PortableApps/PortablePython2.7.6.1/Miniconda/Lib/site-packages/theano/compile/pfunc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="495" column="0" selection-start="21492" selection-end="21492" vertical-scroll-proportion="0.33333334" vertical-offset="8024" max-vertical-offset="8721">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/cleaned/tests/multiprocessing/im_tryiiing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="57" selection-start="373" selection-end="373" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
           <folding>
-            <element signature="e#24#34#0" expanded="true" />
+            <element signature="e#0#22#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/.PyCharm30/system/python_stubs/437035981/__builtin__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="690" column="8" selection-start="22817" selection-end="22817" vertical-scroll-proportion="0.33333334" vertical-offset="11440" max-vertical-offset="87737">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/neu_net_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="436" column="26" selection-start="18117" selection-end="18117" vertical-scroll-proportion="0.0" vertical-offset="7120" max-vertical-offset="7939">
+          <folding />
         </state>
       </provider>
     </entry>
@@ -983,10 +1104,71 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/cleaned/tests/test_adaptive_thresholding.py">
+    <entry file="file://D:/Heights/PortableApps/PortablePython2.7.6.1/Miniconda/Lib/threading.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="0" selection-start="870" selection-end="1060" vertical-scroll-proportion="0.5114943" vertical-offset="82" max-vertical-offset="952">
+        <state line="800" column="0" selection-start="28881" selection-end="28881" vertical-scroll-proportion="0.33333334" vertical-offset="13400" max-vertical-offset="22576">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/cleaned/neural_network.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="202" column="55" selection-start="7877" selection-end="7877" vertical-scroll-proportion="0.0" vertical-offset="2732" max-vertical-offset="8075">
+          <folding>
+            <element signature="e#680#694#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/cleaned/handle_nn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="33" selection-start="2612" selection-end="2612" vertical-scroll-proportion="0.0" vertical-offset="913" max-vertical-offset="1547">
+          <folding>
+            <element signature="e#24#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/cleaned/gui.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="92" column="0" selection-start="3511" selection-end="3511" vertical-scroll-proportion="0.0" vertical-offset="1313" max-vertical-offset="2125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/cleaned/preprocessor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="80" column="18" selection-start="2877" selection-end="2877" vertical-scroll-proportion="-2.9230769" vertical-offset="1284" max-vertical-offset="6460">
+          <folding>
+            <element signature="e#24#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/cleaned/server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="88" column="0" selection-start="3059" selection-end="3059" vertical-scroll-proportion="0.0" vertical-offset="1202" max-vertical-offset="2873">
+          <folding>
+            <element signature="e#24#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/cleaned/tests/new_net.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="52" selection-start="530" selection-end="530" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
+          <folding>
+            <element signature="e#24#60#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/cleaned/tests/test_line_threshold_auto.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="40" selection-start="1146" selection-end="1146" vertical-scroll-proportion="0.595" vertical-offset="289" max-vertical-offset="2992">
+          <folding>
+            <element signature="e#24#34#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

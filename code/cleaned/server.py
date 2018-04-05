@@ -6,7 +6,6 @@ import cv2
 from preprocessor import Preprocessor
 from handle_nn import load_multi_net
 import cPickle
-from multiprocessing import Process, Queue
 
 
 SAVE_DIR = 'Cache\\'
@@ -62,6 +61,11 @@ class ClientConnectionThread(threading.Thread):
         conn_success.set()  # Sets an event for a successful connection
 
     def run(self):
+        # cv2_img = cv2.imread('..\\testing images\\test_draw.png', 0)
+        # preprocessor = Preprocessor(cv2_img)
+        # separated = preprocessor.separate_text()
+        # self.__multi_net.classify_text(separated)
+        # print 'Ready!'
         while True:
             img = self.__conn.recv(1048576)
             if not img:
@@ -83,18 +87,20 @@ class ClientConnectionThread(threading.Thread):
         separated = preprocessor.separate_text()
         print 'Separated Chars'
 
-        string_text = []
-        for img_line in separated:
-            string_line = []
-            for img_word in img_line:
-                string_word = []
-                for img_char in img_word:
-                    print 'Classifying...'
-                    classifications = self.__multi_net.feedforward(img_char)
-                    string_word.append(classifications)
-                string_line.append(string_word)
-            string_text.append(string_line)
+        string_text = self.__multi_net.classify_text(separated)
+        # string_text = []
+        # for img_line in separated:
+        #     string_line = []
+        #     for img_word in img_line:
+        #         string_word = []
+        #         for img_char in img_word:
+        #             print 'Classifying...'
+        #             classifications = self.__multi_net.classify_text(img_char)
+        #             string_word.append(classifications)
+        #         string_line.append(string_word)
+        #     string_text.append(string_line)
         print 'Classification Done!'
+        print string_text
         return string_text
 
     # @staticmethod

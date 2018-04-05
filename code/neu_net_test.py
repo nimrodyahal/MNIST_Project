@@ -434,7 +434,7 @@ class MultiNet():
     def feedforward(self, inpt):
         answer = np.zeros((1, CLASSES))
         for net in self.nets:
-            answer += net.feedforward(inpt)
+            answer += net.classify_text(inpt)
         # return answer
         chosen = np.argmax(answer)
         print answer
@@ -443,7 +443,7 @@ class MultiNet():
     def test_accuracy(self, test_data):
         test_x, test_y = test_data
         for net in self.nets:
-            net.feedforward(test_x)
+            net.classify_text(test_x)
 
 
 #### Miscellanea

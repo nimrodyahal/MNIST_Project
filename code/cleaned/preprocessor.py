@@ -5,10 +5,11 @@ import Image
 
 
 # IMG_THRESHOLD = 90
-SPACE_RATIO = 1.2
-LINE_THRESHOLD = 12
-MIN_CNT_HEIGHT_LINE_RATIO = 1
-MIN_CNT_SIZE = 2
+# SPACE_RATIO = 1.2
+SPACE_RATIO = 3
+LINE_THRESHOLD = 5
+MIN_CNT_HEIGHT_LINE_RATIO = 2
+MIN_CNT_SIZE = 4
 
 NET_INPUT_WIDTH = 28
 NET_INPUT_HEIGHT = 28
@@ -20,6 +21,7 @@ BORDER_SIZE = 1, 1, 1, 1
 class Preprocessor():
     def __init__(self, img):
         self.__img = self.__prepare_img(img)
+
         _, self.__contours, self.__hierarchy = cv2.findContours(
             self.__img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         self.__contours = np.array(self.__contours)
@@ -44,18 +46,19 @@ class Preprocessor():
         # ret2, thresh = cv2.threshold(img, 0, 255,
         #                              cv2.THRESH_BINARY + cv2.THRESH_OTSU)
 
-        thresh = cv2.adaptiveThreshold(img, 255,
+        blur = cv2.bilateralFilter(img, 40, 10, 10)
+        thresh = cv2.adaptiveThreshold(blur, 255,
                                        cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
-                                       cv2.THRESH_BINARY, 505, 15)
+                                       cv2.THRESH_BINARY, 201, 30)
 
         thresh = cv2.bitwise_not(thresh)
         thresh = self.__clean_image(thresh)
 
-        # cv2.imshow('thresh', cv2.resize(thresh, (0, 0), fx=2, fy=2))
+        # cv2.imshow('thresh', cv2.resize(thresh, (0, 0), fx=.5, fy=.5))
         # cv2.waitKey(0)
         angle = self.__find_text_tilt(thresh)
         rotated = self.__rotate_image(thresh, angle)
-        # cv2.imshow('rotated', cv2.resize(rotated, (0, 0), fx=2, fy=2))
+        # cv2.imshow('rotated', cv2.resize(rotated, (0, 0), fx=.5, fy=.5))
         # cv2.waitKey(0)
         return rotated
 
@@ -73,7 +76,7 @@ class Preprocessor():
             if size < MIN_CNT_SIZE:
                 cv2.drawContours(img, contours, i, 0, -1)
 
-        # cv2.imshow('thresh', cv2.resize(img, (0, 0), fx=2, fy=2))
+        # cv2.imshow('thresh', cv2.resize(img, (0, 0), fx=1, fy=1))
         # cv2.waitKey(0)
         return img
         # for i, (w, h) in enumerate(sizes):
@@ -95,52 +98,54 @@ class Preprocessor():
             angle -= 90
         return angle
 
-    # @staticmethod
-    # def __get_line_coords(img, threshold):
-    #     """
-    #     Returns the y coordinates of the line separations in the image.
-    #     NOTE: The coordinates are in the middle of each line separation
-    #     (includes the first and last lines by treating the top and bottom of
-    #     the image as the end and beginning of lines respectively).
-    #     :param img: The image in question (OpenCV2 image).
-    #     :param threshold: The minimum number of empty lines to count as a line
-    #     separation.
-    #     :return: [(line_starts, line_ends)] for each line.
-    #     """
-    #     slices = cv2.reduce(img, 1, cv2.REDUCE_AVG).reshape(-1)
-    #     slice_threshold = np.mean(slices) / 4
-    #     count = 0
-    #     is_line = False
-    #     line_coords = []
-    #     for i, slc in enumerate(slices):
-    #         if is_line:
-    #             if not slc >= slice_threshold:
-    #                 is_line = False
-    #                 count = 1
-    #         else:
-    #             if slc >= slice_threshold:
-    #                 is_line = True
-    #                 if count >= threshold:
-    #                     line_coords.append(i - count / 2)
-    #             else:
-    #                 count += 1
-    #     line_coords.append(img.shape[0])
-    #     return zip(line_coords[:-1], line_coords[1:])
+    @staticmethod
+    def __get_line_coords(img, threshold):
+        """
+        Returns the y coordinates of the line separations in the image.
+        NOTE: The coordinates are in the middle of each line separation
+        (includes the first and last lines by treating the top and bottom of
+        the image as the end and beginning of lines respectively).
+        :param img: The image in question (OpenCV2 image).
+        :param threshold: The minimum number of empty lines to count as a line
+        separation.
+        :return: [(line_starts, line_ends)] for each line.
+        """
+        slices = cv2.reduce(img, 1, cv2.REDUCE_AVG).reshape(-1)
+        slice_threshold = np.mean(slices) / 4
+        count = 0
+        is_line = False
+        line_coords = []
+        for i, slc in enumerate(slices):
+            if is_line:
+                if not slc >= slice_threshold:
+                    is_line = False
+                    count = 1
+            else:
+                if slc >= slice_threshold:
+                    is_line = True
+                    if count >= threshold:
+                        line_coords.append(i - count / 2)
+                else:
+                    count += 1
+        if not line_coords:
+            line_coords.append(0)
+        line_coords.append(img.shape[0])
+        return zip(line_coords[:-1], line_coords[1:])
 
-    def __get_line_coords(self):
-        contours = cv2.findContours(self.__img, cv2.RETR_EXTERNAL,
-                                    cv2.CHAIN_APPROX_SIMPLE)[1]
-        sizes = [(cv2.boundingRect(cnt)[1], cv2.boundingRect(cnt)[3])
-                 for cnt in contours]
-        sizes = np.array(sorted(sizes, key=lambda x: x[0]))
-        line_breaks = []
-        for (y1, h1), (y2, h2) in zip(sizes[:-1], sizes[1:]):
-            overlap = (y1 + h1) - y2
-            if overlap < 0 or h2 / overlap > 3:
-                line_break = (y2 + (y1 + h1)) / 2
-                line_breaks.append(line_break)
-        lines = [0] + line_breaks + [self.__img.shape[0]]
-        return zip(lines[:-1], lines[1:])
+    # def __get_line_coords(self):
+    #     contours = cv2.findContours(self.__img, cv2.RETR_EXTERNAL,
+    #                                 cv2.CHAIN_APPROX_SIMPLE)[1]
+    #     sizes = [(cv2.boundingRect(cnt)[1], cv2.boundingRect(cnt)[3])
+    #              for cnt in contours]
+    #     sizes = np.array(sorted(sizes, key=lambda x: x[0]))
+    #     line_breaks = []
+    #     for (y1, h1), (y2, h2) in zip(sizes[:-1], sizes[1:]):
+    #         overlap = (y1 + h1) - y2
+    #         if overlap < 0 or h2 / overlap > 3:
+    #             line_break = (y2 + (y1 + h1)) / 2
+    #             line_breaks.append(line_break)
+    #     lines = [0] + line_breaks + [self.__img.shape[0]]
+    #     return zip(lines[:-1], lines[1:])
 
     @staticmethod
     def __rotate_image(img, angle):
@@ -238,12 +243,27 @@ class Preprocessor():
         """
         mask = np.zeros(self.__img.shape)
         cv2.drawContours(mask, contours, -1, 255, -1)
-        out = np.zeros(self.__img.shape)
-        out[mask == 255] = mask[mask == 255]
-        # Now crop
+        # out = np.zeros(self.__img.shape)
+        # out[mask == 255] = mask[mask == 255]
+
+        # _time0 = time()
+        out = mask
+        # # Now crop
         x, y = np.where(mask == 255)
+        # print time() - _time0
+        #
         top_x, top_y = (np.min(x), np.min(y))
         bottom_x, bottom_y = (np.max(x), np.max(y))
+
+        # print 'len', len(contours)
+        # x, y, w, h = cv2.boundingRect(contours[0])
+        # top_y2, top_x2 = y, x
+        # bottom_y2, bottom_x2 = y + h, x + w
+        # print'top_x:', top_x, top_x2
+        # print'top_y:', top_y, top_y2
+        # print'bottom_x:', bottom_x, bottom_x2
+        # print'bottom_y:', bottom_y, bottom_y2
+
         return out[top_x:bottom_x+1, top_y:bottom_y+1]
 
     # def tittle_segmentation(self, upper, lower):
@@ -307,6 +327,7 @@ class Preprocessor():
         upper, lower = line_coords
         line_height = self.__get_line_height(img_line)
         space_len = line_height / SPACE_RATIO
+
         words = self.__get_word_coords(img_line, space_len)
         line = []
         for left, right in words:
@@ -328,7 +349,7 @@ class Preprocessor():
             self.__img, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
         self.__contours = np.array(self.__contours)
 
-        lines = self.__get_line_coords()
+        lines = self.__get_line_coords(self.__img, LINE_THRESHOLD)
         text = []
         for upper, lower in lines:
             img_line = self.__img[upper:lower]
@@ -338,9 +359,10 @@ class Preprocessor():
         return text
 
 
-# _path = '..\\testing images\\TEST3.jpg'
+# _path = '..\\testing images\\text in book.jpg'
 # _img = cv2.imread(_path, 0)
 # prepr = Preprocessor(_img)
+#
 # _text = prepr.separate_text()
 # print 'lines: ', len(_text)
 # for _line in _text:
