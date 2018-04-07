@@ -111,36 +111,19 @@ class Network(object):
         by stochastic gradient descent.
         """
         self.mapping = mapping
-        self.layers = layers
+        self.__layers = layers
         self.mini_batch_size = mini_batch_size
-        self.params = [param for layer in self.layers for param in
+        self.params = [param for layer in self.__layers for param in
                        layer.params]
         self.x = tt.matrix('x')
         self.y = tt.ivector('y')
-        init_layer = self.layers[0]
+        init_layer = self.__layers[0]
         init_layer.set_inpt(self.x, self.x, self.mini_batch_size)
-        for j in xrange(1, len(self.layers)):
-            prev_layer, layer = self.layers[j - 1], self.layers[j]
+        for j in xrange(1, len(self.__layers)):
+            prev_layer, layer = self.__layers[j - 1], self.__layers[j]
             layer.set_inpt(
                 prev_layer.output, prev_layer.output_dropout,
                 self.mini_batch_size)
-
-    def __classify_word(self, inpt, starting_point, char_count):
-        init_layer = self.layers[0]
-        init_layer.set_inpt(self.x, self.x, char_count)
-        for x in xrange(1, len(self.layers)):
-            prev_layer, layer = self.layers[x - 1], self.layers[x]
-            layer.set_inpt(prev_layer.output, prev_layer.output_dropout,
-                           char_count)
-
-        starting_point_tensor = tt.lscalar()
-        char_count_tensor = tt.lscalar()
-        feedforward_function = theano.function(
-            [starting_point_tensor, char_count_tensor], self.layers[-1].output,
-            givens={self.x: inpt[
-                    starting_point_tensor:
-                    starting_point_tensor + char_count_tensor]})
-        return feedforward_function(starting_point, char_count)
 
     @staticmethod
     def __lines_to_chars(lines):
@@ -151,27 +134,6 @@ class Network(object):
                     chars = np.append(chars, [char], axis=0)
         return chars[1:]
 
-    # def classify_text(self, input_lines):
-    #     chars = self.__lines_to_chars(input_lines)
-    #     inpt = np.array(chars)
-    #     inpt = inpt.reshape((-1, 28 * 28))
-    #     print inpt.shape
-    #     inpt = theano.shared(
-    #         np.asarray(inpt, dtype=theano.config.floatX), borrow=True)
-    #
-    #     starting_point = 0
-    #     classified_text = []
-    #     for line in input_lines:
-    #         classified_line = []
-    #         for word in line:
-    #             char_count = len(word)
-    #             print starting_point, char_count
-    #             classified_line.append(self.__classify_word(
-    #                 inpt, starting_point, char_count))
-    #             starting_point += char_count
-    #         classified_text.append(classified_line)
-    #     return classified_text
-
     def classify_text(self, input_lines):
         chars = self.__lines_to_chars(input_lines)
         inpt = np.array(chars).reshape((-1, 28 * 28))
@@ -179,16 +141,16 @@ class Network(object):
             np.asarray(inpt, dtype=theano.config.floatX), borrow=True)
 
         char_count = len(chars)
-        init_layer = self.layers[0]
+        init_layer = self.__layers[0]
         init_layer.set_inpt(self.x, self.x, char_count)
-        for x in xrange(1, len(self.layers)):
-            prev_layer, layer = self.layers[x - 1], self.layers[x]
+        for x in xrange(1, len(self.__layers)):
+            prev_layer, layer = self.__layers[x - 1], self.__layers[x]
             layer.set_inpt(prev_layer.output, prev_layer.output_dropout,
-                           char_count)
+                             char_count)
 
         i = tt.lscalar()
         feedforward_function = theano.function(
-            [i], self.layers[-1].output,
+            [i], self.__layers[-1].output,
             givens={self.x: inpt}, on_unused_input='ignore')
 
         classified_chars = feedforward_function(0)
@@ -204,14 +166,12 @@ class Network(object):
             classified_text.append(classified_line)
         return classified_text
 
-    def sgd(self, training_data, epochs, mini_batch_size, learning_rate,
-            test_data, lmbda=0.0):
+    def sgd(self, training_data, epochs, learning_rate, test_data, lmbda=0.0):
         """
         Train the network using mini-batch stochastic gradient descent.
         :param training_data: (theano shared numpy array - input, theano shared
         numpy array - output) - The training examples.
         :param epochs: int - The number of epochs to run.
-        :param mini_batch_size: int - The mini batch size.
         :param learning_rate: int - The learning rate.
         :param test_data: (theano shared numpy array - input, theano shared
         numpy array - output) - The testing examples.
@@ -226,8 +186,9 @@ class Network(object):
 
         # define the (regularized) cost function, symbolic gradients, and
         # updates
-        l2_norm_squared = sum([(layer.w ** 2).sum() for layer in self.layers])
-        cost = self.layers[-1].cost(self) + \
+        l2_norm_squared = sum([(layer.w ** 2).sum() for layer in
+                               self.__layers])
+        cost = self.__layers[-1].cost(self) + \
             0.5 * lmbda * l2_norm_squared / num_training_batches
         grads = tt.grad(cost, self.params)
         updates = [(param, param - learning_rate * grad)
@@ -245,7 +206,7 @@ class Network(object):
                     i * self.mini_batch_size: (i + 1) * self.mini_batch_size]
             })
         test_mb_accuracy = theano.function(
-            [i], self.layers[-1].accuracy(self.y),
+            [i], self.__layers[-1].accuracy(self.y),
             givens={
                 self.x: test_input[
                     i * self.mini_batch_size: (i + 1) * self.mini_batch_size],
@@ -432,11 +393,11 @@ class SoftmaxLayer(object):
 
 class MultiNet():
     def __init__(self, nets):
-        self.nets = nets
+        self.__nets = nets
 
     def classify_text(self, lines):
-        mapping = self.nets[0].mapping
-        answer = [net.classify_text(lines) for net in self.nets]
+        mapping = self.__nets[0].mapping
+        answer = [net.classify_text(lines) for net in self.__nets]
 
         classified_text = []
         for line in np.array(answer)[0]:

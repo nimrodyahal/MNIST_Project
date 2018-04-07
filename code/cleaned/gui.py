@@ -96,6 +96,7 @@ class ModdedFrame(wx.Frame):
                 # print word,
                 print ''.join([char[0][0] for char in word]),
             print
+        print
 
     @staticmethod
     def get_resize_scale(bitmap_size):
@@ -113,7 +114,7 @@ def main():
     client_socket.connect((ADDRESS, 500))
 
     app = wx.App(False)
-    frame = ModdedFrame(None, 'Process Privileges', client_socket)
+    frame = ModdedFrame(None, 'Optical Character Recognition', client_socket)
     frame.Show()
     app.MainLoop()
 

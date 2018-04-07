@@ -4,7 +4,7 @@ import threading
 import os
 import cv2
 from preprocessor import Preprocessor
-from handle_nn import load_multi_net
+from handle_nn import load_multi_net, train_multi_net
 import cPickle
 
 
@@ -140,6 +140,7 @@ def main():
     used_numbers = []
     client_threads = []
     multi_net = load_multi_net(['..\\Saved Nets\\test_net0.txt'])
+    # multi_net = train_multi_net(1)
 
     server = socket.socket()
     server.bind(('0.0.0.0', 500))

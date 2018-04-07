@@ -160,10 +160,10 @@ class Network(object):
         self.x = tt.matrix("x")
         self.y = tt.ivector("y")
         init_layer = self.layers[0]
-        init_layer.set_inpt(self.x, self.x, self.mini_batch_size)
+        init_layer.__set_inpt(self.x, self.x, self.mini_batch_size)
         for j in xrange(1, len(self.layers)):
             prev_layer, layer = self.layers[j - 1], self.layers[j]
-            layer.set_inpt(
+            layer.__set_inpt(
                 prev_layer.output, prev_layer.output_dropout,
                 self.mini_batch_size)
         self.output = self.layers[-1].output
@@ -172,10 +172,10 @@ class Network(object):
     def feedforward(self, inpt):
         x = tt.matrix('x')
         init_layer = self.layers[0]
-        init_layer.set_inpt(x, x, 1)
+        init_layer.__set_inpt(x, x, 1)
         for j in xrange(1, len(self.layers)):
             prev_layer, layer = self.layers[j - 1], self.layers[j]
-            layer.set_inpt(prev_layer.output, prev_layer.output_dropout, 1)
+            layer.__set_inpt(prev_layer.output, prev_layer.output_dropout, 1)
         self.output = self.layers[-1].output
         t_feedforward = theano.function([x], self.layers[-1].output,
                                         allow_input_downcast=True)
