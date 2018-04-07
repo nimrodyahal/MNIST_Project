@@ -6,6 +6,7 @@ import cv2
 from preprocessor import Preprocessor
 from handle_nn import load_multi_net, train_multi_net
 import cPickle
+from autocomplete import SpellChecker
 
 
 SAVE_DIR = 'Cache\\'
@@ -53,10 +54,11 @@ def set_path_free(path):
 
 
 class ClientConnectionThread(threading.Thread):
-    def __init__(self, server, conn_success, multi_net):
+    def __init__(self, server, conn_success, multi_net, spell_checker):
         threading.Thread.__init__(self)
         self.__multi_net = multi_net
         self.__server = server
+        self.spell_checker = spell_checker
         self.__conn, _ = self.__server.accept()
         conn_success.set()  # Sets an event for a successful connection
 
@@ -100,8 +102,10 @@ class ClientConnectionThread(threading.Thread):
         #         string_line.append(string_word)
         #     string_text.append(string_line)
         print 'Classification Done!'
-        print string_text
-        return string_text
+        # print string_text
+        auto_completed = self.spell_checker.autocomplete_text(string_text)
+        print 'Spell Checking Done!'
+        return auto_completed
 
     # @staticmethod
     # def arrange_hierarchical_list(disordered_list):
@@ -141,6 +145,7 @@ def main():
     client_threads = []
     multi_net = load_multi_net(['..\\Saved Nets\\test_net0.txt'])
     # multi_net = train_multi_net(1)
+    spell_checker = SpellChecker('tests\\big_merged.txt')
 
     server = socket.socket()
     server.bind(('0.0.0.0', 500))
@@ -148,7 +153,8 @@ def main():
     print 'Listening...'
 
     conn_success = threading.Event()
-    new_client = ClientConnectionThread(server, conn_success, multi_net)
+    new_client = ClientConnectionThread(server, conn_success, multi_net,
+                                        spell_checker)
     new_client.start()
     while True:
         if conn_success.is_set():  # If all threads are already connected to a
@@ -157,7 +163,7 @@ def main():
             conn_success.clear()
             client_threads.append(new_client)
             new_client = ClientConnectionThread(server, conn_success,
-                                                multi_net)
+                                                multi_net, spell_checker)
             new_client.start()
 
 

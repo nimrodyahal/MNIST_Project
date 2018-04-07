@@ -91,12 +91,13 @@ class ModdedFrame(wx.Frame):
         # illustrate_canvas('ters.png', char.reshape((28, 28)))
         response = self.client_socket.recv(819200)
         ans = pickle.loads(response)
-        for line in ans:
-            for word in line:
-                # print word,
-                print ''.join([char[0][0] for char in word]),
-            print
-        print
+        print ans
+        # for line in ans:
+        #     for word in line:
+        #         # print word,
+        #         print ''.join([char[0][0] for char in word]),
+        #     print
+        # print
 
     @staticmethod
     def get_resize_scale(bitmap_size):

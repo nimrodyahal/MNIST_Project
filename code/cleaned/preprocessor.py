@@ -5,11 +5,11 @@ import Image
 
 
 # IMG_THRESHOLD = 90
-# SPACE_RATIO = 1.2
-SPACE_RATIO = 3
-LINE_THRESHOLD = 5
+SPACE_RATIO = 1.2
+# SPACE_RATIO = 3
+LINE_THRESHOLD = 30
 MIN_CNT_HEIGHT_LINE_RATIO = 2
-MIN_CNT_SIZE = 4
+MIN_CNT_SIZE = 500
 
 NET_INPUT_WIDTH = 28
 NET_INPUT_HEIGHT = 28
@@ -359,7 +359,7 @@ class Preprocessor():
         return text
 
 
-# _path = '..\\testing images\\text in book.jpg'
+# _path = '..\\testing images\\TEST3.jpg'
 # _img = cv2.imread(_path, 0)
 # prepr = Preprocessor(_img)
 #

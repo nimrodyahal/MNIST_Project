@@ -9,9 +9,21 @@ def get_many_words(text):
     return re.findall(r'\w+', text.lower())
 
 
+def unwrap_to_chars(func):
+    def decorator(text, *args):
+        for l_i, line in enumerate(text):
+            for w_i, word in enumerate(line):
+                for c_i, char in enumerate(word):
+                    word[c_i] = func(char, *args)
+                line[w_i] = word
+            text[l_i] = line
+        return text
+    return decorator
+
+
 class SpellChecker():
-    def __init__(self, file_name):
-        with open(file_name, 'r') as f:
+    def __init__(self, database_path):
+        with open(database_path, 'r') as f:
             self.word_counter = Counter(get_many_words(f.read()))
 
     def prob_of_word(self, word):
@@ -51,35 +63,24 @@ class SpellChecker():
         return (e2 for e1 in self.__edits1(word) for e2 in self.__edits1(e1))
 
     @staticmethod
-    def __recalculate_digit(text):
-        for l_i, line in enumerate(text):
-            for w_i, word in enumerate(line):
-                for c_i, char in enumerate(word):
-                    for t_i, trial in enumerate(char):
-                        if trial[0].isdigit():
-                            trial = (trial[0], trial[1] / 2)
-                        char[t_i] = trial
-                    char = sorted(char, key=lambda x: x[1], reverse=True)
-                    word[c_i] = char
-                line[w_i] = word
-            text[l_i] = line
-        return text
+    @unwrap_to_chars
+    def __recalculate_digits(char):
+        for t_i, trial in enumerate(char):
+            if trial[0].isdigit():
+                trial = (trial[0], trial[1] / 2)
+            char[t_i] = trial
+        return sorted(char, key=lambda x: x[1], reverse=True)
 
     @staticmethod
-    def __remove_duplicates(text):
-        for l_i, line in enumerate(text):
-            for w_i, word in enumerate(line):
-                for c_i, char in enumerate(word):
-                    possibilities = ''
-                    real_char = []
-                    for t_i, trial in enumerate(char):
-                        if trial[0].lower() not in possibilities:
-                            possibilities += trial[0].lower()
-                            real_char.append(trial)
-                    word[c_i] = real_char
-                line[w_i] = word
-            text[l_i] = line
-        return text
+    @unwrap_to_chars
+    def __remove_duplicates(char):
+        possibilities = ''
+        real_char = []
+        for t_i, trial in enumerate(char):
+            if trial[0].lower() not in possibilities:
+                possibilities += trial[0].lower()
+                real_char.append(trial)
+        return real_char
 
     @staticmethod
     def __attempt_generator(word, tries_per_char):
@@ -99,7 +100,7 @@ class SpellChecker():
             yield ''.join(chars).lower()
 
     def autocomplete_text(self, text):
-        text = self.__recalculate_digit(text)
+        text = self.__recalculate_digits(text)
         text = self.__remove_duplicates(text)
         final_text = []
         for line in text:
