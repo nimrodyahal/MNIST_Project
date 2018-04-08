@@ -2,14 +2,11 @@
 import cv2
 import numpy as np
 import Image
+from ContourClass import Contour
 
 
-# IMG_THRESHOLD = 90
-SPACE_RATIO = 1.2
-# SPACE_RATIO = 3
-LINE_THRESHOLD = 30
-MIN_CNT_HEIGHT_LINE_RATIO = 2
-MIN_CNT_SIZE = 500
+MIN_CNT_SIZE_RATIO = 0.0000005
+Y_DISTANCE_TO_AVE_RATIO = 0.4
 
 NET_INPUT_WIDTH = 28
 NET_INPUT_HEIGHT = 28
@@ -21,9 +18,11 @@ BORDER_SIZE = 1, 1, 1, 1
 class Preprocessor():
     def __init__(self, img):
         self.__img = self.__prepare_img(img)
-
-        _, self.__contours, self.__hierarchy = cv2.findContours(
-            self.__img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        _, cnts, hierarchy = cv2.findContours(
+            self.__img, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        self.__contours = []
+        for i, cnt in enumerate(cnts):
+            self.__contours.append(Contour(cnt, i, hierarchy[0][i]))
         self.__contours = np.array(self.__contours)
 
     def __prepare_img(self, img):
@@ -60,7 +59,14 @@ class Preprocessor():
         rotated = self.__rotate_image(thresh, angle)
         # cv2.imshow('rotated', cv2.resize(rotated, (0, 0), fx=.5, fy=.5))
         # cv2.waitKey(0)
-        return rotated
+        return thresh
+
+    def __get_external_contours(self):
+        externals = []
+        for cnt in self.__contours:
+            if cnt.hierarchy[3] == -1:
+                externals.append(cnt)
+        return externals
 
     @staticmethod
     def __clean_image(img):
@@ -73,15 +79,9 @@ class Preprocessor():
         sizes = [cv2.boundingRect(cnt)[2:] for cnt in contours]
         sizes = [(w - 1) * (h - 1) for w, h in sizes]
         for i, size in enumerate(sizes):
-            if size < MIN_CNT_SIZE:
+            if size < MIN_CNT_SIZE_RATIO * img.shape[0] * img.shape[1]:
                 cv2.drawContours(img, contours, i, 0, -1)
-
-        # cv2.imshow('thresh', cv2.resize(img, (0, 0), fx=1, fy=1))
-        # cv2.waitKey(0)
         return img
-        # for i, (w, h) in enumerate(sizes):
-        #     if w < MIN_CNT_SIZE and h < MIN_CNT_SIZE:
-        #         cv2.drawContours(img, contours, i, 0, -1)
 
     @staticmethod
     def __find_text_tilt(img):
@@ -98,54 +98,25 @@ class Preprocessor():
             angle -= 90
         return angle
 
-    @staticmethod
-    def __get_line_coords(img, threshold):
-        """
-        Returns the y coordinates of the line separations in the image.
-        NOTE: The coordinates are in the middle of each line separation
-        (includes the first and last lines by treating the top and bottom of
-        the image as the end and beginning of lines respectively).
-        :param img: The image in question (OpenCV2 image).
-        :param threshold: The minimum number of empty lines to count as a line
-        separation.
-        :return: [(line_starts, line_ends)] for each line.
-        """
-        slices = cv2.reduce(img, 1, cv2.REDUCE_AVG).reshape(-1)
-        slice_threshold = np.mean(slices) / 4
-        count = 0
-        is_line = False
-        line_coords = []
-        for i, slc in enumerate(slices):
-            if is_line:
-                if not slc >= slice_threshold:
-                    is_line = False
-                    count = 1
-            else:
-                if slc >= slice_threshold:
-                    is_line = True
-                    if count >= threshold:
-                        line_coords.append(i - count / 2)
-                else:
-                    count += 1
-        if not line_coords:
-            line_coords.append(0)
-        line_coords.append(img.shape[0])
-        return zip(line_coords[:-1], line_coords[1:])
+    def __get_line_coords(self):
+        external = self.__get_external_contours()
+        line_breaks = []
+        external = sorted(external, key=lambda x: x.bounding_rect[1])
+        for cnt1, cnt2 in zip(external[:-1], external[1:]):
+            x1, y1, w1, h1 = cnt1.bounding_rect
+            x2, y2, w2, h2 = cnt2.bounding_rect
+            overlap = (y1 + h1) - y2
+            if overlap <= 0 or h2 / overlap > 3:
+                line_break = (y2 + (y1 + h1)) / 2
+                line_breaks.append(line_break)
 
-    # def __get_line_coords(self):
-    #     contours = cv2.findContours(self.__img, cv2.RETR_EXTERNAL,
-    #                                 cv2.CHAIN_APPROX_SIMPLE)[1]
-    #     sizes = [(cv2.boundingRect(cnt)[1], cv2.boundingRect(cnt)[3])
-    #              for cnt in contours]
-    #     sizes = np.array(sorted(sizes, key=lambda x: x[0]))
-    #     line_breaks = []
-    #     for (y1, h1), (y2, h2) in zip(sizes[:-1], sizes[1:]):
-    #         overlap = (y1 + h1) - y2
-    #         if overlap < 0 or h2 / overlap > 3:
-    #             line_break = (y2 + (y1 + h1)) / 2
-    #             line_breaks.append(line_break)
-    #     lines = [0] + line_breaks + [self.__img.shape[0]]
-    #     return zip(lines[:-1], lines[1:])
+        for line in line_breaks:
+            cv2.line(self.__img, (0, line), (self.__img.shape[1], line),
+                     (255,), 1)
+        # cv2.imshow('', cv2.resize(self.__img, (0, 0), fx=1, fy=1))
+        # cv2.waitKey(0)
+        lines = [0] + line_breaks + [self.__img.shape[0]]
+        return zip(lines[:-1], lines[1:])
 
     @staticmethod
     def __rotate_image(img, angle):
@@ -175,19 +146,34 @@ class Preprocessor():
         heights = [cv2.boundingRect(cnt)[3] for cnt in contours]
         return np.mean(heights)
 
-    def __get_word_coords(self, line, threshold):
-        """
-        Returns the x coordinates of the word separations in the line.
-        NOTE: The coordinates are in the middle of each word separation
-        (includes the first and last word by treating the left and right of the
-        image as the end and beginning of words respectively).
-        :param line: The line in question (OpenCV2 image).
-        :param threshold: The minimum number of empty spaces to count as a word
-        separation.
-        :return: [(word_starts, word_ends)] for each word. (int, int)
-        """
-        rotated = cv2.rotate(line, cv2.ROTATE_90_CLOCKWISE)
-        return self.__get_line_coords(rotated, threshold)
+    def __get_word_coords(self, upper, lower):
+        bounds = upper, lower, 0, self.__img.shape[1]
+        external = self.__get_external_contours()
+        relevant = [cnt for cnt in external if
+                    self.__filter_contour(cnt, bounds)]
+
+        bounding_rects = [cnt.bounding_rect for cnt in relevant]
+        bounding_rects = sorted(bounding_rects, key=lambda x: x[0])
+
+        gaps = []
+        for rect1, rect2 in zip(bounding_rects[:-1], bounding_rects[1:]):
+            x1, _, w1, _ = rect1
+            x2 = rect2[0]
+            gaps.append(x2 - (x1 + w1))
+        if not gaps:
+            return [(0, self.__img.shape[1])]
+
+        space_threshold = self.__get_space_threshold(gaps)
+        spaces = []
+        for rect1, rect2 in zip(bounding_rects[:-1], bounding_rects[1:]):
+            x1, _, w1, _ = rect1
+            x2 = rect2[0]
+            gap = x2 - (x1 + w1)
+            if gap >= space_threshold:
+                spaces.append((x2 + x1 + w1) / 2)
+
+        spaces = [0] + spaces + [self.__img.shape[1]]
+        return zip(spaces[:-1], spaces[1:])
 
     @staticmethod
     def __get_padding(char):
@@ -242,63 +228,84 @@ class Preprocessor():
         :return: The redrawn character (OpenCV2 image).
         """
         mask = np.zeros(self.__img.shape)
+        contours = [cnt.contour for cnt in contours]
         cv2.drawContours(mask, contours, -1, 255, -1)
-        # out = np.zeros(self.__img.shape)
-        # out[mask == 255] = mask[mask == 255]
-
-        # _time0 = time()
-        out = mask
-        # # Now crop
+        # Now crop
         x, y = np.where(mask == 255)
-        # print time() - _time0
-        #
         top_x, top_y = (np.min(x), np.min(y))
         bottom_x, bottom_y = (np.max(x), np.max(y))
+        return mask[top_x:bottom_x+1, top_y:bottom_y+1]
 
-        # print 'len', len(contours)
-        # x, y, w, h = cv2.boundingRect(contours[0])
-        # top_y2, top_x2 = y, x
-        # bottom_y2, bottom_x2 = y + h, x + w
-        # print'top_x:', top_x, top_x2
-        # print'top_y:', top_y, top_y2
-        # print'bottom_x:', bottom_x, bottom_x2
-        # print'bottom_y:', bottom_y, bottom_y2
+    def __get_cnt_directly_underneath(self, cnt):
+        x, y, w, h = cnt.bounding_rect
+        center_x = x + w / 2
+        center_y = y + h / 2
+        external = self.__get_external_contours()
+        sorted_cnt = sorted(external, key=lambda _x: _x.bounding_rect[1])
+        for contour in sorted_cnt:
+            x2, y2, w2, h2 = contour.bounding_rect
+            if y2 > center_y:
+                if x2 < center_x < (x2 + w2):
+                    return contour
 
-        return out[top_x:bottom_x+1, top_y:bottom_y+1]
+    def segment_tittles(self):
+        external = self.__get_external_contours()
+        y_distances = []
+        for cnt in external:
+            cnt2 = self.__get_cnt_directly_underneath(cnt)
+            if cnt2:
+                x1, y1, w1, h1 = cnt.bounding_rect
+                x2, y2, w2, h2 = cnt2.bounding_rect
+                y_distances.append(y2 - (y1 + h1))
+        average_y_distance = np.mean(y_distances)
 
-    # def tittle_segmentation(self, upper, lower):
-    #     for i, cnt in enumerate(self.__contours):
-    #         bounds = (upper, lower, 0, self.__img.shape[1])
-    #         if self.__filter_contour(i, 0, bounds):
-    #             pass
-    #     pass
+        sorted_cnt = sorted(external, key=lambda x: x.bounding_rect[1])
+        for cnt in sorted_cnt:
+            cnt2 = self.__get_cnt_directly_underneath(cnt)
+            if cnt2:
+                x1, y1, w1, h1 = cnt.bounding_rect
+                x2, y2, w2, h2 = cnt2.bounding_rect
+                y_distance = y2 - (y1 + h1)
+                if y_distance < average_y_distance * Y_DISTANCE_TO_AVE_RATIO:
+                    cnt.hierarchy[3] = cnt2.index
 
-    def __filter_contour(self, i, line_height, bounds):
+    @staticmethod
+    def __get_space_threshold(char_gaps):
+        char_gaps = sorted([max(0, gap) for gap in char_gaps])
+        weights = range(1, len(char_gaps) + 1)  # + len(char_gaps) / 10
+        char_average = np.average(char_gaps, weights=weights)
+        last_gaps = char_gaps[-(len(char_gaps) / 4):]
+        last_average = np.mean(last_gaps)
+        return np.average([char_average, last_average], weights=[2, 1])
+
+    @staticmethod
+    def __filter_contour(contour, bounds):
         """
         Returns whether the contour is a character inside the word or not.
         Checks that the contour is an external one, if it's inside the bounds
         of the word, and if it is tall enough to not be a tittle (the little
         dots above 'i' and 'j').
-        :param i: The index of the contour.
-        :param line_height: The average height of the contours in the word.
+        :param contour: The contour in question
         :param bounds: (upper, lower, left, right).
         :return: True if the contour is a character in the word. False
         otherwise.
         """
         upper, lower, left, right = bounds
-        if self.__hierarchy[0, i, 3] != -1:
-            return False
-        x, y, w, h = cv2.boundingRect(self.__contours[i])
+        x, y, w, h = contour.bounding_rect
         x_center = x + w / 2
         y_center = y + h / 2
-        if y_center <= upper or y_center >= lower or \
-                x_center <= left or x_center >= right:
-            return False
-        if h + 2 < line_height / MIN_CNT_HEIGHT_LINE_RATIO:
-            return False
-        return True
+        if upper < y_center < lower and left < x_center < right:
+            return True
+        return False
 
-    def __separate_word(self, word_coords, line_height):
+    def __get_all_internal_contours(self, external_contour):
+        index = external_contour.index
+        internal_contours = [cnt for cnt in self.__contours if
+                             cnt.hierarchy[3] == index]
+        internal_contours += [external_contour]
+        return internal_contours
+
+    def __separate_word(self, bounds):
         """
         Separate each word to its characters. (Also turns character to network
         format of 0-1 instead of 0-255.)
@@ -307,32 +314,28 @@ class Preprocessor():
         :return: List of characters.
         :rtype : [OpenCV2 image]
         """
+        external = self.__get_external_contours()
+        relevant = [cnt for cnt in external if
+                    self.__filter_contour(cnt, bounds)]
         word_chars = []
-        for i, cnt in enumerate(self.__contours):
-            if self.__filter_contour(i, line_height, word_coords):
-                hie = list(np.where(self.__hierarchy[0, :, 3] == i)[0]) + [i]
-                char = self.__crop_contour(self.__contours[hie])
-                x = cv2.boundingRect(cnt)[0]
-                word_chars.append((char / 255.0, x))
+        for cnt in relevant:
+            contours = self.__get_all_internal_contours(cnt)
+            char = self.__crop_contour(contours)
+            x = cnt.bounding_rect[0]
+            word_chars.append((char / 255.0, x))
         word_chars = [w[0] for w in sorted(word_chars, key=lambda a: a[1])]
         return word_chars
 
-    def __separate_line(self, img_line, line_coords):
+    def __separate_line(self, upper, lower):
         """
         Separate each line to its characters.
-        :param img_line: The line in question (OpenCV2 image).
         :return: List of lists of characters (OpenCV2 image).
         :rtype : [words] = [[(OpenCV2 image)]]
         """
-        upper, lower = line_coords
-        line_height = self.__get_line_height(img_line)
-        space_len = line_height / SPACE_RATIO
-
-        words = self.__get_word_coords(img_line, space_len)
+        words = self.__get_word_coords(upper, lower)
         line = []
         for left, right in words:
-            chars = self.__separate_word((upper, lower, left, right),
-                                         line_height)
+            chars = self.__separate_word((upper, lower, left, right))
             word_chars = [self.__rescale_char(char) for char in chars]
             if word_chars:
                 line.append(word_chars)
@@ -345,21 +348,20 @@ class Preprocessor():
         :return: List of lists of lists of characters (OpenCV2 image).
         :rtype : [lines] = [[words]] = [[[(OpenCV2 image)]]]
         """
-        _, self.__contours, self.__hierarchy = cv2.findContours(
-            self.__img, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-        self.__contours = np.array(self.__contours)
-
-        lines = self.__get_line_coords(self.__img, LINE_THRESHOLD)
+        # _, self.__contours, self.__hierarchy = cv2.findContours(
+        #     self.__img, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        # self.__contours = np.array(self.__contours)
+        self.segment_tittles()
+        lines = self.__get_line_coords()
         text = []
         for upper, lower in lines:
-            img_line = self.__img[upper:lower]
-            line_chars = self.__separate_line(img_line, (upper, lower))
+            line_chars = self.__separate_line(upper, lower)
             if line_chars:
                 text.append(line_chars)
         return text
 
 
-# _path = '..\\testing images\\TEST3.jpg'
+# _path = '..\\testing images\\TEST1.jpg'
 # _img = cv2.imread(_path, 0)
 # prepr = Preprocessor(_img)
 #
