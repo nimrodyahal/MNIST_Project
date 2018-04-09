@@ -2,8 +2,7 @@
 import wx
 import socket
 import cPickle as pickle
-# from pre_processing import preprocess_img, illustrate_canvas
-# from handle_nn import load_net, load_multi_net, train_multi_net
+from docx import Document
 
 
 ADDRESS = 'mnistproject.ddns.net'
@@ -16,7 +15,7 @@ CLASSIFY_BUTTON_SIZE = (80, 35)
 CLASSIFY_BUTTON_POS = (450, 150)
 # File Dialog
 DIALOG_TITLE = 'Open'
-FILE_EXTENSION_NAME = 'Image files'
+FILE_EXTENSION_NAME = 'Image Files'
 FILE_EXTENSIONS = '*.png;*.jpg;*jpeg;*.gif;*.bmp;*.png'
 # Bitmap
 BITMAP_HEIGHT = 250
@@ -86,18 +85,38 @@ class ModdedFrame(wx.Frame):
         with open(self.image_path, 'rb') as img:
             self.client_socket.send(img.read())
 
-        # classifications = self.multi_net.feedforward(char)
-        # char = preprocess_img(self.image_path)
-        # illustrate_canvas('ters.png', char.reshape((28, 28)))
-        response = self.client_socket.recv(819200)
-        ans = pickle.loads(response)
-        print ans
-        # for line in ans:
-        #     for word in line:
-        #         # print word,
-        #         print ''.join([char[0][0] for char in word]),
-        #     print
-        # print
+        response = pickle.loads(self.client_socket.recv(819200))
+
+        dialog = wx.MessageDialog(self, response, 'Text',
+                                  wx.YES_NO)
+        if dialog.ShowModal() == wx.ID_YES:
+            self.save_text_file(response)
+
+    def save_text_file(self, text):
+        with wx.FileDialog(
+                self, "Save Text File",
+                wildcard="Word Files (*.docx)|*.docx|Text Files (*.txt)|*.txt",
+                style=wx.FD_SAVE | wx.FD_OVERWRITE_PROMPT) as fileDialog:
+            # the user changed their mind
+            if fileDialog.ShowModal() == wx.ID_CANCEL:
+                return
+            # save the current contents in the file
+            path = fileDialog.GetPath()
+            try:
+                self.do_save_data(path, text)
+            except IOError:
+                wx.LogError("Cannot save current data in file '%s'." % path)
+
+    @staticmethod
+    def do_save_data(path, text):
+        if path.endswith('.docx'):
+            document = Document()
+            print repr(text)
+            document.add_paragraph(str(text))
+            document.save(path)
+        elif path.endswith('.txt'):
+            with open(path, 'w') as f:
+                f.write(text)
 
     @staticmethod
     def get_resize_scale(bitmap_size):
@@ -109,8 +128,6 @@ class ModdedFrame(wx.Frame):
 
 
 def main():
-    # multi_net = train_multi_net(1)
-    # multi_net = load_multi_net(['..\\Saved Nets\\test_net0.txt'])
     client_socket = socket.socket()
     client_socket.connect((ADDRESS, 500))
 
