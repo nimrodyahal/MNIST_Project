@@ -127,6 +127,13 @@ class SpellChecker():
 
     @staticmethod
     def __attempt_generator(word, tries_per_char):
+        """
+        Returns generator for 'attempts' of a word.
+        :param word: The word in question. [chars] = [[(char, surety of the
+        net)]].
+        :param tries_per_char: The amount of attempts the generator has.
+        :return: String of the attempt in lower characters.
+        """
         chars = [c[0][0] for c in word]
         yield ''.join(chars).lower()
         for i in range(tries_per_char * len(word)):
@@ -143,6 +150,14 @@ class SpellChecker():
             yield ''.join(chars).lower()
 
     def autocomplete_text(self, text):
+        """
+        Main function of the class.
+        Auto completes\spell checks the text. Inputs the output of the net,
+        outputs the most likely text in str format.
+        :param text: [lines] = [[words]] = [[[chars]]] = [[[[(char, surety of
+        the net)]]]]
+        :return: String of the text in all lower chars.
+        """
         text = self.__recalculate_digits(text)
         text = self.__remove_duplicates(text)
         final_text = []
