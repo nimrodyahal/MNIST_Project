@@ -32,19 +32,6 @@ class Preprocessor():
         :param img: The image in question (OpenCV2 image).
         :return: A rotated to text tilt threshold of the image (OpenCV2 image).
         """
-        # img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        # thresh = cv2.threshold(img_gray, IMG_THRESHOLD, 255,
-        #                        cv2.THRESH_BINARY)[1]
-        # thresh = cv2.bitwise_not(thresh)
-
-        # thresh = cv2.adaptiveThreshold(img, 255,
-        #                                cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
-        #                                cv2.THRESH_BINARY, 41, 20)
-
-        # blur = cv2.GaussianBlur(img, (1, 1), 0)
-        # ret2, thresh = cv2.threshold(img, 0, 255,
-        #                              cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-
         blur = cv2.bilateralFilter(img, 40, 10, 10)
         thresh = cv2.adaptiveThreshold(blur, 255,
                                        cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
@@ -52,16 +39,12 @@ class Preprocessor():
 
         thresh = cv2.bitwise_not(thresh)
         thresh = self.__clean_image(thresh)
-
-        # cv2.imshow('thresh', cv2.resize(thresh, (0, 0), fx=.5, fy=.5))
-        # cv2.waitKey(0)
-        angle = self.__find_text_tilt(thresh)
-        rotated = self.__rotate_image(thresh, angle)
-        # cv2.imshow('rotated', cv2.resize(rotated, (0, 0), fx=.5, fy=.5))
-        # cv2.waitKey(0)
         return thresh
 
     def __get_external_contours(self):
+        """
+        Returns only the external contours in the image.
+        """
         externals = []
         for cnt in self.__contours:
             if cnt.hierarchy[3] == -1:
@@ -99,6 +82,10 @@ class Preprocessor():
         return angle
 
     def __get_line_coords(self):
+        """
+        Returns the coordinates of the different lines.
+        :returns: [(upper_y_coord, lower_y_coord)]
+        """
         external = self.__get_external_contours()
         line_breaks = []
         external = sorted(external, key=lambda x: x.bounding_rect[1])
@@ -110,11 +97,6 @@ class Preprocessor():
                 line_break = (y2 + (y1 + h1)) / 2
                 line_breaks.append(line_break)
 
-        for line in line_breaks:
-            cv2.line(self.__img, (0, line), (self.__img.shape[1], line),
-                     (255,), 1)
-        # cv2.imshow('', cv2.resize(self.__img, (0, 0), fx=1, fy=1))
-        # cv2.waitKey(0)
         lines = [0] + line_breaks + [self.__img.shape[0]]
         return zip(lines[:-1], lines[1:])
 
@@ -147,20 +129,29 @@ class Preprocessor():
         return np.mean(heights)
 
     def __get_word_coords(self, upper, lower):
+        """
+        Returns the coordinates of the different words.
+        :param upper: The upper coordinate of the line.
+        :param lower: The lower coordinate of the line.
+        :returns: [(left_x_coord, right_x_coord)]
+        """
         bounds = upper, lower, 0, self.__img.shape[1]
-        external = self.__get_external_contours()
+        external = self.__get_external_contours()  # Get only the external
+        # contours
         relevant = [cnt for cnt in external if
-                    self.__filter_contour(cnt, bounds)]
+                    self.__filter_contour(cnt, bounds)]  # Get only the
+                    # relevant contours to the line
 
         bounding_rects = [cnt.bounding_rect for cnt in relevant]
-        bounding_rects = sorted(bounding_rects, key=lambda x: x[0])
+        bounding_rects = sorted(bounding_rects, key=lambda x: x[0])  # Sort by
+        # x value
 
         gaps = []
         for rect1, rect2 in zip(bounding_rects[:-1], bounding_rects[1:]):
             x1, _, w1, _ = rect1
             x2 = rect2[0]
             gaps.append(x2 - (x1 + w1))
-        if not gaps:
+        if not gaps:  # Only one word in the line
             return [(0, self.__img.shape[1])]
 
         space_threshold = self.__get_space_threshold(gaps)
@@ -237,6 +228,11 @@ class Preprocessor():
         return mask[top_x:bottom_x+1, top_y:bottom_y+1]
 
     def __get_cnt_directly_underneath(self, cnt):
+        """
+        Returns the contour directly beneath the one inputted.
+        :param cnt: The contour in question.
+        :return: The contour beneath it.
+        """
         x, y, w, h = cnt.bounding_rect
         center_x = x + w / 2
         center_y = y + h / 2
@@ -249,6 +245,10 @@ class Preprocessor():
                     return contour
 
     def segment_tittles(self):
+        """
+        Tittles are the little dots above 'i' and 'j'. This function adds them
+        to the letter contour.
+        """
         external = self.__get_external_contours()
         y_distances = []
         for cnt in external:
@@ -271,6 +271,12 @@ class Preprocessor():
 
     @staticmethod
     def __get_space_threshold(char_gaps):
+        """
+        Returns the minimum space threshold in a line by it's the gaps between
+        the characters.
+        :param char_gaps: [gap between character]
+        :return: The minimum threshold for space.
+        """
         char_gaps = sorted([max(0, gap) for gap in char_gaps])
         weights = range(1, len(char_gaps) + 1)  # + len(char_gaps) / 10
         char_average = np.average(char_gaps, weights=weights)
@@ -299,6 +305,10 @@ class Preprocessor():
         return False
 
     def __get_all_internal_contours(self, external_contour):
+        """
+        Returns all the internal contours within a contour.
+        :param external_contour: The contour in question.
+        """
         index = external_contour.index
         internal_contours = [cnt for cnt in self.__contours if
                              cnt.hierarchy[3] == index]
@@ -309,8 +319,7 @@ class Preprocessor():
         """
         Separate each word to its characters. (Also turns character to network
         format of 0-1 instead of 0-255.)
-        :param line_height: The height of the line, used to filter contours
-        that are too small.
+        :param bounds: (upper, lower, left, right) coordinates of the word.
         :return: List of characters.
         :rtype : [OpenCV2 image]
         """
@@ -348,9 +357,6 @@ class Preprocessor():
         :return: List of lists of lists of characters (OpenCV2 image).
         :rtype : [lines] = [[words]] = [[[(OpenCV2 image)]]]
         """
-        # _, self.__contours, self.__hierarchy = cv2.findContours(
-        #     self.__img, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-        # self.__contours = np.array(self.__contours)
         self.segment_tittles()
         lines = self.__get_line_coords()
         text = []
@@ -359,19 +365,3 @@ class Preprocessor():
             if line_chars:
                 text.append(line_chars)
         return text
-
-
-# _path = '..\\testing images\\TEST1.jpg'
-# _img = cv2.imread(_path, 0)
-# prepr = Preprocessor(_img)
-#
-# _text = prepr.separate_text()
-# print 'lines: ', len(_text)
-# for _line in _text:
-#     print '\twords: ', len(_line)
-#     for _word in _line:
-#         print '\t\tchars: ', len(_word)
-#         # for _i, _char in enumerate(_word):
-#         #     cv2.imshow(str(_i), _char * 255.0)
-#         # cv2.waitKey(0)
-#         # cv2.destroyAllWindows()

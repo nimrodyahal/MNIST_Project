@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import wx
 import socket
-import cPickle as pickle
+import cPickle as Pickle
 from docx import Document
 
 
@@ -54,6 +54,10 @@ class ModdedFrame(wx.Frame):
         self.Center()
 
     def on_load_press(self, event):
+        """
+        When pressing the 'Load Image' button, open a file dialog prompt, then
+        align it to fit in the frame.
+        """
         #  Undisplay previous image
         if type(self.image) == wx.StaticBitmap:
             self.image.Hide()
@@ -74,6 +78,12 @@ class ModdedFrame(wx.Frame):
         self.image = wx.StaticBitmap(self, -1, bitmap, pos=BITMAP_POS)
 
     def on_classify_press(self, event):
+        """
+        When pressing the 'Classify' button, send the server the image to
+        process if it was chosen. If not, alert the user to choose an image.
+        Open a message box containing the classified text, and prompt the user
+        to save it to a file.
+        """
         # Display error message on the status bar if no image was loaded
         if type(self.image) != wx.StaticBitmap:
             self.status_bar.SetStatusText('You must first load an image to'
@@ -85,14 +95,20 @@ class ModdedFrame(wx.Frame):
         with open(self.image_path, 'rb') as img:
             self.client_socket.send(img.read())
 
-        response = pickle.loads(self.client_socket.recv(819200))
+        response = str(Pickle.loads(self.client_socket.recv(819200)))
 
-        dialog = wx.MessageDialog(self, response, 'Text',
+        dialog = wx.MessageDialog(self, response + '\r\nWould you like to '
+                                                   'save this text to a file?',
+                                  'Text',
                                   wx.YES_NO)
         if dialog.ShowModal() == wx.ID_YES:
             self.save_text_file(response)
 
     def save_text_file(self, text):
+        """
+        Prompts the user to save the text to a file.
+        :param text: The text to save to the file.
+        """
         with wx.FileDialog(
                 self, "Save Text File",
                 wildcard="Word Files (*.docx)|*.docx|Text Files (*.txt)|*.txt",
@@ -109,6 +125,11 @@ class ModdedFrame(wx.Frame):
 
     @staticmethod
     def do_save_data(path, text):
+        """
+        Saves the data to a file. Either Word Document or .txt file.
+        :param path: The path of the file.
+        :param text: The text to save to the file.
+        """
         if path.endswith('.docx'):
             document = Document()
             print repr(text)
@@ -120,6 +141,11 @@ class ModdedFrame(wx.Frame):
 
     @staticmethod
     def get_resize_scale(bitmap_size):
+        """
+        Returns the scaling required to get a bitmap to fit to it's specified
+        height.
+        :param bitmap_size: The size of the bitmap (width, height)
+        """
         scaling = BITMAP_HEIGHT / (bitmap_size[1] * 1.0)
         rescaled_width = bitmap_size[0] * scaling
         if rescaled_width > MAX_BITMAP_WIDTH:

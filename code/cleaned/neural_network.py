@@ -27,12 +27,8 @@ from theano.tensor.signal import pool
 from theano.tensor.nnet import sigmoid
 
 
-# PATH = '..\\..\\dataset\\matlab\\emnist-bymerge.mat'
 PATH = 'D:\\School\\Programming\\Cyber\\FinalExercise-12th\\MNIST_Project\\' \
        'dataset\\matlab\\emnist-bymerge.mat'
-# NAMES = {'bal': 'emnist-balanced.mat', 'cls': 'emnist-byclass.mat',
-#          'mrg': 'emnist-bymerge.mat', 'dgt': 'emnist-digits.mat',
-#          'ltr': 'emnist-letters.mat', 'mnist': 'emnist-mnist'}
 NUM_OF_TRIES = 5  # The amount of 'tries' a net has to classify
 
 
@@ -127,6 +123,11 @@ class Network(object):
 
     @staticmethod
     def __lines_to_chars(lines):
+        """
+        Converts the input from list of lines containing lists of words
+        containing lists of characters, to just a single list of characters.
+        :param lines: [lines] = [[words]] = [[[chars]]] (OpenCV2 Images)
+        """
         chars = np.zeros((1, 28, 28))
         for line in lines:
             for word in line:
@@ -135,6 +136,12 @@ class Network(object):
         return chars[1:]
 
     def classify_text(self, input_lines):
+        """
+        Classifies the image to the text in it.
+        :param input_lines: [lines] = [[words]] = [[[chars]]] (OpenCV2 Images)
+        :return: [lines] = [[words]] = [[[chars]]] = [[[[tries]]]] =
+        [[[[(char in ascii like mapping, surety of the net)]]]]
+        """
         chars = self.__lines_to_chars(input_lines)
         inpt = np.array(chars).reshape((-1, 28 * 28))
         inpt = theano.shared(
@@ -146,7 +153,7 @@ class Network(object):
         for x in xrange(1, len(self.__layers)):
             prev_layer, layer = self.__layers[x - 1], self.__layers[x]
             layer.set_inpt(prev_layer.output, prev_layer.output_dropout,
-                             char_count)
+                           char_count)
 
         i = tt.lscalar()
         feedforward_function = theano.function(
@@ -241,6 +248,9 @@ class Network(object):
             .format(best_test_accuracy, best_iteration)
 
     def save(self, filename):
+        """
+        Saves a neural network to a file using cPickle.
+        """
         with open(filename, 'wb') as f:
             cPickle.dump(self, f, -1)
 
@@ -396,6 +406,12 @@ class MultiNet():
         self.__nets = nets
 
     def classify_text(self, lines):
+        """
+        Classifies the image to text.
+        :param lines: [lines] = [[words]] = [[[chars]]] (OpenCV2 Images)
+        :return: [lines] = [[words]] = [[[chars]]] = [[[[tries]]]] =
+        [[[[(char, surety of the net)]]]]
+        """
         mapping = self.__nets[0].mapping
         answer = [net.classify_text(lines) for net in self.__nets]
 
@@ -424,8 +440,3 @@ def dropout_layer(layer, p_dropout):
         np.random.RandomState(0).randint(999999))
     mask = srng.binomial(n=1, p=1 - p_dropout, size=layer.shape)
     return layer * tt.cast(mask, theano.config.floatX)
-
-
-# def load_net(filename):
-#     with open(filename, 'rb') as f:
-#         return cPickle.load(f)

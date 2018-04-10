@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
-import cPickle
 from neural_network import *
 
 
 def get_file_name():
+    """
+    Generator the returns free file names.
+    """
     save_dir = '..\\Saved Nets'
     i = 0
     while True:
@@ -13,6 +15,16 @@ def get_file_name():
 
 
 def train_net(training_data, test_data, mapping):
+    """
+    Trains a deep convolutional neural network with 2 convolutional layers, 2
+    pooling layers, 2 fully connected layers and a softmax layer. Uses dropout
+    for normalization, a ReLu activation function, a minibatch size of 10, a
+    learning rate of 0.3, 40 epochs, and Stochastic Gradient Descent method.
+    :param training_data: The training dataset.
+    :param test_data: The testing dataset.
+    :param mapping: The mapping.
+    :return: A trained neural network.
+    """
     mini_batch_size = 10
     net = Network([
         ConvPoolLayer(image_shape=(mini_batch_size, 1, 28, 28),
@@ -34,6 +46,11 @@ def train_net(training_data, test_data, mapping):
 
 
 def train_multi_net(net_count):
+    """
+    Trains a multi-network.
+    :param net_count: The amount of neural networks in the multi-net.
+    :returns: The multi-net.
+    """
     training_data, test_data, mapping = load_data_shared()
     file_name = get_file_name()
     paths = []
@@ -48,6 +65,11 @@ def train_multi_net(net_count):
 
 
 def load_multi_net(nets_path):
+    """
+    Loads a multi-net.
+    :param nets_path: [path of neural network]
+    :returns: The multi-net.
+    """
     nets = []
     for path in nets_path:
         nets.append(load_net(path))
@@ -55,5 +77,10 @@ def load_multi_net(nets_path):
 
 
 def load_net(filename):
+    """
+    Loads a single neural network.
+    :param filename: The of the neural network.
+    :returns: The neural network.
+    """
     with open(filename, 'rb') as f:
         return cPickle.load(f)
