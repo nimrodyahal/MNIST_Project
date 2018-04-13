@@ -3,9 +3,10 @@ import socket
 import threading
 import os
 import cv2
+import cPickle
+import Queue
 from preprocessor import Preprocessor
 from handle_nn import load_multi_net
-import cPickle
 from autocomplete import SpellChecker
 
 
@@ -53,12 +54,35 @@ def set_path_free(path):
     used_numbers.remove(number_of_path)
 
 
-class ClientConnectionThread(threading.Thread):
-    def __init__(self, server, conn_success, multi_net, spell_checker):
+class NeuralNetThread(threading.Thread):
+    def __init__(self, input_q, multi_net):
         threading.Thread.__init__(self)
+        self.input_q = input_q
+        self.stop_request = threading.Event()
         self.__multi_net = multi_net
+
+    def run(self):
+        while not self.stop_request.isSet():
+            try:
+                thread_id, separated = self.input_q.get_nowait()
+                result = self.__multi_net.classify_text(separated)
+                output_d[thread_id] = result
+            except Queue.Empty:
+                continue
+
+    def join(self, timeout=None):
+        self.stop_request.set()
+        threading.Thread.join(self, timeout)
+
+
+class ClientConnectionThread(threading.Thread):
+    def __init__(self, server, conn_success, thread_id, spell_checker,
+                 input_q):
+        threading.Thread.__init__(self)
+        self.id = thread_id
         self.__server = server
         self.spell_checker = spell_checker
+        self.input_q = input_q
         self.__conn, _ = self.__server.accept()
         conn_success.set()  # Sets an event for a successful connection
 
@@ -92,20 +116,32 @@ class ClientConnectionThread(threading.Thread):
         preprocessor = Preprocessor(cv2_img)
         separated = preprocessor.separate_text()
         print 'Separated Chars'
-
-        string_text = self.__multi_net.classify_text(separated)
+        self.input_q.put((self.id, separated))
+        string_text = self.wait_for_answer()
         print 'Classification Done!'
         auto_completed = self.spell_checker.autocomplete_text(string_text)
         print 'Spell Checking Done!'
         return auto_completed
 
+    def wait_for_answer(self):
+        while True:
+            if self.id in output_d:
+                answer = output_d[self.id]
+                return answer
+
 
 def main():
     global used_numbers
+    global output_d
+    output_d = {}
+    input_q = Queue.Queue()
     used_numbers = []
     client_threads = []
     multi_net = load_multi_net(['..\\Saved Nets\\test_net0.txt'])
     spell_checker = SpellChecker('big_merged.txt')
+
+    nn_thread = NeuralNetThread(input_q, multi_net)
+    nn_thread.start()
 
     server = socket.socket()
     server.bind(('0.0.0.0', 500))
@@ -113,8 +149,9 @@ def main():
     print 'Listening...'
 
     conn_success = threading.Event()
-    new_client = ClientConnectionThread(server, conn_success, multi_net,
-                                        spell_checker)
+    index = 0
+    new_client = ClientConnectionThread(server, conn_success, index,
+                                        spell_checker, input_q)
     new_client.start()
     while True:
         if conn_success.is_set():  # If all threads are already connected to a
@@ -122,8 +159,9 @@ def main():
             print 'Connected to new client!'
             conn_success.clear()
             client_threads.append(new_client)
-            new_client = ClientConnectionThread(server, conn_success,
-                                                multi_net, spell_checker)
+            index += 1
+            new_client = ClientConnectionThread(
+                server, conn_success, index, spell_checker, input_q)
             new_client.start()
 
 

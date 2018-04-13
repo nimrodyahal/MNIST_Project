@@ -205,7 +205,7 @@ class Preprocessor():
         new_size = (int(scaling * w), int(scaling * h))
 
         pil_img = pil_img.resize(new_size, Image.ANTIALIAS)
-        rescaled = cv2.cvtColor(np.array(pil_img), cv2.COLOR_RGB2GRAY)
+        rescaled = np.array(pil_img, dtype=np.float64)[:, :, 0]
 
         pad_t, pad_b, pad_l, pad_r = self.__get_padding(rescaled)
         rescaled = cv2.copyMakeBorder(rescaled, pad_t, pad_b, pad_l, pad_r,
@@ -346,6 +346,10 @@ class Preprocessor():
         for left, right in words:
             chars = self.__separate_word((upper, lower, left, right))
             word_chars = [self.__rescale_char(char) for char in chars]
+            # for i, char in enumerate(word_chars):
+            #     cv2.imshow(str(i), char)
+            # cv2.waitKey(0)
+            # cv2.destroyAllWindows()
             if word_chars:
                 line.append(word_chars)
         return line
@@ -365,3 +369,10 @@ class Preprocessor():
             if line_chars:
                 text.append(line_chars)
         return text
+
+
+_path = 'D:\\School\\Programming\\Cyber\\FinalExercise-12th\\MNIST_Project\\' \
+        'code\\testing images\\grab6 - Copy.png'
+_img = cv2.imread(_path, 0)
+prep = Preprocessor(_img)
+prep.separate_text()

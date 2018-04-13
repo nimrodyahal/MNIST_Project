@@ -160,6 +160,7 @@ class SpellChecker():
         """
         text = self.__recalculate_digits(text)
         text = self.__remove_duplicates(text)
+        # print text[1][0]
         final_text = []
         for line in text:
             final_line = []
