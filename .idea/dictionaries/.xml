@@ -2,11 +2,13 @@
   <dictionary name="נמרוד">
     <words>
       <w>grayscaled</w>
+      <w>memoized</w>
       <w>preprocess</w>
       <w>preprocesses</w>
       <w>proc</w>
       <w>rects</w>
       <w>resized</w>
+      <w>uncacheable</w>
     </words>
   </dictionary>
 </component>

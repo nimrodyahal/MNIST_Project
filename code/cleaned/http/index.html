@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Bootstrap Example</title>
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/mdb.min.css">
+		<link rel="stylesheet" href="css/style.css">
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="js/popper.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/mdb.min.js"></script>
+	</head>
+	<body style="background-color: lavender">
+
+		<div class="container-fluid">
+			<div class ="jumbotron" style="background:transparent url('https://cdn-images-1.medium.com/max/1200/1*m2gDBT_nc-iE7R4AM3sHBQ.jpeg') no-repeat top center /cover">
+				<h1 class="display-2"><font color="white" style="font-family: sans-serif"><center>Optical Character Recognition</center></font></h1>
+			</div>
+			<div class="row" style="height:600px">
+				<div class="col-sm-8">
+				
+				<img class="img-responsive" id='img-upload'/>
+				<div class="row">
+					<input class="balloon btn btn-primary" id="PostImage" type="file" placeholder="Choose...">
+					
+					<button id="test" class="btn btn-primary" onclick="location.href = '1234';">Test</button>
+					<button id="PostImageSubmit" class="btn btn-primary button-submit" onclick="location.href = '1234';">Submit</button>
+				</div>
+				</div>
+				<div class="col-sm-4">
+				<button type="button" class="btn btn-primary">Button 1</button>
+				<canvas id="lineChart"></canvas>
+				</div>
+			</div>
+		</div>
+		
+		<script>
+		var ctxL = document.getElementById("lineChart").getContext('2d');
+			var myLineChart = new Chart(ctxL, {
+				type: 'line',
+				data: {
+					labels: ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+					datasets: [
+						{
+							label: "My First dataset",
+							fillColor: "rgba(220,220,220,0.2)",
+							strokeColor: "rgba(220,220,220,1)",
+							pointColor: "rgba(220,220,220,1)",
+							pointStrokeColor: "#fff",
+							pointHighlightFill: "#fff",
+							pointHighlightStroke: "rgba(220,220,220,1)",
+							data: [48, 98, 78, 88, 48, 4, 12, 59, 28, 27, 29, 50, 83, 82, 38, 46, 87, 81, 67, 1]
+						},
+					]
+				},
+				options: {
+					responsive: true
+				}    
+			});
+		</script>
+		<script>
+		$(document).on("ready", function() {
+			$("#input-700").fileinput({
+				uploadUrl: "/file-upload-single/1",
+				maxFileCount: 5
+			});
+		});
+		</script>
+		<script type="text/javascript" src="js/submit.js"></script>
+		<style>
+			.btn-file {
+				position: relative;
+				overflow: hidden;
+			}
+			.btn-file input[type=file] {
+				position: absolute;
+				top: 0;
+				right: 0;
+				min-width: 100%;
+				min-height: 100%;
+				font-size: 100px;
+				text-align: right;
+				filter: alpha(opacity=0);
+				opacity: 0;
+				outline: none;
+				background: white;
+				cursor: inherit;
+				display: block;
+			}
+
+			#img-upload{
+				max-height: 500px;
+				border-style: solid;
+				border-color: black;
+			}
+		</style>
+	</body>
+</html>

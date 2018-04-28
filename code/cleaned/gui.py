@@ -29,29 +29,46 @@ class ModdedFrame(wx.Frame):
         self.panel = wx.Panel(self)
         self.client_socket = client_socket
 
-        # Initialise The Refresh Button
-        self.load_image_button = wx.Button(self.panel, label='Load Image',
-                                           size=LOAD_BUTTON_SIZE,
-                                           pos=LOAD_BUTTON_POS)
-        self.load_image_button.Bind(wx.EVT_BUTTON, self.on_load_press)
-
-        # Initialise The Refresh Button
-        self.classify_button = wx.Button(self.panel, label='Classify',
-                                         size=CLASSIFY_BUTTON_SIZE,
-                                         pos=CLASSIFY_BUTTON_POS)
-        self.classify_button.Bind(wx.EVT_BUTTON, self.on_classify_press)
-
-        # Initialize The Image
-        self.image = self.image_path = None
-        self.open_bitmap = wx.FileDialog(self, DIALOG_TITLE, '', '',
-                                         FILE_EXTENSION_NAME + '|' +
-                                         FILE_EXTENSIONS,
-                                         wx.FD_OPEN | wx.FD_FILE_MUST_EXIST)
-
-        # Initialize The Status Bar
+        self.load_image_button = self.init_load_button()
+        self.classify_button = self.init_classify_button()
+        self.image, self.image_path, self.open_bitmap = self.init_image()
         self.status_bar = self.CreateStatusBar(1)
 
         self.Center()
+
+    def init_load_button(self):
+        """
+        Initialise the 'load image' button.
+        :return:
+        """
+        load_image_button = wx.Button(self.panel, label='Load Image',
+                                      size=LOAD_BUTTON_SIZE,
+                                      pos=LOAD_BUTTON_POS)
+        load_image_button.Bind(wx.EVT_BUTTON, self.on_load_press)
+        return load_image_button
+
+    def init_classify_button(self):
+        """
+        Initialise the 'classify' button.
+        :return:
+        """
+        classify_button = wx.Button(self.panel, label='Classify',
+                                    size=CLASSIFY_BUTTON_SIZE,
+                                    pos=CLASSIFY_BUTTON_POS)
+        classify_button.Bind(wx.EVT_BUTTON, self.on_classify_press)
+        return classify_button
+
+    def init_image(self):
+        """
+        Initialize the image.
+        :return: [the image, the image path, the file dialog]
+        """
+        image = image_path = None
+        open_bitmap = wx.FileDialog(self, DIALOG_TITLE, '', '',
+                                    FILE_EXTENSION_NAME + '|' +
+                                    FILE_EXTENSIONS,
+                                    wx.FD_OPEN | wx.FD_FILE_MUST_EXIST)
+        return image, image_path, open_bitmap
 
     def on_load_press(self, event):
         """

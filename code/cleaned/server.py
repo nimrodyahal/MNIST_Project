@@ -8,6 +8,7 @@ import Queue
 from preprocessor import Preprocessor
 from handle_nn import load_multi_net
 from autocomplete import SpellChecker
+from memoized_decorator import Memoized
 
 
 SAVE_DIR = 'Cache\\'
@@ -112,9 +113,14 @@ class ClientConnectionThread(threading.Thread):
             img_file.write(img)
 
         cv2_img = cv2.imread(cached_img_path, 0)
+        print cv2_img.shape
         set_path_free(cached_img_path)
         preprocessor = Preprocessor(cv2_img)
         separated = preprocessor.separate_text()
+        # print all([all([pixel[0] == pixel[1] == pixel[2] for pixel in line]) for line in separated[0][0][2]])
+        # for line in separated[0][0][2]:
+        #     for pixel in line:
+        #         print all([pixel[0] == pixel[1] == pixel[2]])
         print 'Separated Chars'
         self.input_q.put((self.id, separated))
         string_text = self.wait_for_answer()

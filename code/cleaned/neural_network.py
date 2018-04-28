@@ -128,7 +128,8 @@ class Network(object):
         containing lists of characters, to just a single list of characters.
         :param lines: [lines] = [[words]] = [[[chars]]] (OpenCV2 Images)
         """
-        chars = np.zeros((1, 28, 28))
+        chars = np.zeros((1, 28, 28))  # Used as a template for the dimensions
+        # of the chars
         for line in lines:
             for word in line:
                 for char in word:

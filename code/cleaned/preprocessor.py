@@ -32,6 +32,8 @@ class Preprocessor():
         :param img: The image in question (OpenCV2 image).
         :return: A rotated to text tilt threshold of the image (OpenCV2 image).
         """
+        # gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        # img = gray
         blur = cv2.bilateralFilter(img, 40, 10, 10)
         thresh = cv2.adaptiveThreshold(blur, 255,
                                        cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
@@ -205,7 +207,8 @@ class Preprocessor():
         new_size = (int(scaling * w), int(scaling * h))
 
         pil_img = pil_img.resize(new_size, Image.ANTIALIAS)
-        rescaled = np.array(pil_img, dtype=np.float64)[:, :, 0]
+        rescaled = np.array(pil_img, dtype=np.float64)
+        rescaled = rescaled[:, :, 0]  # BGR to grayscaled
 
         pad_t, pad_b, pad_l, pad_r = self.__get_padding(rescaled)
         rescaled = cv2.copyMakeBorder(rescaled, pad_t, pad_b, pad_l, pad_r,
@@ -250,6 +253,8 @@ class Preprocessor():
         to the letter contour.
         """
         external = self.__get_external_contours()
+        if not external:
+            return
         y_distances = []
         for cnt in external:
             cnt2 = self.__get_cnt_directly_underneath(cnt)
@@ -257,6 +262,8 @@ class Preprocessor():
                 x1, y1, w1, h1 = cnt.bounding_rect
                 x2, y2, w2, h2 = cnt2.bounding_rect
                 y_distances.append(y2 - (y1 + h1))
+        if not y_distances:
+            return
         average_y_distance = np.mean(y_distances)
 
         sorted_cnt = sorted(external, key=lambda x: x.bounding_rect[1])
@@ -371,8 +378,15 @@ class Preprocessor():
         return text
 
 
-_path = 'D:\\School\\Programming\\Cyber\\FinalExercise-12th\\MNIST_Project\\' \
-        'code\\testing images\\grab6 - Copy.png'
-_img = cv2.imread(_path, 0)
-prep = Preprocessor(_img)
-prep.separate_text()
+# _path = 'D:\\School\\Programming\\Cyber\\FinalExercise-12th\\MNIST_Project\\' \
+#         'code\\testing images\\whatsapp.jpeg'
+#
+# _img = cv2.imread(_path, 0)
+# prep = Preprocessor(_img)
+# _separated = prep.separate_text()
+# for _line in _separated:
+#     for _word in _line:
+#         for _i, _char in enumerate(_word):
+#             cv2.imshow(str(_i), _char)
+#         cv2.waitKey(0)
+#         cv2.destroyAllWindows()
