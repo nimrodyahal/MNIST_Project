@@ -10,71 +10,97 @@
 		<link rel="stylesheet" href="css/mdb.min.css">
 		<link rel="stylesheet" href="css/style.css">
 		
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 		<script type="text/javascript" src="js/popper.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/mdb.min.js"></script>
+		
 	</head>
 	<body style="background-color: lavender">
-
 		<div class="container-fluid">
 			<div class ="jumbotron" style="background:transparent url('https://cdn-images-1.medium.com/max/1200/1*m2gDBT_nc-iE7R4AM3sHBQ.jpeg') no-repeat top center /cover">
-				<h1 class="display-2"><font color="white" style="font-family: sans-serif"><center>Optical Character Recognition</center></font></h1>
+				<h1 class="display-3"><font color="white" style="font-family: sans-serif"><center>Optical Character Recognition</center></font></h1>
 			</div>
+			
 			<div class="row" style="height:600px">
-				<div class="col-sm-8">
-				
-				<img class="img-responsive" id='img-upload'/>
-				<div class="row">
-					<input class="balloon btn btn-primary" id="PostImage" type="file" placeholder="Choose...">
-					
-					<button id="test" class="btn btn-primary" onclick="location.href = '1234';">Test</button>
-					<button id="PostImageSubmit" class="btn btn-primary button-submit" onclick="location.href = '1234';">Submit</button>
+				<div class="col-sm-6">
+					<img class="img-fluid" id='img-upload'/>
+					<div class="row">
+						<input class="balloon btn btn-primary" id="PostImage" type="file" placeholder="Choose...">
+						<!-- <button type="button" class="btn btn-primary btn-lg" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order">Submit Order</button> -->
+						<button id="PostImageSubmit" class="btn btn-primary button-submit" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order">Submit</button>
+					</div>
 				</div>
+				<div class="col-sm-2">
+					<div class="card">
+						<div class="card-body" style="background-color: #cce6ff">
+							<h1 class="text-center">Help</h1>
+							<p class="text-center">
+								It is as easy as 1-2-3!<br>
+								All you have to do is click on the <code>Choose File</code> button, pick an image from your computer, then click on the <code>Submit</code> button. You will then be directed to a <b>Results</b> page, where you will find the text, and some statistics about it.
+							</p>
+						</div>
+					</div>
 				</div>
 				<div class="col-sm-4">
-				<button type="button" class="btn btn-primary">Button 1</button>
-				<canvas id="lineChart"></canvas>
+					<div class="card">
+						<div class="card-body" style="background-color: #cce6ff">
+							<h1 class="text-center">About</h1>
+							<p class="text-center">
+								blablablablablablablablablablablablablablablablablablablablablabla<br>
+								blablablablablablablablablablablablablablablablablablablabla<br>
+								blablablablablablablablablablabla
+							</p>
+						</div>
+					</div>
+					<div class="col-sm-10 mx-auto">
+						<canvas id="radarChart"></canvas>
+					</div>
 				</div>
 			</div>
 		</div>
+		<script type="text/javascript" src="js/submit.js"></script>
 		
 		<script>
-		var ctxL = document.getElementById("lineChart").getContext('2d');
-			var myLineChart = new Chart(ctxL, {
-				type: 'line',
-				data: {
-					labels: ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
-					datasets: [
-						{
-							label: "My First dataset",
-							fillColor: "rgba(220,220,220,0.2)",
-							strokeColor: "rgba(220,220,220,1)",
-							pointColor: "rgba(220,220,220,1)",
-							pointStrokeColor: "#fff",
-							pointHighlightFill: "#fff",
-							pointHighlightStroke: "rgba(220,220,220,1)",
-							data: [48, 98, 78, 88, 48, 4, 12, 59, 28, 27, 29, 50, 83, 82, 38, 46, 87, 81, 67, 1]
-						},
-					]
-				},
-				options: {
-					responsive: true
-				}    
+			$('.button-submit').on('click', function() {
+				var $this = $(this);
+				$this.button('loading');
 			});
 		</script>
-		<script>
-		$(document).on("ready", function() {
-			$("#input-700").fileinput({
-				uploadUrl: "/file-upload-single/1",
-				maxFileCount: 5
-			});
+		<script>		
+		var ctxR = document.getElementById("radarChart").getContext('2d');
+		var myRadarChart = new Chart(ctxR, {
+			type: 'radar',
+			data: {
+				labels: ["Convoluted Filter Size", "Pooling Size", "Dropout", "Learning Rate (in hundredths)", "Epochs (in tens)", "Neuron Count (in thousands)"],
+				datasets: [
+					{
+						label: "Neural Network 1",
+						fillColor: "rgba(220,220,220,0.2)",
+						strokeColor: "rgba(220,220,220,1)",
+						pointColor: "rgba(220,220,220,1)",
+						pointStrokeColor: "#fff",
+						pointHighlightFill: "#fff",
+						pointHighlightStroke: "rgba(220,220,220,1)",
+						data: [5, 2, 0.5, 3, 4, 1]
+					},
+					{
+						label: "Neural Network 2",
+						fillColor: "rgba(151,187,205,0.2)",
+						strokeColor: "rgba(151,187,205,1)",
+						pointColor: "rgba(151,187,205,1)",
+						pointStrokeColor: "#fff",
+						pointHighlightFill: "#fff",
+						pointHighlightStroke: "rgba(151,187,205,1)",
+						data: [7, 3, 2, 3, 2, 2]
+					}
+				]
+			},
+			options: {
+				responsive: true
+			}    
 		});
 		</script>
-		<script type="text/javascript" src="js/submit.js"></script>
 		<style>
 			.btn-file {
 				position: relative;
@@ -95,7 +121,7 @@
 				cursor: inherit;
 				display: block;
 			}
-
+						
 			#img-upload{
 				max-height: 500px;
 				border-style: solid;

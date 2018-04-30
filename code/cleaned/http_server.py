@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import SimpleHTTPServer
 import SocketServer
-import os
+import numpy
 import string
 import re
 import threading
@@ -14,6 +14,8 @@ from memoized_decorator import Memoized
 PORT = 80
 SAVE_DIR = 'Cache\\'
 FILE_NAME_FORMAT = 'img{number}.png'
+ADDRESS = 'mnistproject.ddns.net'
+EXTERNAL_PORT = '500'
 
 
 def _get_file_path():
@@ -50,7 +52,6 @@ def _set_path_free(path):
     :param path:
     """
     global used_numbers
-    os.remove(path)
     index_of_number = (SAVE_DIR + FILE_NAME_FORMAT).index('{')
     number_of_path = int(path[index_of_number])
     used_numbers.remove(number_of_path)
@@ -92,6 +93,7 @@ class MyHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         self.input_queue = input_queue
         self.output_queue = Queue()
         self.spell_checker = spell_checker
+        self.__cached_img_path = ''
         SimpleHTTPServer.SimpleHTTPRequestHandler.__init__(self, request,
                                                            client_address,
                                                            server)
@@ -112,39 +114,60 @@ class MyHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
             split_name[1 + i] = char
         name = ''.join(split_name)
         if not re.findall(r'[^A-Za-z0-9_\-\. ]', name):
+            if '.' in name:
+                name = '.'.join(name.split('.')[:-1]) + '.txt'
+            else:
+                name += '.txt'
             return name
         return False
 
     def do_GET(self):
-        self.path = 'http/' + self.path
+        if not self.path.startswith('/Cache'):
+            self.path = 'http/' + self.path
         SimpleHTTPServer.SimpleHTTPRequestHandler.do_GET(self)
 
     def do_POST(self):
         length = int(self.headers['Content-Length'])
         file_data = self.rfile.read(length)
-        # filename = self.__get_file_name()
-        # if filename:
-        answer = self.classify(file_data)
-        # with open(filename, 'wb') as f:
-        #     f.write(file_data)
-        self.send_response(201)
-        self.send_header('Content-type', 'text/html')
-        self.end_headers()
+        answer, nn_surety = self.classify(file_data)
 
-        self.wfile.write(
-            "<html><body><h1>{}</h1></body></html>".format(answer))
-        # else:
-        #     pass
-        # self.input_queue.put_nowait(file_data)
+        self.send_response(200)
+        self.send_header('Content-type', 'text/html')
+        result_page = self.construct_result_page(answer, nn_surety)
+        self.send_header("Content-Length", str(len(result_page)))
+        self.end_headers()
+        self.wfile.write(result_page)
+        _set_path_free(self.__cached_img_path)
+
+    @staticmethod
+    def get_length_of_nn_data(count):
+        return str([''] * count)
+
+    def construct_result_page(self, answer, nn_surety):
+        with open('http\\result.html', 'rb') as f:
+            result_page = f.read()
+
+        image_path = self.__cached_img_path
+        answer = answer.replace('\r\n', '<br>')
+        file_name = self.__get_file_name()
+        avg_net_surety = numpy.mean(nn_surety)
+        med_net_surety = numpy.median(nn_surety)
+        nn_data_graph_len = self.get_length_of_nn_data(len(nn_surety))
+        nn_data = str(nn_surety)
+
+        result_page = result_page.format(
+            image_path=image_path, answer=answer, file_name=file_name,
+            avg_net_surety=avg_net_surety, med_net_surety=med_net_surety,
+            length_of_nn_data=nn_data_graph_len, nn_data=str(nn_data))
+        return result_page
 
     @Memoized
     def classify(self, file_data):
-        cached_img_path = _get_file_path()
-        with open(cached_img_path, 'wb') as img_file:
+        self.__cached_img_path = _get_file_path()
+        with open(self.__cached_img_path, 'wb') as img_file:
             img_file.write(file_data)
 
-        cv2_img = cv2.imread(cached_img_path, 0)
-        _set_path_free(cached_img_path)
+        cv2_img = cv2.imread(self.__cached_img_path, 0)
         preprocessor = Preprocessor(cv2_img)
         separated = preprocessor.separate_text()
         print 'HTTP Request Handler: Separated Chars'
@@ -153,8 +176,7 @@ class MyHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         print 'HTTP Request Handler: Classification Done!'
         auto_completed = self.spell_checker.autocomplete_text(string_text)
         print 'HTTP Request Handler: Spell Checking Done!'
-        print auto_completed
-        return auto_completed
+        return auto_completed, [1, 2, 3]
 
     def wait_for_answer(self):
         while True:

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Bootstrap Example</title>
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/mdb.min.css">
+		<link rel="stylesheet" href="css/style.css">
+		
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="js/popper.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/mdb.min.js"></script>
+		<script src="js/jquery.circlechart.js"></script>
+		
+	</head>
+	<body style="background-color: lavender">
+		<div class="container-fluid">
+			<div class ="jumbotron" style="background:transparent url('https://cdn-images-1.medium.com/max/1200/1*m2gDBT_nc-iE7R4AM3sHBQ.jpeg') no-repeat top center /cover">
+				<h1 class="display-3"><font color="white" style="font-family: sans-serif"><center>Optical Character Recognition</center></font></h1>
+			</div>
+			
+			<div class="row" style="height:600px">
+				<div class="col-sm-6">
+					<div class="row pb-3">
+						<div class="col-sm-12">
+						<!-- <div class="col-sm-6 pr-0"> -->
+							<img class="img-fluid" id='img-upload' src="{image_path}"/>
+						<!-- </div> -->
+						
+						<!-- <div class="col-sm-6 pl-0"> -->
+							<div class="card">
+								<div class="card-body" style="background-color: #cce6ff">
+									<p class="text-center" id="TextBox">{answer}</p>
+								</div>
+							</div>
+						</div>
+						<!-- </div> -->
+					</div>
+					<div class="row">
+						<a class="btn btn-primary mx-auto" role="button" download="{file_name}" id="SaveButton">Save To File</a>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="row pb-3 mx-auto">
+						<div class="col-sm-6 my-auto">
+							<canvas id="lineChart"></canvas>
+						</div>
+						<div class="col-sm-6">
+							<div class="card">
+								<div class="card-body" style="background-color: #cce6ff">
+									<h1 class="text-center">Help</h1>
+									<p class="text-center">
+										It is as easy as 1-2-3!<br>
+										All you have to do is click on the <code>Choose File</code> button, pick an image from your computer, then click on the <code>Submit</code> button. You will then be directed to a <b>Results</b> page, where you will find the text, and some statistics about it.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="demo mx-auto">
+							<div class="demo-4" data-percent="{avg_net_surety}"></div>
+							<h5 class="mx-auto text-center pt-2">Net surety - Avg.</h5>
+						</div>
+						<div class="demo mx-auto">
+							<div class="demo-4" data-percent="{med_net_surety}"></div>
+							<h5 class="mx-auto text-center pt-2">Net surety - Med.</h5>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/save.js"></script>
+		<script>
+			$('.demo-4').percentcircle({{
+				animate : true,
+				diameter : 100,
+				guage: 3,
+				coverBg: '#fff',
+				bgColor: '#efefef',
+				fillColor: '#46CFB0',
+				percentSize: '18px',
+				percentWeight: 'normal'
+			}});
+		</script>
+		<script>
+			//line
+			var ctxL = document.getElementById("lineChart").getContext('2d');
+			var myLineChart = new Chart(ctxL, {{
+				type: 'line',
+				data: {{
+					labels: {length_of_nn_data},
+					datasets: [
+						{{
+							label: "My First dataset",
+							fillColor: "rgba(220,220,220,0.2)",
+							strokeColor: "rgba(220,220,220,1)",
+							pointColor: "rgba(220,220,220,1)",
+							pointStrokeColor: "#fff",
+							pointHighlightFill: "#fff",
+							pointHighlightStroke: "rgba(220,220,220,1)",
+							data: {nn_data}
+						}}
+					]
+				}}
+			}});
+		</script>
+	</body>
+</html>
