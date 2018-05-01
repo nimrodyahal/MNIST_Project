@@ -6,6 +6,9 @@ import string
 import re
 import threading
 import cv2
+import cPickle
+import urllib
+from translate import translate
 from Queue import Queue
 from preprocessor import Preprocessor
 from memoized_decorator import Memoized
@@ -16,6 +19,8 @@ SAVE_DIR = 'Cache\\'
 FILE_NAME_FORMAT = 'img{number}.png'
 ADDRESS = 'mnistproject.ddns.net'
 EXTERNAL_PORT = '500'
+TRAN_LANG_PATH = 'Translation Languages.txt'  # The database containing all the
+# languages Google can translate
 
 
 def _get_file_path():
@@ -94,18 +99,22 @@ class MyHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         self.output_queue = Queue()
         self.spell_checker = spell_checker
         self.__cached_img_path = ''
+        with open(TRAN_LANG_PATH, 'rb') as f:
+            self.languages_dict = cPickle.load(f)
         SimpleHTTPServer.SimpleHTTPRequestHandler.__init__(self, request,
                                                            client_address,
                                                            server)
 
     def __get_file_name(self):
         request = self.requestline
-        code_word_start = 'file-name='
-        code_word_end = ' HTTP/'
-
-        index_start = request.index(code_word_start) + len(code_word_start)
-        index_end = request.index(code_word_end)
-        raw_name = request[index_start:index_end]
+        pattern = r'file-name=(.*) HTTP\/'
+        raw_name = re.findall(pattern, request)[0]
+        # code_word_start = 'file-name='
+        # code_word_end = ' HTTP/'
+        #
+        # index_start = request.index(code_word_start) + len(code_word_start)
+        # index_end = request.index(code_word_end)
+        # raw_name = request[index_start:index_end]
 
         split_name = raw_name.split('%')
         for i, char in enumerate(split_name[1:]):
@@ -127,21 +136,53 @@ class MyHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         SimpleHTTPServer.SimpleHTTPRequestHandler.do_GET(self)
 
     def do_POST(self):
-        length = int(self.headers['Content-Length'])
-        file_data = self.rfile.read(length)
-        answer, nn_surety = self.classify(file_data)
+        if self.requestline.startswith('POST /upload'):
+            length = int(self.headers['Content-Length'])
+            file_data = self.rfile.read(length)
+            answer, nn_surety = self.classify(file_data)
 
-        self.send_response(200)
-        self.send_header('Content-type', 'text/html')
-        result_page = self.construct_result_page(answer, nn_surety)
-        self.send_header("Content-Length", str(len(result_page)))
-        self.end_headers()
-        self.wfile.write(result_page)
-        _set_path_free(self.__cached_img_path)
+            self.send_response(200)
+            self.send_header('Content-type', 'text/html')
+            result_page = self.construct_result_page(answer, nn_surety)
+            self.send_header("Content-Length", str(len(result_page)))
+            self.end_headers()
+            self.wfile.write(result_page)
+            _set_path_free(self.__cached_img_path)
+        elif self.requestline.startswith('POST /translate'):
+            length = int(self.headers['Content-Length'])
+            to_translate = self.rfile.read(length).replace('<br>', '\r\n')
+
+            request = urllib.unquote_plus(self.requestline)
+            print request
+            # from_lang_pattern = r'\?from_lang=(.*) \?'
+            to_lang_pattern = r'\?to_lang=(.*) HTTP\/'
+            # from_lang_full = re.findall(from_lang_pattern, request)[0]
+            to_lang_full = re.findall(to_lang_pattern, request)[0]
+
+            # from_lang = self.languages_dict[from_lang_full]
+            to_lang = self.languages_dict[to_lang_full]
+
+            self.send_response(200)
+            self.send_header('Content-type', 'text/html')
+            translated = translate(to_translate, to_language=to_lang)
+            print to_translate
+            print to_lang
+            print translated
+            translated = translated.encode('utf-8')
+            self.send_header("Content-Length", str(len(translated)))
+            self.end_headers()
+            self.wfile.write(translated)
 
     @staticmethod
     def get_length_of_nn_data(count):
         return str([''] * count)
+
+    def __get_dropdown_options(self):
+        dropdown_options = []
+        for lang in sorted(self.languages_dict):
+            dropdown_options.append(
+                '<a class="dropdown-item" href="#">%s</a>' % lang)
+        return '\r\n'.join(dropdown_options)
 
     def construct_result_page(self, answer, nn_surety):
         with open('http\\result.html', 'rb') as f:
@@ -149,6 +190,7 @@ class MyHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
         image_path = self.__cached_img_path
         answer = answer.replace('\r\n', '<br>')
+        dropdown_options = self.__get_dropdown_options()
         file_name = self.__get_file_name()
         avg_net_surety = numpy.mean(nn_surety)
         med_net_surety = numpy.median(nn_surety)
@@ -156,7 +198,8 @@ class MyHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         nn_data = str(nn_surety)
 
         result_page = result_page.format(
-            image_path=image_path, answer=answer, file_name=file_name,
+            image_path=image_path, answer=answer,
+            dropdown_options=dropdown_options, file_name=file_name,
             avg_net_surety=avg_net_surety, med_net_surety=med_net_surety,
             length_of_nn_data=nn_data_graph_len, nn_data=str(nn_data))
         return result_page

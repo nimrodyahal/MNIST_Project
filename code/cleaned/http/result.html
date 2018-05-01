@@ -25,50 +25,65 @@
 			
 			<div class="row" style="height:600px">
 				<div class="col-sm-6">
-					<div class="row pb-3">
-						<div class="col-sm-12">
-						<!-- <div class="col-sm-6 pr-0"> -->
-							<img class="img-fluid" id='img-upload' src="{image_path}"/>
-						<!-- </div> -->
+					<div class="row pb-3 mx-auto">
+						<img class="img-fluid" id='img-upload' src="{image_path}"/>
+						<!-- <img class="img-fluid" id='img-upload' src="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\Cache\img0.png"/> -->
 						
-						<!-- <div class="col-sm-6 pl-0"> -->
-							<div class="card">
-								<div class="card-body" style="background-color: #cce6ff">
-									<p class="text-center" id="TextBox">{answer}</p>
-								</div>
+						<div class="card">
+							<div class="card-body" style="background-color: #cce6ff">
+								<p class="text-center" id="TextBox" original-answer="{answer}">{answer}</p>
 							</div>
 						</div>
-						<!-- </div> -->
 					</div>
 					<div class="row">
+						<!-- Save Button -->
 						<a class="btn btn-primary mx-auto" role="button" download="{file_name}" id="SaveButton">Save To File</a>
+						<!-- Translate Buttons -->
+						<div class="btn-group mx-auto">
+							<button id='catchButton' type="button" class="btn btn-primary">Translate to</button>
+							<div class="btn-group">
+								<button id='main-nav' type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">English</button>
+								<div class="dropdown-menu default-menu main-menu sm-main-menu animation" data-animation = "fadeIn">
+									<div class="sm-main-nav myDropDown">
+										<!-- Dropdown Options. Looks Like This: -->
+										<!-- <a class="dropdown-item" href="#">Language1</a> -->
+										{dropdown_options}
+									</div>
+							</div>
+						  </div>
+						</div>
 					</div>
 				</div>
 				<div class="col-sm-6">
 					<div class="row pb-3 mx-auto">
-						<div class="col-sm-6 my-auto">
+						<div class="col-sm-12 my-auto">
 							<canvas id="lineChart"></canvas>
 						</div>
-						<div class="col-sm-6">
-							<div class="card">
-								<div class="card-body" style="background-color: #cce6ff">
-									<h1 class="text-center">Help</h1>
-									<p class="text-center">
-										It is as easy as 1-2-3!<br>
-										All you have to do is click on the <code>Choose File</code> button, pick an image from your computer, then click on the <code>Submit</code> button. You will then be directed to a <b>Results</b> page, where you will find the text, and some statistics about it.
-									</p>
-								</div>
-							</div>
-						</div>
+						<!-- <div class="col-sm-6"> -->
+							<!-- <div class="card"> -->
+								<!-- <div class="card-body" style="background-color: #cce6ff"> -->
+									<!-- <h1 class="text-center">Help</h1> -->
+									<!-- <p class="text-center"> -->
+										<!-- It is as easy as 1-2-3!<br> -->
+										<!-- All you have to do is click on the <code>Choose File</code> button, pick an image from your computer, then click on the <code>Submit</code> button. You will then be directed to a <b>Results</b> page, where you will find the text, and some statistics about it. -->
+									<!-- </p> -->
+								<!-- </div> -->
+							<!-- </div> -->
+						<!-- </div> -->
 					</div>
 					<div class="row">
 						<div class="demo mx-auto">
 							<div class="demo-4" data-percent="{avg_net_surety}"></div>
-							<h5 class="mx-auto text-center pt-2">Net surety - Avg.</h5>
+							<!-- <div class="demo-4" data-percent="75"></div> -->
+							<h5 class="mx-auto text-center pt-2">Net Surety - Avg.</h5>
+						</div>
+						<div class="circle mt-0">
+							<p>"Net Surety" means just how sure the neural network is about every character.</p>
 						</div>
 						<div class="demo mx-auto">
 							<div class="demo-4" data-percent="{med_net_surety}"></div>
-							<h5 class="mx-auto text-center pt-2">Net surety - Med.</h5>
+							<!-- <div class="demo-4" data-percent="50"></div> -->
+							<h5 class="mx-auto text-center pt-2">Net Surety - Med.</h5>
 						</div>
 					</div>
 				</div>
@@ -77,7 +92,7 @@
 		<script type="text/javascript" src="js/save.js"></script>
 		<script>
 			$('.demo-4').percentcircle({{
-				animate : true,
+				mate : true,
 				diameter : 100,
 				guage: 3,
 				coverBg: '#fff',
@@ -109,5 +124,26 @@
 				}}
 			}});
 		</script>
+		<style>
+		.circle {{
+			background: #000000;
+			border-radius: 190px;
+			color: white;
+			height: 190px;
+			font-weight: bold;
+			width: 190px;
+			display: table;
+			margin: 20px auto;
+		}}
+		.circle p {{
+			text-align: center;
+			vertical-align: middle;
+			display: table-cell;
+		}}
+		.myDropDown{{
+			height: 20rem;
+			overflow: auto;
+		}}
+		</style>
 	</body>
 </html>

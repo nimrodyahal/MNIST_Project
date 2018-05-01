@@ -26,9 +26,10 @@
 				<div class="col-sm-6">
 					<img class="img-fluid" id='img-upload'/>
 					<div class="row">
+						<div class="col-sm-12">
 						<input class="balloon btn btn-primary" id="PostImage" type="file" placeholder="Choose...">
-						<!-- <button type="button" class="btn btn-primary btn-lg" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order">Submit Order</button> -->
-						<button id="PostImageSubmit" class="btn btn-primary button-submit" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order">Submit</button>
+						<button id="PostImageSubmit" class="btn btn-primary button-submit py-3" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order">Submit</button>
+						</div>
 					</div>
 				</div>
 				<div class="col-sm-2">
@@ -60,68 +61,8 @@
 			</div>
 		</div>
 		<script type="text/javascript" src="js/submit.js"></script>
-		
-		<script>
-			$('.button-submit').on('click', function() {
-				var $this = $(this);
-				$this.button('loading');
-			});
-		</script>
-		<script>		
-		var ctxR = document.getElementById("radarChart").getContext('2d');
-		var myRadarChart = new Chart(ctxR, {
-			type: 'radar',
-			data: {
-				labels: ["Convoluted Filter Size", "Pooling Size", "Dropout", "Learning Rate (in hundredths)", "Epochs (in tens)", "Neuron Count (in thousands)"],
-				datasets: [
-					{
-						label: "Neural Network 1",
-						fillColor: "rgba(220,220,220,0.2)",
-						strokeColor: "rgba(220,220,220,1)",
-						pointColor: "rgba(220,220,220,1)",
-						pointStrokeColor: "#fff",
-						pointHighlightFill: "#fff",
-						pointHighlightStroke: "rgba(220,220,220,1)",
-						data: [5, 2, 0.5, 3, 4, 1]
-					},
-					{
-						label: "Neural Network 2",
-						fillColor: "rgba(151,187,205,0.2)",
-						strokeColor: "rgba(151,187,205,1)",
-						pointColor: "rgba(151,187,205,1)",
-						pointStrokeColor: "#fff",
-						pointHighlightFill: "#fff",
-						pointHighlightStroke: "rgba(151,187,205,1)",
-						data: [7, 3, 2, 3, 2, 2]
-					}
-				]
-			},
-			options: {
-				responsive: true
-			}    
-		});
-		</script>
-		<style>
-			.btn-file {
-				position: relative;
-				overflow: hidden;
-			}
-			.btn-file input[type=file] {
-				position: absolute;
-				top: 0;
-				right: 0;
-				min-width: 100%;
-				min-height: 100%;
-				font-size: 100px;
-				text-align: right;
-				filter: alpha(opacity=0);
-				opacity: 0;
-				outline: none;
-				background: white;
-				cursor: inherit;
-				display: block;
-			}
-						
+		<script type="text/javascript" src="js/radarchart.js"></script>
+		<style>		
 			#img-upload{
 				max-height: 500px;
 				border-style: solid;
