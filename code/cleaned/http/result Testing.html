@@ -26,15 +26,10 @@
 			<div class="row" style="height:600px">
 				<div class="col-sm-6">
 					<div class="row pb-3 mx-auto">
-						<img class="img-fluid" id='img-upload' src="{image_path}"/>
-						<!-- <img class="img-fluid" id='img-upload' src="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\Cache\img0.png"/> -->
+						<img style="width:50%;" class="img-fluid" id='img-upload' src="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\Cache\img0.png"/>
 						
+						<!-- <textarea style="resize: none;" class="form-control rounded-0" id="TextBox" original-answer="{answer}">{answer}</textarea> -->
 						<textarea style="resize: none;" class="card-body" id="TextBox" original-answer="{answer}">{answer}</textarea>
-						<!-- <div class="card"> -->
-							<!-- <div class="card-body" style="background-color: #cce6ff"> -->
-								<!-- <p class="text-center" id="TextBox" original-answer="{answer}">{answer}</p> -->
-							<!-- </div> -->
-						<!-- </div> -->
 					</div>
 					<div class="row">
 						<!-- Save Button -->
@@ -47,8 +42,17 @@
 								<div class="dropdown-menu default-menu main-menu sm-main-menu animation" data-animation = "fadeIn">
 									<div class="sm-main-nav myDropDown">
 										<!-- Dropdown Options. Looks Like This: -->
-										<!-- <a class="dropdown-item" href="#">Language1</a> -->
-										{dropdown_options}
+										<a class="dropdown-item" href="#">Language1</a>
+										<a class="dropdown-item" href="#">Language2</a>
+										<a class="dropdown-item" href="#">Language3</a>
+										<a class="dropdown-item" href="#">Language4</a>
+										<a class="dropdown-item" href="#">Language5</a>
+										<a class="dropdown-item" href="#">Language6</a>
+										<a class="dropdown-item" href="#">Language7</a>
+										<a class="dropdown-item" href="#">Language8</a>
+										<a class="dropdown-item" href="#">Language9</a>
+										<a class="dropdown-item" href="#">Language10</a>
+										<a class="dropdown-item" href="#">Language11</a>
 									</div>
 							</div>
 						  </div>
@@ -60,30 +64,17 @@
 						<div class="col-sm-12 my-auto" style="height:350px">
 							<canvas id="lineChart"></canvas>
 						</div>
-						<!-- <div class="col-sm-6"> -->
-							<!-- <div class="card"> -->
-								<!-- <div class="card-body" style="background-color: #cce6ff"> -->
-									<!-- <h1 class="text-center">Help</h1> -->
-									<!-- <p class="text-center"> -->
-										<!-- It is as easy as 1-2-3!<br> -->
-										<!-- All you have to do is click on the <code>Choose File</code> button, pick an image from your computer, then click on the <code>Submit</code> button. You will then be directed to a <b>Results</b> page, where you will find the text, and some statistics about it. -->
-									<!-- </p> -->
-								<!-- </div> -->
-							<!-- </div> -->
-						<!-- </div> -->
 					</div>
 					<div class="row">
 						<div class="demo mx-auto">
-							<div class="demo-4" data-percent="{avg_net_surety}"></div>
-							<!-- <div class="demo-4" data-percent="75"></div> -->
+							<div class="demo-4" data-percent="75"></div>
 							<h5 class="mx-auto text-center pt-2">Net Surety - Avg.</h5>
 						</div>
 						<div class="circle mt-0">
 							<p>"Net Surety" means just how sure the neural network is about every character.</p>
 						</div>
 						<div class="demo mx-auto">
-							<div class="demo-4" data-percent="{med_net_surety}"></div>
-							<!-- <div class="demo-4" data-percent="50"></div> -->
+							<div class="demo-4" data-percent="50"></div>
 							<h5 class="mx-auto text-center pt-2">Net Surety - Med.</h5>
 						</div>
 					</div>
@@ -93,7 +84,7 @@
 		<script type="text/javascript" src="js/save.js"></script>
 		<script>
 			// Percent Charts
-			$('.demo-4').percentcircle({{
+			$('.demo-4').percentcircle({
 				mate : true,
 				diameter : 100,
 				guage: 3,
@@ -102,16 +93,16 @@
 				fillColor: '#46CFB0',
 				percentSize: '18px',
 				percentWeight: 'normal'
-			}});
+			});
 			
 			// Line Chart
 			var ctxL = document.getElementById("lineChart").getContext('2d');
-			var myLineChart = new Chart(ctxL, {{
+			var myLineChart = new Chart(ctxL, {
 				type: 'line',
-				data: {{
-					labels: {length_of_nn_data},
+				data: {
+					labels: ['', '', ''],
 					datasets: [
-						{{
+						{
 							label: "My First dataset",
 							fillColor: "rgba(220,220,220,0.2)",
 							strokeColor: "rgba(220,220,220,1)",
@@ -119,14 +110,14 @@
 							pointStrokeColor: "#fff",
 							pointHighlightFill: "#fff",
 							pointHighlightStroke: "rgba(220,220,220,1)",
-							data: {nn_data}
-						}}
+							data: [1, 2, 3]
+						}
 					]
-				}}
-			}});
+				}
+			});
 		</script>
 		<style>
-		.circle {{
+		.circle {
 			background: #000000;
 			border-radius: 190px;
 			color: white;
@@ -135,16 +126,16 @@
 			width: 190px;
 			display: table;
 			margin: 20px auto;
-		}}
-		.circle p {{
+		}
+		.circle p {
 			text-align: center;
 			vertical-align: middle;
 			display: table-cell;
-		}}
-		.myDropDown{{
+		}
+		.myDropDown{
 			height: 20rem;
 			overflow: auto;
-		}}
+		}
 		</style>
 	</body>
 </html>

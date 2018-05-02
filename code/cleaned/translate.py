@@ -17,13 +17,15 @@ def unescape(text):
     return parser.unescape(text)
 
 
-def translate(to_translate, to_language="auto", from_language="en"):
+def translate(to_translate, to_language='auto', from_language='en'):
+    if to_language == 'en':
+        return to_translate
     link = 'https://translate.google.co.il/?hl=en#{from_lang}/' \
            '{to_lang}/{to_trans}'
     driver.get(link.format(to_lang=to_language, from_lang=from_language,
                            to_trans=urllib.quote_plus(to_translate.encode
                                                       ('utf-8'))))
-    time.sleep(0.1)
+    time.sleep(0.2)
     result = driver.find_element_by_id('result_box').get_attribute('innerHTML')
     final = []
     for line in result.split('<br>'):
@@ -32,14 +34,3 @@ def translate(to_translate, to_language="auto", from_language="en"):
     return u'\r\n'.join(final)
 
 translate('', to_language='')
-# print translate('hello', to_language='iw')
-# print translate('hello', to_language='is')
-# print translate('hello', to_language='bs')
-# print translate('hello', to_language='ar')
-
-# a = """one afternoon a month later deti
-# an gray was reclining in a luxurious"""
-# print translate(a, to_language='iw')
-# a = """one afternoon a month later deti
-# an gray was reclining in a luxurious"""
-# print translate(a, to_language='iw', from_language='en')

@@ -2,37 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c20999e-9e20-4348-95e9-be5509e66b0a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cleaned/http/font/roboto/Roboto-Bold.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cleaned/http/font/roboto/Roboto-Bold.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cleaned/http/font/roboto/Roboto-Bold.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cleaned/http/font/roboto/Roboto-Bold.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cleaned/http/font/roboto/Roboto-Light.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cleaned/http/font/roboto/Roboto-Light.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cleaned/http/font/roboto/Roboto-Light.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cleaned/http/font/roboto/Roboto-Light.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cleaned/http/font/roboto/Roboto-Medium.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cleaned/http/font/roboto/Roboto-Medium.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cleaned/http/font/roboto/Roboto-Medium.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cleaned/http/font/roboto/Roboto-Medium.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cleaned/http/font/roboto/Roboto-Regular.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cleaned/http/font/roboto/Roboto-Regular.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cleaned/http/font/roboto/Roboto-Regular.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cleaned/http/font/roboto/Roboto-Regular.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cleaned/http/font/roboto/Roboto-Thin.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cleaned/http/font/roboto/Roboto-Thin.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cleaned/http/font/roboto/Roboto-Thin.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cleaned/http/font/roboto/Roboto-Thin.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cleaned/chromedriver.exe" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cleaned/Translation Languages.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cleaned/translate.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cleaned/http/Circle Charts.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cleaned/tests/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cleaned/http/js/radarchart.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cleaned/http/result Testing.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/http_server.py" afterPath="$PROJECT_DIR$/code/cleaned/http_server.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/http/index.html" afterPath="$PROJECT_DIR$/code/cleaned/http/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/http/js/jquery.circlechart.js" afterPath="$PROJECT_DIR$/code/cleaned/http/js/jquery.circlechart.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/http/result.html" afterPath="$PROJECT_DIR$/code/cleaned/http/result.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/http/js/save.js" afterPath="$PROJECT_DIR$/code/cleaned/http/js/save.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/http/js/submit.js" afterPath="$PROJECT_DIR$/code/cleaned/http/js/submit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/translate.py" afterPath="$PROJECT_DIR$/code/cleaned/translate.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/code/cleaned/server.py" afterPath="$PROJECT_DIR$/code/cleaned/tests/server.py" />
+      <change type="MOVED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\gui.py" afterPath="$PROJECT_DIR$/code/cleaned/tests/gui.py" />
+      <change type="MOVED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\server_test.py" afterPath="$PROJECT_DIR$/code/cleaned/server.py" />
     </list>
     <ignored path="MNIST_Project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -55,19 +36,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="gui.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code/cleaned/gui.py">
+      <file leaf-file-name="server.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code/cleaned/server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="33" selection-start="101" selection-end="135" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3162">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="server_test.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code/cleaned/server_test.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="137" column="0" selection-start="4771" selection-end="4771" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="3009">
+            <state line="147" column="0" selection-start="5088" selection-end="5088" vertical-scroll-proportion="0.0" vertical-offset="1822" max-vertical-offset="3009">
               <folding>
                 <element signature="e#24#40#0" expanded="true" />
               </folding>
@@ -75,10 +47,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="server.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code/cleaned/server.py">
+      <file leaf-file-name="gui.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code/cleaned/tests/gui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="118" column="36" selection-start="4036" selection-end="4036" vertical-scroll-proportion="0.0" vertical-offset="1615" max-vertical-offset="2907">
+            <state line="7" column="33" selection-start="101" selection-end="135" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3162">
               <folding />
             </state>
           </provider>
@@ -87,7 +59,7 @@
       <file leaf-file-name="http_server.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/code/cleaned/http_server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="207" column="27" selection-start="7912" selection-end="7912" vertical-scroll-proportion="0.32108626" vertical-offset="3318" max-vertical-offset="3944">
+            <state line="86" column="39" selection-start="2824" selection-end="2824" vertical-scroll-proportion="1.0356321" vertical-offset="561" max-vertical-offset="3774">
               <folding>
                 <element signature="e#24#47#0" expanded="true" />
               </folding>
@@ -98,7 +70,7 @@
       <file leaf-file-name="translate.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/cleaned/translate.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="23" selection-start="1029" selection-end="1171" vertical-scroll-proportion="0.0" vertical-offset="224" max-vertical-offset="850">
+            <state line="19" column="64" selection-start="390" selection-end="390" vertical-scroll-proportion="0.0" vertical-offset="37" max-vertical-offset="697">
               <folding>
                 <element signature="e#24#37#0" expanded="true" />
               </folding>
@@ -179,8 +151,8 @@
         <option value="$PROJECT_DIR$/code/cleaned/http/result.html" />
         <option value="$PROJECT_DIR$/code/cleaned/http/index.html" />
         <option value="$PROJECT_DIR$/code/cleaned/tests/translate_test.py" />
-        <option value="$PROJECT_DIR$/code/cleaned/http_server.py" />
         <option value="$PROJECT_DIR$/code/cleaned/translate.py" />
+        <option value="$PROJECT_DIR$/code/cleaned/http_server.py" />
       </list>
     </option>
   </component>
@@ -266,50 +238,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MNIST_Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MNIST_Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cleaned" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MNIST_Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MNIST_Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cleaned" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="http" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -343,14 +271,14 @@
       <recent name="D:\School\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\tests\nets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\tests" />
       <recent name="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned" />
       <recent name="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http_server" />
       <recent name="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http_server\js" />
       <recent name="D:\School\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned" />
-      <recent name="D:\School\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\tests" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.translate">
+  <component name="RunManager" selected="Python.server">
     <configuration default="false" name="server_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -363,25 +291,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="MNIST_Project" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/cleaned/server_test.py" />
-      <option name="PARAMETERS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="gui" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/code/cleaned" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="MNIST_Project" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/cleaned/gui.py" />
+      <option name="SCRIPT_NAME" value="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\server.py" />
       <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
@@ -436,6 +346,24 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="MNIST_Project" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/cleaned/translate.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="server" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/code/cleaned" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="MNIST_Project" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/cleaned/server.py" />
       <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
@@ -642,18 +570,18 @@
       <item index="2" class="java.lang.String" itemvalue="Python.test_contour_cropping" />
       <item index="3" class="java.lang.String" itemvalue="Python.preprocessor" />
       <item index="4" class="java.lang.String" itemvalue="Python.server_test" />
-      <item index="5" class="java.lang.String" itemvalue="Python.gui" />
-      <item index="6" class="java.lang.String" itemvalue="Python.http_server (1)" />
-      <item index="7" class="java.lang.String" itemvalue="Python.translate_test" />
-      <item index="8" class="java.lang.String" itemvalue="Python.translate" />
+      <item index="5" class="java.lang.String" itemvalue="Python.http_server (1)" />
+      <item index="6" class="java.lang.String" itemvalue="Python.translate_test" />
+      <item index="7" class="java.lang.String" itemvalue="Python.translate" />
+      <item index="8" class="java.lang.String" itemvalue="Python.server" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.translate" />
+        <item index="0" class="java.lang.String" itemvalue="Python.server" />
         <item index="1" class="java.lang.String" itemvalue="Python.server_test" />
-        <item index="2" class="java.lang.String" itemvalue="Python.http_server (1)" />
-        <item index="3" class="java.lang.String" itemvalue="Python.translate_test" />
-        <item index="4" class="java.lang.String" itemvalue="Python.gui" />
+        <item index="2" class="java.lang.String" itemvalue="Python.translate" />
+        <item index="3" class="java.lang.String" itemvalue="Python.http_server (1)" />
+        <item index="4" class="java.lang.String" itemvalue="Python.translate_test" />
       </list>
     </recent_temporary>
   </component>
@@ -773,7 +701,11 @@
       <created>1525105568376</created>
       <updated>1525105568376</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="A bit further in translating the GUI to a website - Added Translation">
+      <created>1525211522420</created>
+      <updated>1525211522420</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -810,7 +742,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39955357" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18444847" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27232143" sideWeight="0.50030136" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27232143" sideWeight="0.4996986" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27232143" sideWeight="0.4996986" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -856,7 +788,8 @@
     <MESSAGE value="Finishing touches - Added multiprocessing to server" />
     <MESSAGE value="In the middle of translating the GUI to a website" />
     <MESSAGE value="A bit further in translating the GUI to a website" />
-    <option name="LAST_COMMIT_MESSAGE" value="A bit further in translating the GUI to a website" />
+    <MESSAGE value="A bit further in translating the GUI to a website - Added Translation" />
+    <option name="LAST_COMMIT_MESSAGE" value="A bit further in translating the GUI to a website - Added Translation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -864,11 +797,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/code/testing images/numbers.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/code/testing images/testzoom.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1070,13 +998,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/cleaned/gui.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="33" selection-start="101" selection-end="135" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3162">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/code/cleaned/http/js/submit.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.41214058" vertical-offset="258" max-vertical-offset="1496">
@@ -1161,16 +1082,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/cleaned/server.py">
+    <entry file="file://$PROJECT_DIR$/gui.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="118" column="36" selection-start="4036" selection-end="4036" vertical-scroll-proportion="0.0" vertical-offset="1615" max-vertical-offset="2907">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="626">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/cleaned/server_test.py">
+    <entry file="file://$PROJECT_DIR$/code/cleaned/tests/server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="137" column="0" selection-start="4771" selection-end="4771" vertical-scroll-proportion="0.0" vertical-offset="1975" max-vertical-offset="3009">
+        <state line="118" column="36" selection-start="4036" selection-end="4036" vertical-scroll-proportion="-0.27635783" vertical-offset="2026" max-vertical-offset="2907">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/cleaned/tests/gui.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="33" selection-start="101" selection-end="135" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3162">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/cleaned/server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="147" column="0" selection-start="5088" selection-end="5088" vertical-scroll-proportion="0.0" vertical-offset="1822" max-vertical-offset="3009">
           <folding>
             <element signature="e#24#40#0" expanded="true" />
           </folding>
@@ -1179,7 +1114,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/code/cleaned/translate.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="23" selection-start="1029" selection-end="1171" vertical-scroll-proportion="0.0" vertical-offset="224" max-vertical-offset="850">
+        <state line="19" column="64" selection-start="390" selection-end="390" vertical-scroll-proportion="0.0" vertical-offset="37" max-vertical-offset="697">
           <folding>
             <element signature="e#24#37#0" expanded="true" />
           </folding>
@@ -1188,7 +1123,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/code/cleaned/http_server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="207" column="27" selection-start="7912" selection-end="7912" vertical-scroll-proportion="0.32108626" vertical-offset="3318" max-vertical-offset="3944">
+        <state line="86" column="39" selection-start="2824" selection-end="2824" vertical-scroll-proportion="1.0356321" vertical-offset="561" max-vertical-offset="3774">
           <folding>
             <element signature="e#24#47#0" expanded="true" />
           </folding>
