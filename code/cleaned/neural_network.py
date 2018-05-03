@@ -423,8 +423,17 @@ class MultiNet():
                 classified_word = []
                 for char in word:
                     classifications = char.argsort()[::-1][:NUM_OF_TRIES]
-                    classified_word.append([(chr(mapping[c]), char[c]) for c
-                                            in classifications])
+                    sureties = normalize_list(char[classifications])
+                    # classifications = sureties.argsort()[::-1][:NUM_OF_TRIES]
+                    # print classifications
+                    possible_chars = []
+                    for i, c in enumerate(classifications):
+                        _char = chr(mapping[c])
+                        surety = sureties[i] * 100
+                        possible_chars.append((_char, surety))
+                    classified_word.append(possible_chars)
+                    # classified_word.append([(chr(mapping[c]), char[c]) for c
+                    #                         in classifications])
                 classified_line.append(classified_word)
             classified_text.append(classified_line)
         return classified_text
@@ -441,3 +450,17 @@ def dropout_layer(layer, p_dropout):
         np.random.RandomState(0).randint(999999))
     mask = srng.binomial(n=1, p=1 - p_dropout, size=layer.shape)
     return layer * tt.cast(mask, theano.config.floatX)
+
+
+def normalize_list(_list):
+    def norm_sum(__list):
+        s = sum(__list)
+        return [float(i)/s for i in __list]
+
+    def norm_max(__list):
+        return [float(i)/max(__list) for i in __list]
+
+    _list = np.clip(_list, 0, None)  # Set 0 as a minimum value for each surety
+    norm_sum_list = np.array(norm_sum(_list))
+    norm_max_list = np.array(norm_max(_list))
+    return np.mean([norm_max_list, norm_sum_list], axis=0)

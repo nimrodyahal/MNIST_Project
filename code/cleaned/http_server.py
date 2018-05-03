@@ -8,6 +8,7 @@ import threading
 import cv2
 import cPickle
 import urllib
+import numpy as np
 from translate import translate
 from Queue import Queue
 from preprocessor import Preprocessor
@@ -128,8 +129,10 @@ class MyHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
     def do_POST(self):
         if self.requestline.startswith('POST /upload'):
+            print 'HTTP Request Handler: Submit Image Request'
             self.__do_submit_image()
         elif self.requestline.startswith('POST /translate'):
+            print 'HTTP Request Handler: Translate Text Request'
             self.__do_translate()
 
     def __do_submit_image(self):
@@ -206,12 +209,33 @@ class MyHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         print 'HTTP Request Handler: Separated Chars'
         self.input_queue.put_nowait((separated, self.output_queue))
         string_text = self.__wait_for_answer()
+        net_sureties = self.__get_net_surety_statistics(string_text)
         print 'HTTP Request Handler: Classification Done!'
         auto_completed = self.spell_checker.autocomplete_text(string_text)
         print 'HTTP Request Handler: Spell Checking Done!'
-        return auto_completed, [1, 2, 3]
+        return auto_completed, net_sureties
 
     def __wait_for_answer(self):
         while True:
             if not self.output_queue.empty():
                 return self.output_queue.get_nowait()
+
+    @staticmethod
+    def __get_net_surety_statistics(string_text):
+        sureties = []
+        for line in string_text:
+            for word in line:
+                for char in word:
+                    sureties.append([poss[1] for poss in char])
+        sureties = np.array(sureties)
+        return list(np.max(sureties, axis=1))
+
+    # @staticmethod
+    # def __get_net_surety_statistics(string_text):
+    #     sureties = []
+    #     for line in string_text:
+    #         for word in line:
+    #             for char in word:
+    #                 sureties.append(char[1])
+    #     sureties = np.array(sureties)
+    #     return list(np.max(sureties, axis=1))

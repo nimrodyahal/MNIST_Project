@@ -58,7 +58,7 @@
 				<div class="col-sm-6">
 					<div class="row pb-3 mx-auto">
 						<div class="col-sm-12 my-auto" style="height:350px">
-							<canvas id="lineChart"></canvas>
+							<canvas id="lineChart" class="pb-4"></canvas>
 						</div>
 						<!-- <div class="col-sm-6"> -->
 							<!-- <div class="card"> -->
@@ -122,6 +122,16 @@
 							data: {nn_data}
 						}}
 					]
+				}},
+				options: {{
+					scales: {{
+						yAxes: [{{
+							ticks: {{
+								min: 0,
+								max: 100
+							}}
+						}}]
+					}}
 				}}
 			}});
 		</script>
