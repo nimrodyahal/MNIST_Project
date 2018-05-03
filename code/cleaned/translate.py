@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import urllib
-import HTMLParser
 import re
 import time
 from selenium import webdriver
@@ -8,16 +7,19 @@ from selenium import webdriver
 
 driver = webdriver.Chrome()
 
-# with open('Translation Languages.txt', 'rb') as f:
-#     languages_dict = cPickle.load(f)
-
-
-def unescape(text):
-    parser = HTMLParser.HTMLParser()
-    return parser.unescape(text)
-
 
 def translate(to_translate, to_language='auto', from_language='en'):
+    """
+    Translates a text to another language. Uses Google Translate.
+    to_language and from_lanuage have to be one of the language codes Google
+    recognizes. For a full list of language codes, visit the URL:
+    https://cloud.google.com/translate/docs/languages
+    :param to_translate: The text to translate
+    :param to_language: The language to translate the text to.
+    :param from_language: The original language of the text.
+    Default: 'en'(English)
+    :return: The translated text
+    """
     if to_language == 'en':
         return to_translate
     link = 'https://translate.google.co.il/?hl=en#{from_lang}/' \
@@ -33,4 +35,4 @@ def translate(to_translate, to_language='auto', from_language='en'):
         final += re.findall(pattern, line)
     return u'\r\n'.join(final)
 
-translate('', to_language='')
+translate('', to_language='')  # To "warm up"

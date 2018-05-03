@@ -4,7 +4,7 @@ neural_network.py
 Repurposed code - credit goes to Michael Nielsen. Original code can be found at
 https://github.com/mnielsen/neural-networks-and-deep-learning.
 It is HIGHLY recommended to read extensively on the subject before reading the
-code, as even with the documentation, it cannot be understood without the
+code, as even with the documentation, it cannot be understood without
 considerable theoretical knowledge.
 
 A Theano-based program for training and running simple neural networks.
@@ -453,6 +453,13 @@ def dropout_layer(layer, p_dropout):
 
 
 def normalize_list(_list):
+    """
+    Normalizes a list. Returns the average of two different types of
+    normalizations: one where 1 is the max in the list, and one where 1 is the
+    sum of the list.
+    :param _list: A list to normalize
+    :return: A normalized list
+    """
     def norm_sum(__list):
         s = sum(__list)
         return [float(i)/s for i in __list]

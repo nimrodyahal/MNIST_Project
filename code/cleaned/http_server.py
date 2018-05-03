@@ -64,17 +64,25 @@ def _set_path_free(path):
 
 
 def _get_file_name_from_request(requestline):
+    """
+    Returns the file name from an 'upload' request. Also verifies the name is
+    valid.
+    :param requestline: String - the request line
+    :return: String - file name
+    """
     request = requestline
     pattern = r'file-name=(.*) HTTP\/'
     raw_name = re.findall(pattern, request)[0]
 
-    split_name = raw_name.split('%')
-    for i, char in enumerate(split_name[1:]):
-        if all(c in string.hexdigits for c in char[:2]):
-            char = chr(int(char[:2], 16)) + char[2:]
-        split_name[1 + i] = char
-    name = ''.join(split_name)
-    if not re.findall(r'[^A-Za-z0-9_\-\. ]', name):
+    # split_name = raw_name.split('%')
+    # for i, char in enumerate(split_name[1:]):
+    #     if all(c in string.hexdigits for c in char[:2]):
+    #         char = chr(int(char[:2], 16)) + char[2:]
+    #     split_name[1 + i] = char
+    # name = ''.join(split_name)
+
+    name = urllib.unquote(raw_name)
+    if not re.findall(r'[\/\?\<\>\\\:\*\|\"]', name):
         if '.' in name:
             name = '.'.join(name.split('.')[:-1])
         return name
@@ -123,11 +131,18 @@ class MyHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
                                                            server)
 
     def do_GET(self):
+        """
+        Process 'GET' request. Redirects all paths to the HTTP folder (except
+        for the cached images).
+        """
         if not self.path.startswith('/Cache'):
             self.path = 'http/' + self.path
         SimpleHTTPServer.SimpleHTTPRequestHandler.do_GET(self)
 
     def do_POST(self):
+        """
+        Process 'POST' request.
+        """
         if self.requestline.startswith('POST /upload'):
             print 'HTTP Request Handler: Submit Image Request'
             self.__do_submit_image()
@@ -135,20 +150,35 @@ class MyHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
             print 'HTTP Request Handler: Translate Text Request'
             self.__do_translate()
 
+    def __send_data(self, data):
+        self.send_response(200)
+        self.send_header('Content-type', 'text/html')
+        self.send_header("Content-Length", str(len(data)))
+        self.end_headers()
+        self.wfile.write(data)
+
     def __do_submit_image(self):
+        """
+        Process an 'upload' POST request. Classifies the image, then send the
+        'result' page with.
+        """
         length = int(self.headers['Content-Length'])
         file_data = self.rfile.read(length)
         answer, nn_surety = self.__classify(file_data)
 
-        self.send_response(200)
-        self.send_header('Content-type', 'text/html')
         result_page = self.__construct_result_page(answer, nn_surety)
-        self.send_header("Content-Length", str(len(result_page)))
-        self.end_headers()
-        self.wfile.write(result_page)
+        self.__send_data(result_page)
+        # self.send_response(200)
+        # self.send_header('Content-type', 'text/html')
+        # self.send_header("Content-Length", str(len(result_page)))
+        # self.end_headers()
+        # self.wfile.write(result_page)
         _set_path_free(self.__cached_img_path)
 
     def __do_translate(self):
+        """
+        Process a 'translate' POST request.
+        """
         length = int(self.headers['Content-Length'])
         to_translate = self.rfile.read(length).replace('<br>', '\r\n')
 
@@ -160,18 +190,26 @@ class MyHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         translate(to_translate, to_language=to_lang)  # Warm up
         translated = translate(to_translate, to_language=to_lang)
         translated = translated.encode('utf-8')
-
-        self.send_response(200)
-        self.send_header('Content-type', 'text/html')
-        self.send_header("Content-Length", str(len(translated)))
-        self.end_headers()
-        self.wfile.write(translated)
+        self.__send_data(translated)
+        # self.send_response(200)
+        # self.send_header('Content-type', 'text/html')
+        # self.send_header("Content-Length", str(len(translated)))
+        # self.end_headers()
+        # self.wfile.write(translated)
 
     @staticmethod
     def __get_length_of_nn_data(count):
+        """
+        Returns a string representation of a list of empty strings.
+        """
         return str([''] * count)
 
     def __get_dropdown_options(self):
+        """
+        Constructs the syntax for the language dropdown options.
+        :return: A string containing all the dropdown options, ready to be
+        used in the html file.
+        """
         dropdown_options = []
         for lang in sorted(self.languages_dict):
             dropdown_options.append(
@@ -179,6 +217,16 @@ class MyHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         return '\r\n'.join(dropdown_options)
 
     def __construct_result_page(self, answer, nn_surety):
+        """
+        Returns the html 'result' file. Inserts the path of the cached image,
+        the answer, the language dropdown options, the name of the image, the
+        average net surety, the median net surety, and the data for the NN
+        surety graph.
+        :param answer: String - The classified text
+        :param nn_surety: A list of the surety (in percentage) of the net for
+        every character classified.
+        :return: The 'result' page
+        """
         with open('http\\result.html', 'rb') as f:
             result_page = f.read()
 
@@ -199,6 +247,12 @@ class MyHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
     @Memoized
     def __classify(self, file_data):
+        """
+        Classifies the text within an image.
+        :param file_data: The image in byte data.
+        :return: [String, List] - The answer text and the net sureties for
+        every character classified.
+        """
         self.__cached_img_path = _get_file_path()
         with open(self.__cached_img_path, 'wb') as img_file:
             img_file.write(file_data)
@@ -216,12 +270,19 @@ class MyHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         return auto_completed, net_sureties
 
     def __wait_for_answer(self):
+        """
+        Waits for an answer from the NN thread.
+        """
         while True:
             if not self.output_queue.empty():
                 return self.output_queue.get_nowait()
 
     @staticmethod
     def __get_net_surety_statistics(string_text):
+        """
+        Returns a list of the net sureties for every character classified.
+        :param string_text: The answer from the Neural Net.
+        """
         sureties = []
         for line in string_text:
             for word in line:
@@ -229,13 +290,3 @@ class MyHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
                     sureties.append([poss[1] for poss in char])
         sureties = np.array(sureties)
         return list(np.max(sureties, axis=1))
-
-    # @staticmethod
-    # def __get_net_surety_statistics(string_text):
-    #     sureties = []
-    #     for line in string_text:
-    #         for word in line:
-    #             for char in word:
-    #                 sureties.append(char[1])
-    #     sureties = np.array(sureties)
-    #     return list(np.max(sureties, axis=1))
