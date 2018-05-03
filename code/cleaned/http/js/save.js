@@ -48,6 +48,8 @@ $("#TranslateButton").click(function(){
 	request.done(function( msg ) {
 		// msg = msg.replace(/\r\n/g, "<br>");
 		console.log(msg);
-		document.getElementById('TextBox').innerHTML = msg;
+		textbox = document.getElementById('TextBox');
+		textbox.innerHTML = msg;
+		textbox.value = msg;
 	});
 });

@@ -2,7 +2,6 @@
 import SimpleHTTPServer
 import SocketServer
 import numpy
-import string
 import re
 import threading
 import cv2
@@ -57,6 +56,8 @@ def _set_path_free(path):
     created and none deleted.
     :param path:
     """
+    if not path:
+        return
     global used_numbers
     index_of_number = (SAVE_DIR + FILE_NAME_FORMAT).index('{')
     number_of_path = int(path[index_of_number])
@@ -143,6 +144,7 @@ class MyHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         """
         Process 'POST' request.
         """
+        print self.requestline
         if self.requestline.startswith('POST /upload'):
             print 'HTTP Request Handler: Submit Image Request'
             self.__do_submit_image()
@@ -162,12 +164,17 @@ class MyHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         Process an 'upload' POST request. Classifies the image, then send the
         'result' page with.
         """
-        length = int(self.headers['Content-Length'])
-        file_data = self.rfile.read(length)
-        answer, nn_surety = self.__classify(file_data)
+        try:
+            length = int(self.headers['Content-Length'])
+            file_data = self.rfile.read(length)
+            answer, nn_surety = self.__classify(file_data)
 
-        result_page = self.__construct_result_page(answer, nn_surety)
-        self.__send_data(result_page)
+            result_page = self.__construct_result_page(answer, nn_surety)
+            self.__send_data(result_page)
+        except:
+            with open('http\\500_error.html', 'rb') as f:
+                self.__send_data(f.read())
+
         # self.send_response(200)
         # self.send_header('Content-type', 'text/html')
         # self.send_header("Content-Length", str(len(result_page)))
@@ -179,18 +186,23 @@ class MyHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         """
         Process a 'translate' POST request.
         """
-        length = int(self.headers['Content-Length'])
-        to_translate = self.rfile.read(length).replace('<br>', '\r\n')
+        try:
+            length = int(self.headers['Content-Length'])
+            to_translate = self.rfile.read(length).replace('<br>', '\r\n')
 
-        request = urllib.unquote_plus(self.requestline)
-        to_lang_pattern = r'\?to_lang=(.*) HTTP\/'
-        to_lang_full = re.findall(to_lang_pattern, request)[0]
-        to_lang = self.languages_dict[to_lang_full]
+            request = urllib.unquote_plus(self.requestline)
+            to_lang_pattern = r'\?to_lang=(.*) HTTP\/'
+            to_lang_full = re.findall(to_lang_pattern, request)[0]
+            to_lang = self.languages_dict[to_lang_full]
 
-        translate(to_translate, to_language=to_lang)  # Warm up
-        translated = translate(to_translate, to_language=to_lang)
-        translated = translated.encode('utf-8')
-        self.__send_data(translated)
+            translate(to_translate, to_language=to_lang)  # Warm up
+            translated = translate(to_translate, to_language=to_lang)
+            translated = translated.encode('utf-8')
+            print 'Translated:', translated
+            self.__send_data(translated)
+        except:
+            error_message = 'The Server Has Experienced An Error'
+            self.__send_data(error_message)
         # self.send_response(200)
         # self.send_header('Content-type', 'text/html')
         # self.send_header("Content-Length", str(len(translated)))
@@ -258,6 +270,8 @@ class MyHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
             img_file.write(file_data)
 
         cv2_img = cv2.imread(self.__cached_img_path, 0)
+        if cv2_img is None:
+            raise ServerError
         preprocessor = Preprocessor(cv2_img)
         separated = preprocessor.separate_text()
         print 'HTTP Request Handler: Separated Chars'
@@ -275,7 +289,10 @@ class MyHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         """
         while True:
             if not self.output_queue.empty():
-                return self.output_queue.get_nowait()
+                result = self.output_queue.get_nowait()
+                if isinstance(result, Exception):
+                    raise result
+                return result
 
     @staticmethod
     def __get_net_surety_statistics(string_text):
@@ -290,3 +307,8 @@ class MyHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
                     sureties.append([poss[1] for poss in char])
         sureties = np.array(sureties)
         return list(np.max(sureties, axis=1))
+
+
+class ServerError(Exception):
+    def __str__(self):
+        return 'The Server Has Experienced An Error'

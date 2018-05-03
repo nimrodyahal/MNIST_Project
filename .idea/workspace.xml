@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c20999e-9e20-4348-95e9-be5509e66b0a" name="Default" comment="">
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\nueral_network_test.py" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\test.py" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\train-images.idx3-ubyte" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\train-labels.idx1-ubyte" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\אפיון.docx" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\מסמך ייזום.docx" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\מסמך ניתוח.docx" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\מסמך עיצוב.docx" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/cleaned/http/favicon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/http/500_error.html" afterPath="$PROJECT_DIR$/code/cleaned/http/500_error.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/Translation Languages.txt" afterPath="$PROJECT_DIR$/code/cleaned/Translation Languages.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/http_server.py" afterPath="$PROJECT_DIR$/code/cleaned/http_server.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/http/index.html" afterPath="$PROJECT_DIR$/code/cleaned/http/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/http/result.html" afterPath="$PROJECT_DIR$/code/cleaned/http/result.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/http/js/save.js" afterPath="$PROJECT_DIR$/code/cleaned/http/js/save.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/server.py" afterPath="$PROJECT_DIR$/code/cleaned/server.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MNIST_Project.iws" />
@@ -36,8 +36,10 @@
       <file leaf-file-name="server.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/cleaned/server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="0" selection-start="230" selection-end="230" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="952">
-              <folding />
+            <state line="30" column="44" selection-start="927" selection-end="927" vertical-scroll-proportion="0.0" vertical-offset="173" max-vertical-offset="1003">
+              <folding>
+                <element signature="e#24#40#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -63,16 +65,16 @@
       <file leaf-file-name="preprocessor.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/cleaned/preprocessor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="379" column="0" selection-start="14621" selection-end="15045" vertical-scroll-proportion="0.0" vertical-offset="6443" max-vertical-offset="6749">
+            <state line="256" column="18" selection-start="9758" selection-end="9764" vertical-scroll-proportion="0.0" vertical-offset="768" max-vertical-offset="6698">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="autocomplete.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="autocomplete.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/cleaned/autocomplete.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="14" selection-start="1402" selection-end="1402" vertical-scroll-proportion="0.41034484" vertical-offset="510" max-vertical-offset="3247">
+            <state line="51" column="14" selection-start="1402" selection-end="1402" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="3247">
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -89,22 +91,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="neural_network.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code/cleaned/neural_network.py">
+      <file leaf-file-name="http_server.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code/cleaned/http_server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="0" selection-start="675" selection-end="675" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="8143">
+            <state line="175" column="42" selection-start="6111" selection-end="6111" vertical-scroll-proportion="0.0" vertical-offset="2563" max-vertical-offset="5423">
               <folding>
-                <marker date="1525347915547" expanded="true" signature="18804:19465" placeholder="..." />
+                <element signature="e#24#47#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="http_server.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code/cleaned/http_server.py">
+      <file leaf-file-name="translate.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/code/cleaned/translate.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="283" column="59" selection-start="10544" selection-end="10544" vertical-scroll-proportion="0.0" vertical-offset="4423" max-vertical-offset="5049">
-              <folding />
+            <state line="37" column="45" selection-start="1384" selection-end="1384" vertical-scroll-proportion="0.8370607" vertical-offset="105" max-vertical-offset="731">
+              <folding>
+                <element signature="e#24#37#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -161,11 +165,12 @@
         <option value="$PROJECT_DIR$/code/cleaned/http/index.html" />
         <option value="$PROJECT_DIR$/code/cleaned/tests/translate_test.py" />
         <option value="$PROJECT_DIR$/code/cleaned/neural_network.py" />
-        <option value="$PROJECT_DIR$/code/cleaned/translate.py" />
-        <option value="$PROJECT_DIR$/code/cleaned/server.py" />
-        <option value="$PROJECT_DIR$/code/cleaned/http_server.py" />
         <option value="$PROJECT_DIR$/code/cleaned/ContourClass.py" />
         <option value="$PROJECT_DIR$/code/cleaned/autocomplete.py" />
+        <option value="$PROJECT_DIR$/code/cleaned/server.py" />
+        <option value="$PROJECT_DIR$/code/cleaned/http_server.py" />
+        <option value="$PROJECT_DIR$/code/cleaned/Translation Languages.txt" />
+        <option value="$PROJECT_DIR$/code/cleaned/translate.py" />
       </list>
     </option>
   </component>
@@ -331,7 +336,7 @@
       <recent name="D:\School\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.server">
+  <component name="RunManager" selected="Python.translate">
     <configuration default="false" name="server_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -630,9 +635,9 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.server" />
-        <item index="1" class="java.lang.String" itemvalue="Python.server_test" />
-        <item index="2" class="java.lang.String" itemvalue="Python.translate" />
+        <item index="0" class="java.lang.String" itemvalue="Python.translate" />
+        <item index="1" class="java.lang.String" itemvalue="Python.server" />
+        <item index="2" class="java.lang.String" itemvalue="Python.server_test" />
         <item index="3" class="java.lang.String" itemvalue="Python.http_server (1)" />
         <item index="4" class="java.lang.String" itemvalue="Python.translate_test" />
       </list>
@@ -770,7 +775,11 @@
       <created>1525354419012</created>
       <updated>1525354419012</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="A bit a pruning the leftover files">
+      <created>1525361773172</created>
+      <updated>1525361773172</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -797,6 +806,7 @@
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -805,13 +815,12 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39955357" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18444847" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27232143" sideWeight="0.50030136" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27232143" sideWeight="0.4996986" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27232143" sideWeight="0.4996986" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27566963" sideWeight="0.4996986" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -830,7 +839,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="More work on preprocessing - got word segmentation mostly right" />
     <MESSAGE value="More work on preprocessing: finished word segmentation. Working on contour detection in individual words - some success; more work to be done." />
     <MESSAGE value="More work on preprocessing - contours, SON!" />
     <MESSAGE value="More work on preprocessing - finished contour cropping on testing area, implementing it in code." />
@@ -855,7 +863,8 @@
     <MESSAGE value="A bit further in translating the GUI to a website - Finished Translation&#10;To Do:&#10;* 505 page&#10;* net surety&#10;* proper design" />
     <MESSAGE value="Pretty much finished in translating the GUI to a website.&#10;To Do:&#10;* proper design" />
     <MESSAGE value="Added documentation.&#10;Still needs to go through color design." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added documentation.&#10;Still needs to go through color design." />
+    <MESSAGE value="A bit a pruning the leftover files" />
+    <option name="LAST_COMMIT_MESSAGE" value="A bit a pruning the leftover files" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -866,7 +875,9 @@
     <entry file="file://$PROJECT_DIR$/code/cleaned/http_server.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="283" column="59" selection-start="10544" selection-end="10544" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5049">
-          <folding />
+          <folding>
+            <element signature="e#24#47#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -917,12 +928,16 @@
     </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/.PyCharm30/system/python_stubs/437035981/__builtin__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="594" column="4" selection-start="20056" selection-end="20056" vertical-scroll-proportion="0.0" vertical-offset="9891" max-vertical-offset="87737" />
+        <state line="594" column="4" selection-start="20056" selection-end="20056" vertical-scroll-proportion="0.0" vertical-offset="9891" max-vertical-offset="87737">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://D:/Heights/PortableApps/PortablePython2.7.6.1/Miniconda/Lib/threading.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="716" column="8" selection-start="25584" selection-end="25584" vertical-scroll-proportion="0.33333334" vertical-offset="11972" max-vertical-offset="22576" />
+        <state line="716" column="8" selection-start="25584" selection-end="25584" vertical-scroll-proportion="0.33333334" vertical-offset="11972" max-vertical-offset="22576">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/code/cleaned/tests/new_net.py">
@@ -987,12 +1002,9 @@
     </entry>
     <entry file="file://D:/Heights/PortableApps/PortablePython2.7.6.1/Miniconda/Lib/SocketServer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="627" column="6" selection-start="20327" selection-end="20327" vertical-scroll-proportion="0.16932908" vertical-offset="10485" max-vertical-offset="12461" />
-      </provider>
-    </entry>
-    <entry file="file://D:/Heights/PortableApps/PortablePython2.7.6.1/Miniconda/Lib/BaseHTTPServer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="311" column="37" selection-start="11495" selection-end="11495" vertical-scroll-proportion="0.0" vertical-offset="5180" max-vertical-offset="10489" />
+        <state line="627" column="6" selection-start="20327" selection-end="20327" vertical-scroll-proportion="0.16932908" vertical-offset="10485" max-vertical-offset="12461">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/code/cleaned/http/js/submit.js">
@@ -1002,7 +1014,9 @@
     </entry>
     <entry file="file://D:/Heights/PortableApps/PortablePython2.7.6.1/Miniconda/Lib/SimpleHTTPServer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="51" selection-start="3026" selection-end="3064" vertical-scroll-proportion="0.49520767" vertical-offset="1237" max-vertical-offset="3961" />
+        <state line="99" column="51" selection-start="3026" selection-end="3064" vertical-scroll-proportion="0.49520767" vertical-offset="1237" max-vertical-offset="3961">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/code/cleaned/http/css/mdb.min.css">
@@ -1055,26 +1069,9 @@
         <state line="2" column="18" selection-start="53" selection-end="53" vertical-scroll-proportion="0.02715655" vertical-offset="0" max-vertical-offset="680" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/cleaned/Translation Languages.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="7191" />
-      </provider>
-    </entry>
     <entry file="file://D:/Heights/PortableApps/PortablePython2.7.6.1/Miniconda/Lib/HTMLParser.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="446" column="8" selection-start="16026" selection-end="16026" vertical-scroll-proportion="0.022364218" vertical-offset="7551" max-vertical-offset="8177" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/cleaned/translate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="32" selection-start="693" selection-end="693" vertical-scroll-proportion="0.543131" vertical-offset="0" max-vertical-offset="731" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/cleaned/preprocessor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="379" column="0" selection-start="14621" selection-end="15045" vertical-scroll-proportion="0.0" vertical-offset="6072" max-vertical-offset="6698">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/code/cleaned/tests/gui.py">
@@ -1089,25 +1086,25 @@
         <state line="1" column="0" selection-start="24" selection-end="24" vertical-scroll-proportion="-0.11341853" vertical-offset="88" max-vertical-offset="714" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/cleaned/neural_network.py">
+    <entry file="file://$PROJECT_DIR$/code/cleaned/ContourClass.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="675" selection-end="675" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="7990">
-          <folding>
-            <marker date="1525347915547" expanded="true" signature="18804:19465" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/cleaned/server.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="230" selection-end="230" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="952">
+        <state line="8" column="34" selection-start="253" selection-end="253" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/cleaned/http_server.py">
+    <entry file="file://$PROJECT_DIR$/code/cleaned/autocomplete.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="283" column="59" selection-start="10544" selection-end="10544" vertical-scroll-proportion="0.0" vertical-offset="4423" max-vertical-offset="5049">
+        <state line="51" column="14" selection-start="1402" selection-end="1402" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="3247">
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/cleaned/neural_network.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="0" selection-start="675" selection-end="675" vertical-scroll-proportion="0.01954023" vertical-offset="255" max-vertical-offset="7990">
           <folding />
         </state>
       </provider>
@@ -1119,18 +1116,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/cleaned/ContourClass.py">
+    <entry file="file://D:/Heights/PortableApps/PortablePython2.7.6.1/Miniconda/Lib/BaseHTTPServer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="34" selection-start="253" selection-end="253" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
+        <state line="311" column="21" selection-start="11479" selection-end="11479" vertical-scroll-proportion="0.33226836" vertical-offset="5028" max-vertical-offset="10489">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/cleaned/autocomplete.py">
+    <entry file="file://$PROJECT_DIR$/code/cleaned/preprocessor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="14" selection-start="1402" selection-end="1402" vertical-scroll-proportion="0.41034484" vertical-offset="510" max-vertical-offset="3247">
+        <state line="256" column="18" selection-start="9758" selection-end="9764" vertical-scroll-proportion="0.0" vertical-offset="768" max-vertical-offset="6698">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/cleaned/server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="44" selection-start="927" selection-end="927" vertical-scroll-proportion="0.0" vertical-offset="224" max-vertical-offset="1003">
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#24#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/cleaned/http_server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="175" column="42" selection-start="6111" selection-end="6111" vertical-scroll-proportion="0.0" vertical-offset="2563" max-vertical-offset="5423">
+          <folding>
+            <element signature="e#24#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/cleaned/Translation Languages.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="311" column="5" selection-start="2125" selection-end="2125" vertical-scroll-proportion="0.41533548" vertical-offset="5027" max-vertical-offset="7123">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/cleaned/translate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="45" selection-start="1384" selection-end="1384" vertical-scroll-proportion="0.8370607" vertical-offset="105" max-vertical-offset="731">
+          <folding>
+            <element signature="e#24#37#0" expanded="true" />
           </folding>
         </state>
       </provider>

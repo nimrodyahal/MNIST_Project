@@ -24,8 +24,11 @@ class NeuralNetThread(threading.Thread):
         while True:
             try:
                 separated, output_queue = self.input_queue.get_nowait()
-                result = self.__multi_net.classify_text(separated)
-                output_queue.put_nowait(result)
+                try:
+                    result = self.__multi_net.classify_text(separated)
+                    output_queue.put_nowait(result)
+                except Exception, e:
+                    output_queue.put_nowait(e)
             except Queue.Empty:
                 continue
         print 'Neural Net Thread: Shutting Down'
