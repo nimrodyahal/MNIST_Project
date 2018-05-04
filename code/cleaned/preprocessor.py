@@ -247,7 +247,7 @@ class Preprocessor():
                 if x2 < center_x < (x2 + w2):
                     return contour
 
-    def segment_tittles(self):
+    def __segment_tittles(self):
         """
         Tittles are the little dots above 'i' and 'j'. This function adds them
         to the letter contour.
@@ -368,7 +368,7 @@ class Preprocessor():
         :return: List of lists of lists of characters (OpenCV2 image).
         :rtype : [lines] = [[words]] = [[[(OpenCV2 image)]]]
         """
-        self.segment_tittles()
+        self.__segment_tittles()
         lines = self.__get_line_coords()
         text = []
         for upper, lower in lines:
