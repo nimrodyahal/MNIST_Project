@@ -112,21 +112,80 @@ class MyTCPServer(SocketServer.TCPServer):
                                         RequestHandlerClass)
         self.input_queue = input_queue
         self.spell_checker = spell_checker
+        with open(TRAN_LANG_PATH, 'rb') as f:
+            self.languages_dict = cPickle.load(f)
+        self.result_page = None
 
     def finish_request(self, request, client_address):
         self.RequestHandlerClass(request, client_address,
-                                 self, self.input_queue, self.spell_checker)
+                                 self, self.input_queue, self.spell_checker,
+                                 self.languages_dict)
+
+    def __get_dropdown_options(self):
+        """
+        Constructs the syntax for the language dropdown options.
+        :return: A string containing all the dropdown options, ready to be
+        used in the html file.
+        """
+        dropdown_options = []
+        for lang in sorted(self.languages_dict):
+            dropdown_options.append(
+                '<a class="dropdown-item">%s</a>' % lang)
+        return '\r\n'.join(dropdown_options)
+
+    @staticmethod
+    def __get_length_of_nn_data(count):
+        """
+        Returns a string representation of a list of empty strings.
+        """
+        return str([''] * count)
+
+    @Memoized
+    def construct_result_page(self, image_path, file_name, answer, nn_surety):
+        """
+        Returns the html 'result' file. Inserts the path of the cached image,
+        the answer, the language dropdown options, the name of the image, the
+        average net surety, the median net surety, and the data for the NN
+        surety graph.
+        :param answer: String - The classified text
+        :param nn_surety: A list of the surety (in percentage) of the net for
+        every character classified.
+        :return: The 'result' page
+        """
+        with open('http\\result.html', 'rb') as f:
+            result_page = f.read()
+
+        # image_path = self.__cached_img_path
+        dropdown_options = self.__get_dropdown_options()
+        # file_name = _get_file_name_from_request(self.requestline)
+        avg_net_surety = numpy.mean(nn_surety)
+        med_net_surety = numpy.median(nn_surety)
+        nn_data_graph_len = self.__get_length_of_nn_data(len(nn_surety))
+        nn_data = str(nn_surety)
+
+        result_page = result_page.format(
+            image_path=image_path, answer=answer,
+            dropdown_options=dropdown_options, file_name=file_name,
+            avg_net_surety=avg_net_surety, med_net_surety=med_net_surety,
+            length_of_nn_data=nn_data_graph_len, nn_data=str(nn_data))
+        self.result_page = result_page
+
+    def get_result_page(self):
+        if self.result_page:
+            return self.result_page
+        with open('http\\500_error.html', 'rb') as f:
+            return f.read()
 
 
 class MyHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
     def __init__(self, request, client_address, server, input_queue,
-                 spell_checker):
+                 spell_checker, languages_dict):
+        self.server = server
         self.input_queue = input_queue
         self.output_queue = Queue()
         self.spell_checker = spell_checker
         self.__cached_img_path = ''
-        with open(TRAN_LANG_PATH, 'rb') as f:
-            self.languages_dict = cPickle.load(f)
+        self.languages_dict = languages_dict
         SimpleHTTPServer.SimpleHTTPRequestHandler.__init__(self, request,
                                                            client_address,
                                                            server)
@@ -137,7 +196,10 @@ class MyHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         for the cached images).
         """
         if not self.path.startswith('/Cache'):
-            self.path = 'http/' + self.path
+            self.path = '/http' + self.path
+            if self.path == '/http/results':
+                self.__send_data(self.server.get_result_page())
+                return
         SimpleHTTPServer.SimpleHTTPRequestHandler.do_GET(self)
 
     def do_POST(self):
@@ -168,18 +230,18 @@ class MyHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
             length = int(self.headers['Content-Length'])
             file_data = self.rfile.read(length)
             answer, nn_surety = self.__classify(file_data)
+            image_path = self.__cached_img_path
+            file_name = _get_file_name_from_request(self.requestline)
 
-            result_page = self.__construct_result_page(answer, nn_surety)
-            self.__send_data(result_page)
-        except:
+            self.server.construct_result_page(image_path, file_name, answer,
+                                              nn_surety)
+            self.__send_data('Success')
+            # result_page = self.__construct_result_page(answer, nn_surety)
+            # self.__send_data(result_page)
+        except Exception, e:
+            print e
             with open('http\\500_error.html', 'rb') as f:
                 self.__send_data(f.read())
-
-        # self.send_response(200)
-        # self.send_header('Content-type', 'text/html')
-        # self.send_header("Content-Length", str(len(result_page)))
-        # self.end_headers()
-        # self.wfile.write(result_page)
         _set_path_free(self.__cached_img_path)
 
     def __do_translate(self):
@@ -200,7 +262,8 @@ class MyHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
             translated = translated.encode('utf-8')
             print 'Translated:', translated
             self.__send_data(translated)
-        except:
+        except Exception, e:
+            print e
             error_message = 'The Server Has Experienced An Error'
             self.__send_data(error_message)
         # self.send_response(200)
@@ -209,53 +272,35 @@ class MyHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         # self.end_headers()
         # self.wfile.write(translated)
 
-    @staticmethod
-    def __get_length_of_nn_data(count):
-        """
-        Returns a string representation of a list of empty strings.
-        """
-        return str([''] * count)
-
-    def __get_dropdown_options(self):
-        """
-        Constructs the syntax for the language dropdown options.
-        :return: A string containing all the dropdown options, ready to be
-        used in the html file.
-        """
-        dropdown_options = []
-        for lang in sorted(self.languages_dict):
-            dropdown_options.append(
-                '<a class="dropdown-item" href="#">%s</a>' % lang)
-        return '\r\n'.join(dropdown_options)
-
-    def __construct_result_page(self, answer, nn_surety):
-        """
-        Returns the html 'result' file. Inserts the path of the cached image,
-        the answer, the language dropdown options, the name of the image, the
-        average net surety, the median net surety, and the data for the NN
-        surety graph.
-        :param answer: String - The classified text
-        :param nn_surety: A list of the surety (in percentage) of the net for
-        every character classified.
-        :return: The 'result' page
-        """
-        with open('http\\result.html', 'rb') as f:
-            result_page = f.read()
-
-        image_path = self.__cached_img_path
-        dropdown_options = self.__get_dropdown_options()
-        file_name = _get_file_name_from_request(self.requestline)
-        avg_net_surety = numpy.mean(nn_surety)
-        med_net_surety = numpy.median(nn_surety)
-        nn_data_graph_len = self.__get_length_of_nn_data(len(nn_surety))
-        nn_data = str(nn_surety)
-
-        result_page = result_page.format(
-            image_path=image_path, answer=answer,
-            dropdown_options=dropdown_options, file_name=file_name,
-            avg_net_surety=avg_net_surety, med_net_surety=med_net_surety,
-            length_of_nn_data=nn_data_graph_len, nn_data=str(nn_data))
-        return result_page
+    # @Memoized
+    # def __construct_result_page(self, answer, nn_surety):
+    #     """
+    #     Returns the html 'result' file. Inserts the path of the cached image,
+    #     the answer, the language dropdown options, the name of the image, the
+    #     average net surety, the median net surety, and the data for the NN
+    #     surety graph.
+    #     :param answer: String - The classified text
+    #     :param nn_surety: A list of the surety (in percentage) of the net for
+    #     every character classified.
+    #     :return: The 'result' page
+    #     """
+    #     with open('http\\result.html', 'rb') as f:
+    #         result_page = f.read()
+    #
+    #     image_path = self.__cached_img_path
+    #     dropdown_options = self.__get_dropdown_options()
+    #     file_name = _get_file_name_from_request(self.requestline)
+    #     avg_net_surety = numpy.mean(nn_surety)
+    #     med_net_surety = numpy.median(nn_surety)
+    #     nn_data_graph_len = self.__get_length_of_nn_data(len(nn_surety))
+    #     nn_data = str(nn_surety)
+    #
+    #     result_page = result_page.format(
+    #         image_path=image_path, answer=answer,
+    #         dropdown_options=dropdown_options, file_name=file_name,
+    #         avg_net_surety=avg_net_surety, med_net_surety=med_net_surety,
+    #         length_of_nn_data=nn_data_graph_len, nn_data=str(nn_data))
+    #     return result_page
 
     @Memoized
     def __classify(self, file_data):

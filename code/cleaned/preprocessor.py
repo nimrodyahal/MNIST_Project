@@ -41,6 +41,9 @@ class Preprocessor():
 
         thresh = cv2.bitwise_not(thresh)
         thresh = self.__clean_image(thresh)
+        # angle = self.__get_text_tilt(img)
+        # rotated = self.__rotate_image
+        # return rotated
         return thresh
 
     def __get_external_contours(self):
@@ -69,7 +72,7 @@ class Preprocessor():
         return img
 
     @staticmethod
-    def __find_text_tilt(img):
+    def __get_text_tilt(img):
         """
         Returns the angle of the text tilt, so that it can be corrected.
         Uses OpenCV2's minAreaRect to find the text area, and from that, the

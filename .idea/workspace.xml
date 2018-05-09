@@ -2,8 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c20999e-9e20-4348-95e9-be5509e66b0a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/autocomplete.py" afterPath="$PROJECT_DIR$/code/cleaned/autocomplete.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/http_server.py" afterPath="$PROJECT_DIR$/code/cleaned/http_server.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/http/index.html" afterPath="$PROJECT_DIR$/code/cleaned/http/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/http/js/jquery.circlechart.js" afterPath="$PROJECT_DIR$/code/cleaned/http/js/jquery.circlechart.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/memoized_decorator.py" afterPath="$PROJECT_DIR$/code/cleaned/memoized_decorator.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/preprocessor.py" afterPath="$PROJECT_DIR$/code/cleaned/preprocessor.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/http/result Testing.html" afterPath="$PROJECT_DIR$/code/cleaned/http/result Testing.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/http/result.html" afterPath="$PROJECT_DIR$/code/cleaned/http/result.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/http/js/save.js" afterPath="$PROJECT_DIR$/code/cleaned/http/js/save.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/cleaned/http/js/submit.js" afterPath="$PROJECT_DIR$/code/cleaned/http/js/submit.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MNIST_Project.iws" />
@@ -30,43 +37,7 @@
       <file leaf-file-name="server.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/cleaned/server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="44" selection-start="927" selection-end="927" vertical-scroll-proportion="0.0" vertical-offset="173" max-vertical-offset="1003">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ContourClass.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code/cleaned/ContourClass.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="34" selection-start="253" selection-end="253" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="357">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gui.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code/cleaned/tests/gui.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="33" selection-start="101" selection-end="135" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="3213">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="preprocessor.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/code/cleaned/preprocessor.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="370" column="24" selection-start="14374" selection-end="14374" vertical-scroll-proportion="0.53103447" vertical-offset="5777" max-vertical-offset="6698">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="autocomplete.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code/cleaned/autocomplete.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="161" column="45" selection-start="5730" selection-end="5730" vertical-scroll-proportion="0.0" vertical-offset="2292" max-vertical-offset="3162">
+            <state line="28" column="50" selection-start="844" selection-end="844" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="935">
               <folding />
             </state>
           </provider>
@@ -75,8 +46,10 @@
       <file leaf-file-name="neural_network.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/cleaned/neural_network.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="245" column="53" selection-start="9127" selection-end="10267" vertical-scroll-proportion="0.0" vertical-offset="3008" max-vertical-offset="7990">
-              <folding />
+            <state line="407" column="0" selection-start="16916" selection-end="16916" vertical-scroll-proportion="0.0" vertical-offset="6728" max-vertical-offset="8143">
+              <folding>
+                <element signature="e#676#690#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -84,29 +57,20 @@
       <file leaf-file-name="memoized_decorator.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/cleaned/memoized_decorator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="0" selection-start="62" selection-end="85" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="http_server.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code/cleaned/http_server.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="277" column="31" selection-start="10194" selection-end="10194" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="5423">
+            <state line="22" column="0" selection-start="655" selection-end="655" vertical-scroll-proportion="0.0" vertical-offset="88" max-vertical-offset="714">
               <folding>
-                <element signature="e#24#47#0" expanded="true" />
+                <element signature="e#24#42#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="translate.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code/cleaned/translate.py">
+      <file leaf-file-name="http_server.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/code/cleaned/http_server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="0" selection-start="121" selection-end="121" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="731">
+            <state line="186" column="19" selection-start="6653" selection-end="6653" vertical-scroll-proportion="0.06260032" vertical-offset="3123" max-vertical-offset="6188">
               <folding>
-                <element signature="e#24#37#0" expanded="true" />
+                <element signature="e#24#47#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -154,7 +118,6 @@
         <option value="$PROJECT_DIR$/MDB Free/BLAAA/bla.html" />
         <option value="$PROJECT_DIR$/MDB Free/bla.py" />
         <option value="$PROJECT_DIR$/MDB Free/server.py" />
-        <option value="$PROJECT_DIR$/code/cleaned/memoized_decorator.py" />
         <option value="$PROJECT_DIR$/code/cleaned/http_server/server.py" />
         <option value="$PROJECT_DIR$/code/cleaned/http_server/http_server.py" />
         <option value="$PROJECT_DIR$/code/cleaned/gui.py" />
@@ -162,14 +125,15 @@
         <option value="$PROJECT_DIR$/code/cleaned/http/result.html" />
         <option value="$PROJECT_DIR$/code/cleaned/http/index.html" />
         <option value="$PROJECT_DIR$/code/cleaned/tests/translate_test.py" />
-        <option value="$PROJECT_DIR$/code/cleaned/neural_network.py" />
         <option value="$PROJECT_DIR$/code/cleaned/ContourClass.py" />
-        <option value="$PROJECT_DIR$/code/cleaned/server.py" />
-        <option value="$PROJECT_DIR$/code/cleaned/http_server.py" />
         <option value="$PROJECT_DIR$/code/cleaned/Translation Languages.txt" />
         <option value="$PROJECT_DIR$/code/cleaned/translate.py" />
-        <option value="$PROJECT_DIR$/code/cleaned/preprocessor.py" />
         <option value="$PROJECT_DIR$/code/cleaned/autocomplete.py" />
+        <option value="$PROJECT_DIR$/code/cleaned/preprocessor.py" />
+        <option value="$PROJECT_DIR$/code/cleaned/neural_network.py" />
+        <option value="$PROJECT_DIR$/code/cleaned/memoized_decorator.py" />
+        <option value="$PROJECT_DIR$/code/cleaned/server.py" />
+        <option value="$PROJECT_DIR$/code/cleaned/http_server.py" />
       </list>
     </option>
   </component>
@@ -335,7 +299,7 @@
       <recent name="D:\School\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.translate">
+  <component name="RunManager" selected="Python.server">
     <configuration default="false" name="server_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -422,7 +386,9 @@
       <module name="MNIST_Project" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/cleaned/server.py" />
       <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
       <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
@@ -782,7 +748,11 @@
       <created>1525374242541</created>
       <updated>1525374242541</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Minor clean ups">
+      <created>1525451172441</created>
+      <updated>1525451172441</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -807,12 +777,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27566963" sideWeight="0.4996986" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27566963" sideWeight="0.4996986" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24954791" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18203737" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39955357" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -823,7 +794,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -842,7 +812,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="More work on preprocessing - contours, SON!" />
     <MESSAGE value="More work on preprocessing - finished contour cropping on testing area, implementing it in code." />
     <MESSAGE value="More work on preprocessing - (theoretically) finished implementation of contour cropping. Possible problem: the threshold of opencv's threshold function shouldn't be constant. NEEDS TESTING ON REAL EXAMPLES!" />
     <MESSAGE value="Finished preprocessing! Ta da! Still needs blackbox testing, and it's still messy as hell" />
@@ -867,39 +836,15 @@
     <MESSAGE value="Added documentation.&#10;Still needs to go through color design." />
     <MESSAGE value="A bit a pruning the leftover files" />
     <MESSAGE value="Changes after testing stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes after testing stuff" />
+    <MESSAGE value="Minor clean ups" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor clean ups" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="7" />
+      <option name="time" value="8" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://D:/Heights/PortableApps/PortablePython2.7.6.1/Miniconda/Lib/site-packages/numpy/core/fromnumeric.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2371" column="0" selection-start="74477" selection-end="74477" vertical-scroll-proportion="0.0" vertical-offset="39927" max-vertical-offset="53397" />
-      </provider>
-    </entry>
-    <entry file="file://D:/Heights/PortableApps/PortablePython2.7.6.1/Miniconda/Lib/site-packages/cv2/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="235" selection-end="235" vertical-scroll-proportion="0.09770115" vertical-offset="0" max-vertical-offset="870" />
-      </provider>
-    </entry>
-    <entry file="file://D:/Heights/PortableApps/PortablePython2.7.6.1/Miniconda/Lib/multiprocessing/forking.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="198" column="0" selection-start="6353" selection-end="6353" vertical-scroll-proportion="0.0" vertical-offset="3095" max-vertical-offset="8976" />
-      </provider>
-    </entry>
-    <entry file="file://D:/Heights/PortableApps/PortablePython2.7.6.1/Miniconda/Lib/pickle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="223" column="0" selection-start="8679" selection-end="8679" vertical-scroll-proportion="0.3321859" vertical-offset="3496" max-vertical-offset="23749" />
-      </provider>
-    </entry>
-    <entry file="file://D:/Heights/PortableApps/PortablePython2.7.6.1/Miniconda/Lib/multiprocessing/queues.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="100" column="42" selection-start="3541" selection-end="3541" vertical-scroll-proportion="0.0" vertical-offset="1285" max-vertical-offset="6562" />
-      </provider>
-    </entry>
     <entry file="file://D:/Heights/PortableApps/PortablePython2.7.6.1/Miniconda/Lib/multiprocessing/process.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="126" column="17" selection-start="3944" selection-end="3944" vertical-scroll-proportion="0.0" vertical-offset="1768" max-vertical-offset="5695" />
@@ -929,7 +874,9 @@
     </entry>
     <entry file="file://D:/Heights/PortableApps/PortablePython2.7.6.1/Miniconda/Lib/threading.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="716" column="8" selection-start="25584" selection-end="25584" vertical-scroll-proportion="0.33333334" vertical-offset="11972" max-vertical-offset="22576" />
+        <state line="716" column="8" selection-start="25584" selection-end="25584" vertical-scroll-proportion="0.33333334" vertical-offset="11972" max-vertical-offset="22576">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/code/cleaned/tests/new_net.py">
@@ -994,17 +941,14 @@
     </entry>
     <entry file="file://D:/Heights/PortableApps/PortablePython2.7.6.1/Miniconda/Lib/SocketServer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="627" column="6" selection-start="20327" selection-end="20327" vertical-scroll-proportion="0.16932908" vertical-offset="10485" max-vertical-offset="12461" />
+        <state line="627" column="6" selection-start="20327" selection-end="20327" vertical-scroll-proportion="0.16932908" vertical-offset="10485" max-vertical-offset="12461">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/code/cleaned/http/js/submit.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.41214058" vertical-offset="258" max-vertical-offset="1496" />
-      </provider>
-    </entry>
-    <entry file="file://D:/Heights/PortableApps/PortablePython2.7.6.1/Miniconda/Lib/SimpleHTTPServer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="51" selection-start="3026" selection-end="3064" vertical-scroll-proportion="0.49520767" vertical-offset="1237" max-vertical-offset="3961" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/code/cleaned/http/css/mdb.min.css">
@@ -1039,7 +983,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/code/cleaned/http/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="22" selection-start="1709" selection-end="1709" vertical-scroll-proportion="-22.26923" vertical-offset="33" max-vertical-offset="1326" />
+        <state line="36" column="22" selection-start="1709" selection-end="1709" vertical-scroll-proportion="-22.26923" vertical-offset="33" max-vertical-offset="1326">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/code/cleaned/tests/server.py">
@@ -1078,12 +1024,7 @@
     </entry>
     <entry file="file://D:/Heights/PortableApps/PortablePython2.7.6.1/Miniconda/Lib/BaseHTTPServer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="311" column="21" selection-start="11479" selection-end="11479" vertical-scroll-proportion="0.33226836" vertical-offset="5028" max-vertical-offset="10489" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/cleaned/server.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="44" selection-start="927" selection-end="927" vertical-scroll-proportion="0.0" vertical-offset="224" max-vertical-offset="1003">
+        <state line="311" column="21" selection-start="11479" selection-end="11479" vertical-scroll-proportion="0.33226836" vertical-offset="5028" max-vertical-offset="10489">
           <folding />
         </state>
       </provider>
@@ -1091,32 +1032,6 @@
     <entry file="file://$PROJECT_DIR$/code/cleaned/Translation Languages.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state line="311" column="5" selection-start="2125" selection-end="2125" vertical-scroll-proportion="0.41533548" vertical-offset="5027" max-vertical-offset="7123" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/cleaned/Cache/img1.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/cleaned/Cache/img0.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/cleaned/handle_nn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="33" selection-start="1031" selection-end="1031" vertical-scroll-proportion="-0.1724138" vertical-offset="677" max-vertical-offset="1547">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/cleaned/http_server.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="277" column="31" selection-start="10194" selection-end="10194" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="5423">
-          <folding>
-            <element signature="e#24#47#0" expanded="true" />
-          </folding>
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/code/cleaned/translate.py">
@@ -1128,31 +1043,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/cleaned/neural_network.py">
+    <entry file="file://$PROJECT_DIR$/code/cleaned/handle_nn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="245" column="53" selection-start="9127" selection-end="10267" vertical-scroll-proportion="0.0" vertical-offset="3008" max-vertical-offset="7990">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/cleaned/memoized_decorator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="62" selection-end="85" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
+        <state line="31" column="33" selection-start="1031" selection-end="1031" vertical-scroll-proportion="0.0" vertical-offset="677" max-vertical-offset="1547">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/code/cleaned/autocomplete.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="161" column="45" selection-start="5730" selection-end="5730" vertical-scroll-proportion="0.0" vertical-offset="2292" max-vertical-offset="3162">
+        <state line="15" column="0" selection-start="275" selection-end="748" vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="3162">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/code/cleaned/preprocessor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="370" column="24" selection-start="14374" selection-end="14374" vertical-scroll-proportion="0.53103447" vertical-offset="5777" max-vertical-offset="6698">
+        <state line="366" column="14" selection-start="14177" selection-end="14177" vertical-scroll-proportion="0.0" vertical-offset="5879" max-vertical-offset="6749">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Heights/PortableApps/PortablePython2.7.6.1/Miniconda/Lib/Queue.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="183" column="8" selection-start="7013" selection-end="7013" vertical-scroll-proportion="0.33226836" vertical-offset="2903" max-vertical-offset="4250">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/cleaned/neural_network.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="407" column="0" selection-start="16916" selection-end="16916" vertical-scroll-proportion="0.0" vertical-offset="6728" max-vertical-offset="8143">
+          <folding>
+            <element signature="e#676#690#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/cleaned/server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="50" selection-start="844" selection-end="844" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="935">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/cleaned/memoized_decorator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="0" selection-start="655" selection-end="655" vertical-scroll-proportion="0.0" vertical-offset="88" max-vertical-offset="714">
+          <folding>
+            <element signature="e#24#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Heights/PortableApps/PortablePython2.7.6.1/Miniconda/Lib/SimpleHTTPServer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="8" selection-start="929" selection-end="929" vertical-scroll-proportion="0.3322314" vertical-offset="377" max-vertical-offset="3961">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/cleaned/http_server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="186" column="19" selection-start="6653" selection-end="6653" vertical-scroll-proportion="0.06260032" vertical-offset="3123" max-vertical-offset="6188">
+          <folding>
+            <element signature="e#24#47#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

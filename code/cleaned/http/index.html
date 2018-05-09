@@ -20,25 +20,39 @@
 		<script type="text/javascript" src="js/mdb.min.js"></script>
 		
 	</head>
-	<body style="background-color: lavender">
+	<body style="background-color: #999966">
 		<div class="container-fluid">
 			<div class ="jumbotron" style="background:transparent url('https://cdn-images-1.medium.com/max/1200/1*m2gDBT_nc-iE7R4AM3sHBQ.jpeg') no-repeat top center /cover">
 				<h1 class="display-5"><font color="white" style="font-family: sans-serif"><center>Optical Character Recognition</center></font></h1>
 			</div>
-			
 			<div class="row" style="height:600px">
+				<div class="col-sm-6">
+					<div class="card">
+						<div class="card-body" style="background-color: #c2c2a3">
+							<h1 class="text-center">About</h1>
+							<p class="text-center">
+								My name is Nimrod Yahal, and this is my finals project for my cyber highschool major.<br>
+								Optical Character Recognition (or OCR), is the process in which a program recognizes text in images. The uses for such a program are numerous - from digitizing old, printed documents to translation programs. It is one subcategory of 'Computer Vision', a field of study all about programming computers to process visual input - recognize text, faces, cars or lanes, etc.<br>
+								Such a program is difficult to create the old-fashioned way, so instead a different was developed: Machine Learning.<br>
+								The main difference between a program working by Machine Learning and one working by "the old fashioned way" (also called Knowledge Engineering) is that the first isn't programmed to solve the problem - it is programmed to <i>learn</i> how to solve the problem.
+							</p>
+						</div>
+					</div>
+					<div class="col-sm-6 mx-auto">
+						<canvas id="radarChart"></canvas>
+					</div>
+				</div>
+				
 				<div class="col-sm-6">
 					<img class="img-fluid" id='img-upload'/>
 					<div class="row">
 						<div class="col-sm-12">
-						<input class="balloon btn btn-primary" id="PostImage" type="file" placeholder="Choose...">
-						<button id="PostImageSubmit" class="btn btn-primary button-submit py-3" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order">Submit</button>
+						<input class="balloon btn btn-warning" id="PostImage" type="file" placeholder="Choose...">
+						<button id="PostImageSubmit" class="btn btn-warning button-submit py-3" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order">Submit</button>
 						</div>
 					</div>
-				</div>
-				<div class="col-sm-2">
 					<div class="card">
-						<div class="card-body" style="background-color: #cce6ff">
+						<div class="card-body" style="background-color: #c2c2a3">
 							<h1 class="text-center">Help</h1>
 							<p class="text-center">
 								It is as easy as 1-2-3!<br>
@@ -47,30 +61,15 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-sm-4">
-					<div class="card">
-						<div class="card-body" style="background-color: #cce6ff">
-							<h1 class="text-center">About</h1>
-							<p class="text-center">
-								blablablablablablablablablablablablablablablablablablablablablabla<br>
-								blablablablablablablablablablablablablablablablablablablabla<br>
-								blablablablablablablablablablabla
-							</p>
-						</div>
-					</div>
-					<div class="col-sm-10 mx-auto">
-						<canvas id="radarChart"></canvas>
-					</div>
-				</div>
 			</div>
 		</div>
 		<script type="text/javascript" src="js/submit.js"></script>
 		<script type="text/javascript" src="js/radarchart.js"></script>
 		<style>		
 			#img-upload{
-				max-height: 500px;
+				max-height: 400px;
 				border-style: solid;
-				border-color: black;
+				border-color: #4d4d33;
 			}
 		</style>
 	</body>

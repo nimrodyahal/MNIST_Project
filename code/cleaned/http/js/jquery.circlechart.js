@@ -6,10 +6,10 @@
 			var defaults = {
 			        animate : true,
 					diameter : 190,
-					guage: 3,
-					coverBg: '#fff',
+					guage: 8,
+					coverBg: '#737373',
 					bgColor: '#efefef',
-					fillColor: '#5c93c8',
+					fillColor: '#ffffff',
 					percentSize: '35px',
 					percentWeight: 'normal'
 				},

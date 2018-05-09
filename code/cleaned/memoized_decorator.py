@@ -17,11 +17,11 @@ class Memoized(object):
         if not isinstance(args, collections.Hashable):  # uncacheable. a list,
         #  for instance. Better to not cache than blow up.
             return self.func(*args)
-        if args in self.cache:
-            return self.cache[args]
+        if str(args[1:]) in self.cache:
+            return self.cache[str(args[1:])]
         else:
             value = self.func(*args)
-            self.cache[args] = value
+            self.cache[str(args[1:])] = value
             return value
 
     def __repr__(self):

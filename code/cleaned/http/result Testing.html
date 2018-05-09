@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Bootstrap Example</title>
+		<title>Optical Character Recognition Project</title>
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,49 +17,48 @@
 		<script src="js/jquery.circlechart.js"></script>
 		
 	</head>
-	<body style="background-color: lavender">
+	<body style="background-color: #999966">
 		<div class="container-fluid">
 			<div class ="jumbotron" style="background:transparent url('https://cdn-images-1.medium.com/max/1200/1*m2gDBT_nc-iE7R4AM3sHBQ.jpeg') no-repeat top center /cover">
-				<h1 class="display-3"><font color="white" style="font-family: sans-serif"><center>Optical Character Recognition</center></font></h1>
+				<h1 class="display-5"><font color="white" style="font-family: sans-serif"><center>Optical Character Recognition</center></font></h1>
 			</div>
 			
 			<div class="row" style="height:600px">
-				<div class="col-sm-6">
+				<div class="col-sm-8">
 					<div class="row pb-3 mx-auto">
-						<img style="width:50%;" class="img-fluid" id='img-upload' src="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\Cache\img0.png"/>
+						<img stylke="width:50%" class="img-fluid" id='img-upload' src="final.jpg"/>
 						
-						<!-- <textarea style="resize: none;" class="form-control rounded-0" id="TextBox" original-answer="{answer}">{answer}</textarea> -->
-						<textarea style="resize: none;" class="card-body" id="TextBox" original-answer="{answer}">{answer}</textarea>
+						<textarea style="resize: none; background-color:#bfbfbf;" class="card-body" id="TextBox" original-answer="{answer}">{answer}</textarea>
 					</div>
 					<div class="row">
 						<!-- Save Button -->
-						<a class="btn btn-primary mx-auto" role="button" download="{file_name}" id="SaveButton">Save To File</a>
+						<a class="btn btn-warning mx-auto" role="button" download="{file_name}" id="SaveButton"><font color="black">Save To File</font></a>
 						<!-- Translate Buttons -->
 						<div class="btn-group mx-auto">
-							<button id='TranslateButton' type="button" class="btn btn-primary">Translate to</button>
+							<button id='TranslateButton' type="button" class="btn btn-warning"><font color="black">Translate to</font></button>
 							<div class="btn-group">
-								<button id='main-nav' type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">English</button>
+								<button id='main-nav' type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"><font color="black">English</font></button>
 								<div class="dropdown-menu default-menu main-menu sm-main-menu animation" data-animation = "fadeIn">
 									<div class="sm-main-nav myDropDown">
 										<!-- Dropdown Options. Looks Like This: -->
-										<a class="dropdown-item" href="#">Language1</a>
-										<a class="dropdown-item" href="#">Language2</a>
-										<a class="dropdown-item" href="#">Language3</a>
-										<a class="dropdown-item" href="#">Language4</a>
-										<a class="dropdown-item" href="#">Language5</a>
-										<a class="dropdown-item" href="#">Language6</a>
-										<a class="dropdown-item" href="#">Language7</a>
-										<a class="dropdown-item" href="#">Language8</a>
-										<a class="dropdown-item" href="#">Language9</a>
-										<a class="dropdown-item" href="#">Language10</a>
-										<a class="dropdown-item" href="#">Language11</a>
+										<a class="dropdown-item">Language1</a>
+										<a class="dropdown-item">Language2</a>
+										<a class="dropdown-item">Language3</a>
+										<a class="dropdown-item">Language4</a>
+										<a class="dropdown-item">Language5</a>
+										<a class="dropdown-item">Language6</a>
+										<a class="dropdown-item">Language7</a>
+										<a class="dropdown-item">Language8</a>
+										<a class="dropdown-item">Language9</a>
+										<a class="dropdown-item">Language10</a>
+										<a class="dropdown-item">Language11</a>
 									</div>
 							</div>
 						  </div>
 						</div>
 					</div>
 				</div>
-				<div class="col-sm-6">
+				<div class="col-sm-4">
 					<div class="row pb-3 mx-auto">
 						<div class="col-sm-12 my-auto" style="height:350px">
 							<canvas id="lineChart" class="pb-4"></canvas>
@@ -103,14 +102,14 @@
 					labels: ['', '', ''],
 					datasets: [
 						{
-							label: "My First dataset",
+							label: "Neural Network Surety For Each Character",
 							fillColor: "rgba(220,220,220,0.2)",
 							strokeColor: "rgba(220,220,220,1)",
 							pointColor: "rgba(220,220,220,1)",
 							pointStrokeColor: "#fff",
 							pointHighlightFill: "#fff",
 							pointHighlightStroke: "rgba(220,220,220,1)",
-							data: [1, 2, 3]
+							data: [40, 20, 37]
 						}
 					]
 				},
@@ -128,7 +127,7 @@
 		</script>
 		<style>
 		.circle {
-			background: #000000;
+			background: #737373;
 			border-radius: 190px;
 			color: white;
 			height: 190px;
