@@ -27,8 +27,9 @@ from theano.tensor.signal import pool
 from theano.tensor.nnet import sigmoid
 
 
-PATH = 'D:\\School\\Programming\\Cyber\\FinalExercise-12th\\MNIST_Project\\' \
-       'dataset\\matlab\\emnist-bymerge.mat'
+PATH = '..\\dataset\\matlab\\emnist-bymerge.mat'
+# PATH = '\\' \
+#        'dataset\\matlab\\emnist-bymerge.mat'
 NUM_OF_TRIES = 5  # The amount of 'tries' a net has to classify
 
 
