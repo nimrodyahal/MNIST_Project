@@ -1,289 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3c20999e-9e20-4348-95e9-be5509e66b0a" name="Default" comment="Cleanup. Major changes, mainly to directory names and such. Might cause problems">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/font/roboto/Roboto-Bold.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/font/roboto/Roboto-Bold.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/font/roboto/Roboto-Bold.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/font/roboto/Roboto-Bold.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/font/roboto/Roboto-Light.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/font/roboto/Roboto-Light.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/font/roboto/Roboto-Light.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/font/roboto/Roboto-Light.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/font/roboto/Roboto-Medium.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/font/roboto/Roboto-Medium.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/font/roboto/Roboto-Medium.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/font/roboto/Roboto-Medium.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/font/roboto/Roboto-Regular.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/font/roboto/Roboto-Regular.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/font/roboto/Roboto-Regular.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/font/roboto/Roboto-Regular.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/font/roboto/Roboto-Thin.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/font/roboto/Roboto-Thin.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/font/roboto/Roboto-Thin.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/font/roboto/Roboto-Thin.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testing images/TEST1.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testing images/TEST2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testing images/TEST3.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/chromedriver.exe" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/favicon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testing images/grab6 - Copy.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testing images/milstein-backing.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testing images/numbers.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/css/style.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testing images/test_draw.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testing images/testbla.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testing images/testing contour.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testing images/testing text.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testing images/testzoom.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testing images/text in book - Shortened.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testing images/text in book.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testing images/text in book2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testing images/text test.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testing images/whatsapp.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/500_error.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ContourClass.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/LANG.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Translation Languages.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/ar.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/autocomplete.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/az.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/bg.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/big_merged.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/css/bootstrap.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/bootstrap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/css/bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/bootstrap.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/ca.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/cr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/cs.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/da.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/de.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/el.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/es.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/et.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/fa.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/fi.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/css/fileinput-rtl.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/css/fileinput-rtl.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/css/fileinput.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/fileinput.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/css/fileinput.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/fileinput.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/fr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/gl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/handle_nn.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http_server.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/hu.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/id.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/index - Copy.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/it.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/ja.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/jquery-3.2.1.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/jquery-3.3.1.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/jquery.circlechart.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/ka.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/kr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/kz.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/lt.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/css/mdb.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/mdb.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/css/mdb.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/mdb.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/memoized_decorator.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/neural_network.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/nl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/no.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/css/percentcircle.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/plugins/piexif.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/plugins/piexif.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/pl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/popper.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/preprocessor.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/pt-BR.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/pt.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/plugins/purify.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/plugins/purify.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/radarchart.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/result Testing - Copy.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/result Testing.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/result.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/ro.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/ru.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/save.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/server.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/sk.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/sl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/plugins/sortable.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/plugins/sortable.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/css/style.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/submit.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/sv.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/test percent circle.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/test.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Saved Nets/test_net0.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/th.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/tr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/translate.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/uk.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/vi.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/zh-TW.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/http/js/locales/zh.js" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\.idea\.name" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\.idea\code.iml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\.idea\dictionaries\talgams.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\.idea\encodings.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\.idea\misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\.idea\modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\.idea\scopes\scope_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\.idea\vcs.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\.idea\workspace.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\Saved Nets\test_net0.txt" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\activation.py" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\ContourClass.py" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\Translation Languages.txt" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\autocomplete.py" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\big_merged.txt" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\chromedriver.exe" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\handle_nn.py" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\500_error.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\css\bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\css\bootstrap.min.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\css\fileinput-rtl.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\css\fileinput-rtl.min.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\css\fileinput.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\css\fileinput.min.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\css\mdb.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\css\mdb.min.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\css\style.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\css\style.min.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\favicon.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\final.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\font\roboto\Roboto-Bold.eot" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\font\roboto\Roboto-Bold.ttf" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\font\roboto\Roboto-Bold.woff" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\font\roboto\Roboto-Bold.woff2" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\font\roboto\Roboto-Light.eot" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\font\roboto\Roboto-Light.ttf" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\font\roboto\Roboto-Light.woff" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\font\roboto\Roboto-Light.woff2" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\font\roboto\Roboto-Medium.eot" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\font\roboto\Roboto-Medium.ttf" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\font\roboto\Roboto-Medium.woff" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\font\roboto\Roboto-Medium.woff2" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\font\roboto\Roboto-Regular.eot" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\font\roboto\Roboto-Regular.ttf" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\font\roboto\Roboto-Regular.woff" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\font\roboto\Roboto-Regular.woff2" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\font\roboto\Roboto-Thin.eot" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\font\roboto\Roboto-Thin.ttf" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\font\roboto\Roboto-Thin.woff" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\font\roboto\Roboto-Thin.woff2" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\index.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\bootstrap.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\bootstrap.min.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\fileinput.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\fileinput.min.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\jquery-3.2.1.min.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\jquery-3.3.1.min.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\jquery.circlechart.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\LANG.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\ar.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\az.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\bg.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\ca.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\cr.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\cs.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\da.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\de.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\el.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\es.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\et.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\fa.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\fi.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\fr.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\gl.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\hu.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\id.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\it.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\ja.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\ka.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\kr.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\kz.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\lt.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\nl.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\no.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\pl.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\pt-BR.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\pt.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\ro.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\ru.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\sk.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\sl.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\sv.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\th.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\tr.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\uk.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\vi.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\zh-TW.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\locales\zh.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\mdb.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\mdb.min.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\plugins\piexif.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\plugins\piexif.min.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\plugins\purify.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\plugins\purify.min.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\plugins\sortable.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\plugins\sortable.min.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\popper.min.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\radarchart.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\save.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\js\submit.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\result Testing.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http\result.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\http_server.py" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\memoized_decorator.py" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\neural_network.py" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\preprocessor.py" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\server.py" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\tests\ContourClass.py" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\tests\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\tests\gui.py" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\tests\server.py" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\tests\test_line_threshold_auto.py" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\cleaned\translate.py" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\dataset_mapping.txt" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\expand_mnist.py" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\gputest.py" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\mnist_loader.py" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\neu_net_test.py" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\neural_network.py" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\preprocessing_test1.py" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\preprocessing_test2.py" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\testing images\TEST1.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\testing images\TEST2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\testing images\TEST3.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\testing images\milstein-backing.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\testing images\numbers.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\testing images\test_draw.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\testing images\testbla.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\testing images\testing contour.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\testing images\testing text.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\testing images\testzoom.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\testing images\text in book - Shortened.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\testing images\text in book.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\testing images\text in book2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\testing images\text test.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programming\Cyber\FinalExercise-12th\MNIST_Project\code\useful_functions.py" afterPath="" />
+    <list default="true" id="3c20999e-9e20-4348-95e9-be5509e66b0a" name="Default" comment="Cleanup. Just one or two more">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/http_server.py" afterPath="$PROJECT_DIR$/src/http_server.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MNIST_Project.iws" />
@@ -306,7 +25,91 @@
     <favorites_list name="MNIST_Project" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="translate.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/translate.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="680">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="server.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/server.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="258" max-vertical-offset="935">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="preprocessor.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/preprocessor.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="5879" max-vertical-offset="6749">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="neural_network.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/neural_network.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="28" column="0" selection-start="976" selection-end="976" vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="8007">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="memoized_decorator.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/memoized_decorator.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="http_server.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/http_server.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="221" column="77" selection-start="8022" selection-end="8022" vertical-scroll-proportion="0.0" vertical-offset="5233" max-vertical-offset="6103">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="handle_nn.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/handle_nn.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="677" max-vertical-offset="1547">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ContourClass.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ContourClass.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="autocomplete.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/autocomplete.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="151" column="18" selection-start="5274" selection-end="5274" vertical-scroll-proportion="0.23793103" vertical-offset="2360" max-vertical-offset="3230">
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -365,6 +168,7 @@
         <option value="$PROJECT_DIR$/code/cleaned/server.py" />
         <option value="$PROJECT_DIR$/code/cleaned/http_server.py" />
         <option value="$PROJECT_DIR$/src/neural_network.py" />
+        <option value="$PROJECT_DIR$/src/http_server.py" />
       </list>
     </option>
   </component>
@@ -415,6 +219,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="MNIST_Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MNIST_Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MNIST_Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -915,7 +733,11 @@
       <created>1525871457513</created>
       <updated>1525871457513</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Cleanup. Major changes, mainly to directory names and such. Might cause problems">
+      <created>1525872889424</created>
+      <updated>1525872889424</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -940,9 +762,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32924107" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32850778" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24954791" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1030,9 +852,7 @@
     </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/.PyCharm30/system/python_stubs/437035981/__builtin__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="594" column="4" selection-start="20056" selection-end="20056" vertical-scroll-proportion="0.0" vertical-offset="9891" max-vertical-offset="87737">
-          <folding />
-        </state>
+        <state line="594" column="4" selection-start="20056" selection-end="20056" vertical-scroll-proportion="0.0" vertical-offset="9891" max-vertical-offset="87737" />
       </provider>
     </entry>
     <entry file="file://D:/Heights/PortableApps/PortablePython2.7.6.1/Miniconda/Lib/threading.py">
@@ -1082,15 +902,71 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/http/js/bootstrap.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2253" column="7" selection-start="66344" selection-end="66344" vertical-scroll-proportion="0.33274022" vertical-offset="38114" max-vertical-offset="66300">
+        <state line="2253" column="7" selection-start="66344" selection-end="66344" vertical-scroll-proportion="0.33274022" vertical-offset="38114" max-vertical-offset="66300" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/translate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="680">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="935">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/preprocessor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6749">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/neural_network.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="0" selection-start="976" selection-end="976" vertical-scroll-proportion="0.56173915" vertical-offset="0" max-vertical-offset="8007">
+        <state line="28" column="0" selection-start="976" selection-end="976" vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="8007">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/memoized_decorator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="870">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/http_server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="221" column="77" selection-start="8022" selection-end="8022" vertical-scroll-proportion="0.0" vertical-offset="5233" max-vertical-offset="6103">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/handle_nn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1547">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContourClass.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="870">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/autocomplete.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="151" column="18" selection-start="5274" selection-end="5274" vertical-scroll-proportion="0.23793103" vertical-offset="2360" max-vertical-offset="3230">
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

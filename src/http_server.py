@@ -143,14 +143,13 @@ class MyTCPServer(SocketServer.TCPServer):
     @Memoized
     def construct_result_page(self, image_path, file_name, answer, nn_surety):
         """
-        Returns the html 'result' file. Inserts the path of the cached image,
+        Sets up the html 'result' file. Inserts the path of the cached image,
         the answer, the language dropdown options, the name of the image, the
         average net surety, the median net surety, and the data for the NN
         surety graph.
         :param answer: String - The classified text
         :param nn_surety: A list of the surety (in percentage) of the net for
         every character classified.
-        :return: The 'result' page
         """
         with open('http\\result.html', 'rb') as f:
             result_page = f.read()
@@ -171,6 +170,10 @@ class MyTCPServer(SocketServer.TCPServer):
         self.result_page = result_page
 
     def get_result_page(self):
+        """
+        Returns the 'result' page if it exists, and an error page if not.
+        :return: The 'result' page
+        """
         if self.result_page:
             return self.result_page
         with open('http\\500_error.html', 'rb') as f:
@@ -215,6 +218,10 @@ class MyHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
             self.__do_translate()
 
     def __send_data(self, data):
+        """
+        Helper function that sends the data to the client in an HTTP protocol
+        :param data:
+        """
         self.send_response(200)
         self.send_header('Content-type', 'text/html')
         self.send_header("Content-Length", str(len(data)))
