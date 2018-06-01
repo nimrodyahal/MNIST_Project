@@ -75,13 +75,6 @@ def _get_file_name_from_request(requestline):
     pattern = r'file-name=(.*) HTTP\/'
     raw_name = re.findall(pattern, request)[0]
 
-    # split_name = raw_name.split('%')
-    # for i, char in enumerate(split_name[1:]):
-    #     if all(c in string.hexdigits for c in char[:2]):
-    #         char = chr(int(char[:2], 16)) + char[2:]
-    #     split_name[1 + i] = char
-    # name = ''.join(split_name)
-
     name = urllib.unquote(raw_name)
     if not re.findall(r'[\/\?\<\>\\\:\*\|\"]', name):
         if '.' in name:
@@ -140,7 +133,6 @@ class MyTCPServer(SocketServer.TCPServer):
         """
         return str([''] * count)
 
-    # @Memoized
     def construct_result_page(self, image_path, file_name, answer, nn_surety):
         """
         Sets up the html 'result' file. Inserts the path of the cached image,
@@ -154,21 +146,12 @@ class MyTCPServer(SocketServer.TCPServer):
         with open('http\\result.html', 'rb') as f:
             result_page = f.read()
 
-        # image_path = self.__cached_img_path
         dropdown_options = self.__get_dropdown_options()
-        # file_name = _get_file_name_from_request(self.requestline)
         avg_net_surety = numpy.mean(nn_surety)
         med_net_surety = numpy.median(nn_surety)
         nn_data_graph_len = self.__get_length_of_nn_data(len(nn_surety))
         nn_data = str(nn_surety)
 
-        # print 'image path:', image_path
-        # print 'answer:', answer
-        # print 'dropdown options:', dropdown_options
-        # print 'file name:', file_name
-        # print 'avg net surety:', avg_net_surety
-        # print 'med net surety:', med_net_surety
-        # print 'nn data graph len:', nn_data_graph_len
         result_page = result_page.format(
             image_path=image_path, answer=answer,
             dropdown_options=dropdown_options, file_name=file_name,
@@ -245,12 +228,10 @@ class MyHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
             file_data = self.rfile.read(length)
 
             self.__cached_img_path = _get_file_path()
-            # print 'SELF_CACHED_IMG_PATH', self.__cached_img_path
             with open(self.__cached_img_path, 'wb') as img_file:
                 img_file.write(file_data)
             cv2_img = cv2.imread(self.__cached_img_path, 0)
 
-            # answer, nn_surety = self.__classify(file_data)
             answer, nn_surety = self.__classify(cv2_img)
             image_path = self.__cached_img_path
             file_name = _get_file_name_from_request(self.requestline)
@@ -258,8 +239,6 @@ class MyHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
             self.server.construct_result_page(image_path, file_name, answer,
                                               nn_surety)
             self.__send_data('Success')
-            # result_page = self.__construct_result_page(answer, nn_surety)
-            # self.__send_data(result_page)
         except Exception, e:
             print e
             with open('http\\500_error.html', 'rb') as f:
@@ -288,44 +267,8 @@ class MyHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
             print e
             error_message = 'The Server Has Experienced An Error'
             self.__send_data(error_message)
-        # self.send_response(200)
-        # self.send_header('Content-type', 'text/html')
-        # self.send_header("Content-Length", str(len(translated)))
-        # self.end_headers()
-        # self.wfile.write(translated)
-
-    # @Memoized
-    # def __construct_result_page(self, answer, nn_surety):
-    #     """
-    #     Returns the html 'result' file. Inserts the path of the cached image,
-    #     the answer, the language dropdown options, the name of the image, the
-    #     average net surety, the median net surety, and the data for the NN
-    #     surety graph.
-    #     :param answer: String - The classified text
-    #     :param nn_surety: A list of the surety (in percentage) of the net for
-    #     every character classified.
-    #     :return: The 'result' page
-    #     """
-    #     with open('http\\result.html', 'rb') as f:
-    #         result_page = f.read()
-    #
-    #     image_path = self.__cached_img_path
-    #     dropdown_options = self.__get_dropdown_options()
-    #     file_name = _get_file_name_from_request(self.requestline)
-    #     avg_net_surety = numpy.mean(nn_surety)
-    #     med_net_surety = numpy.median(nn_surety)
-    #     nn_data_graph_len = self.__get_length_of_nn_data(len(nn_surety))
-    #     nn_data = str(nn_surety)
-    #
-    #     result_page = result_page.format(
-    #         image_path=image_path, answer=answer,
-    #         dropdown_options=dropdown_options, file_name=file_name,
-    #         avg_net_surety=avg_net_surety, med_net_surety=med_net_surety,
-    #         length_of_nn_data=nn_data_graph_len, nn_data=str(nn_data))
-    #     return result_page
 
     @Memoized
-    # def __classify(self, file_data):
     def __classify(self, cv2_img):
         """
         Classifies the text within an image.
@@ -333,13 +276,6 @@ class MyHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         :return: [String, List] - The answer text and the net sureties for
         every character classified.
         """
-        # self.__cached_img_path = _get_file_path()
-        # print 'SELF_CACHED_IMG_PATH', self.__cached_img_path
-        # with open(self.__cached_img_path, 'wb') as img_file:
-        #     img_file.write(file_data)
-
-        # cv2_img = cv2.imread(self.__cached_img_path, 0)
-        # cv2_img = cv2.imread(img_path, 0)
         cv2.imshow('', cv2_img)
         if cv2_img is None:
             raise ServerError

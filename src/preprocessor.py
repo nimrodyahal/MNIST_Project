@@ -32,8 +32,6 @@ class Preprocessor():
         :param img: The image in question (OpenCV2 image).
         :return: A rotated to text tilt threshold of the image (OpenCV2 image).
         """
-        # gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        # img = gray
         blur = cv2.bilateralFilter(img, 40, 10, 10)
         thresh = cv2.adaptiveThreshold(blur, 255,
                                        cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
@@ -41,6 +39,7 @@ class Preprocessor():
 
         thresh = cv2.bitwise_not(thresh)
         thresh = self.__clean_image(thresh)
+        # Rotating the text. Works only on large texts
         # angle = self.__get_text_tilt(img)
         # rotated = self.__rotate_image
         # return rotated
@@ -356,10 +355,6 @@ class Preprocessor():
         for left, right in words:
             chars = self.__separate_word((upper, lower, left, right))
             word_chars = [self.__rescale_char(char) for char in chars]
-            # for i, char in enumerate(word_chars):
-            #     cv2.imshow(str(i), char)
-            # cv2.waitKey(0)
-            # cv2.destroyAllWindows()
             if word_chars:
                 line.append(word_chars)
         return line
@@ -379,17 +374,3 @@ class Preprocessor():
             if line_chars:
                 text.append(line_chars)
         return text
-
-
-# _path = 'D:\\School\\Programming\\Cyber\\FinalExercise-12th\\MNIST_Project\\' \
-#         'code\\testing images\\whatsapp.jpeg'
-#
-# _img = cv2.imread(_path, 0)
-# prep = Preprocessor(_img)
-# _separated = prep.separate_text()
-# for _line in _separated:
-#     for _word in _line:
-#         for _i, _char in enumerate(_word):
-#             cv2.imshow(str(_i), _char)
-#         cv2.waitKey(0)
-#         cv2.destroyAllWindows()

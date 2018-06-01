@@ -28,8 +28,6 @@ from theano.tensor.nnet import sigmoid
 
 
 PATH = '..\\dataset\\matlab\\emnist-bymerge.mat'
-# PATH = '\\' \
-#        'dataset\\matlab\\emnist-bymerge.mat'
 NUM_OF_TRIES = 5  # The amount of 'tries' a net has to classify
 
 
