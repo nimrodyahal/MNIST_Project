@@ -68,6 +68,7 @@ $(document).ready( function() {
 			contentType: 'text/plain',
 			timeout : 20000
 		});
+		console.log(request);
 		request.done(function( msg ) {
 			console.log(msg);
 			if (msg == 'Success')
