@@ -18,7 +18,7 @@ Server Requirements:
 * Intel Integrated Performance Primitives
 * Eigen
 * TortoiseGit
-*The following Python modules:
+* The following Python modules:
 	- libgpuarray,
 	- OpenCL,
 	- NumPy,

@@ -828,7 +828,11 @@
       <created>1528030883314</created>
       <updated>1528030883314</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Fixed readme.txt to readme.md... AGAIN">
+      <created>1528030963126</created>
+      <updated>1528030963126</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
