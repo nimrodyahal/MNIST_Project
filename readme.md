@@ -12,7 +12,7 @@ Server Requirements:
 * NVIDIA CUDA drivers and SDK
 * GCC Compiler
 * BLAS
-* Graphics Card (recommended GTX 1060 or higher)
+* Graphics Card (recommended GTX 1060 Founders Addition or higher)
 * Selenium chromedriver
 * Intel Threading Building Blocks
 * Intel Integrated Performance Primitives
