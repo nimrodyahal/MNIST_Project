@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c20999e-9e20-4348-95e9-be5509e66b0a" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/readme.txt" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.md" afterPath="$PROJECT_DIR$/readme.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MNIST_Project.iws" />
@@ -816,7 +816,15 @@
       <created>1528030639838</created>
       <updated>1528030639838</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Fixed readme.txt to readme.md">
+      <created>1528030740875</created>
+      <updated>1528030740875</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Fixed readme.txt to readme.md... AGAIN">
+      <created>1528030761440</created>
+      <updated>1528030761440</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -843,6 +851,7 @@
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32850778" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -857,7 +866,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27566963" sideWeight="0.4996986" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -876,8 +884,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Done tittle_segmentation, done line_segmentation.&#10;Still no idea about word segmentation...&#10;Will start working on speeding up the network by inputting into GPU memory all at once in a moment" />
-    <MESSAGE value="Added the ContourClass necessary for test_line_threshold_auto.&#10;Added useful testing pictures" />
     <MESSAGE value="MASSIVE improvement to performance!&#10;Mainly changed the way the GPU memory was accessed: instead of accessing the memory for every character separately, it now accesses the memory only once, &quot;uploading&quot; all the characters at once, and running through them with the net in much the same way the net trains itself.&#10;Because of the way GPU memory works, this is significantly faster, taking AROUND 3 seconds to classify an entire page.&#10;Do note that a non-insignificant amount of time (around 2-3 seconds or so) is taken to separate the image to characters, depending on the image size." />
     <MESSAGE value="Finished (?) autocomplete.&#10;Also uploaded 2 .txt files:&#10;    big_merged.txt - lots of words, used in autocomplete.&#10;    bla.txt - input for the autocomplete. The raw output from the net. VERY temporary.&#10;" />
     <MESSAGE value="Turned autocomplete.py into a class" />
@@ -901,7 +907,9 @@
     <MESSAGE value="Cleanup. Just one or two more docstrings on functions" />
     <MESSAGE value="Cleanup. Deleted all the commented code lines.&#10;To - do: better documentation if possible.&#10;To - do: write readme.txt file.&#10;Otherwise, this is pretty much finished" />
     <MESSAGE value="Added readme.txt. Added __init__.py to the Cache directory to prevent it from self deleting." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added readme.txt. Added __init__.py to the Cache directory to prevent it from self deleting." />
+    <MESSAGE value="Fixed readme.txt to readme.md" />
+    <MESSAGE value="Fixed readme.txt to readme.md... AGAIN" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed readme.txt to readme.md... AGAIN" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

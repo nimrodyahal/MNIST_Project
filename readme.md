@@ -1,3 +1,4 @@
+# Optical Character Recognition
 NOTICE:
 Running the server requires many, MANY preinstalled modules and drivers, among other things.
 Running the client, on the other hand, is very, very simple - just enter the URL "http://mnistproject.ddns.net:500" in your web browser of choice.
